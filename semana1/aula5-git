@@ -1,0 +1,14 @@
+Comandos usandos no learn git branching:
+git checkout 
+git rebase
+git cherry-pick
+git push
+git merge
+git branch
+git pull
+git commit
+git add
+undo
+git export
+git revert
+git reset
