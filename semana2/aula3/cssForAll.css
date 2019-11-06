@@ -1,0 +1,135 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'McLaren', cursive;
+}
+body {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+
+#layer0 {
+    border: 2px solid white;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: auto;
+    height: 680px;
+    background-color: cadetblue;   
+}
+
+.Descricao,.Estoque,.Funcionarios,.Produtos,.listaFuncionarios,.bemVindoDescri {
+    text-align: center;
+}
+
+.descricaoLoja{
+    margin-top: 30px;
+    text-align: center;
+    font-size: 30px;
+    color: whitesmoke;
+}
+
+.ProdutosAdcionadosComSucesso{
+    margin-top: 12%;
+    text-align: center;
+}
+
+.voltarTelaInicial{
+    margin-top: 12%;
+    text-align: center;
+    color: whitesmoke;
+}
+
+.voltarPraHome {
+    padding-left: 16px;
+    margin-left: 20px;
+    border-radius: 10px;
+    width: 60px;
+    background-color: white;
+}
+
+.voltarPraHomeAoAdicionar {
+    padding-left: 16px;
+    margin-top: 200px;
+    margin-left: 20px;
+    border-radius: 10px;
+    width: 60px;
+    background-color: white;
+}
+
+
+.tabelaProdutos {
+    margin-top: 70px;
+    margin-left: 20px;
+    border-radius: 15px;
+    background-color: White;
+    width: 450px;
+    height: 55%;
+}
+
+.adcionarProdutos {
+    margin-top: 70px;
+    margin-left: 20px;
+    border-radius: 15px;
+    background-color: White;
+    width: 450px;
+    height: 65%;
+}
+
+.tabelaFuncionarios {
+    margin-top: 70px;
+    margin-left: 20px;
+    border-radius: 15px;
+    background-color: White;
+    width: 380px;
+    height: 47%;
+}
+
+.tabelaCabecalho {
+    margin-left: 38px;
+}
+
+.fonte {
+    width: 100px;
+    height: 100px;
+}
+
+.formularioProduto {
+    text-align: center;
+}
+
+.inputProdutos {
+    margin-left: 10px;
+    width: 400px;
+}
+
+.inputProdutosDescri {
+    margin-left: 10px;
+    width: 400px;
+    height: 80px;
+}
+
+.inputProdutosPreco {
+    margin-left: 10px;
+    width: 400px;
+}
+
+.inputProdutosQuanti {
+    margin-left: 10px;
+    width: 400px;
+}
+
+.addProduto {
+    margin-left: 10px;
+    display: block;
+}
+
+.botao {
+    border-radius: 8px;
+    margin-left: 300px;
+    width: 100px;
+    height: 30px;
+}
+
+
+
