@@ -94,6 +94,10 @@ div img {
     left: 450px;
 }
 
+h2{
+    position: sticky;
+    top: 0px;
+}
 
 /**
   *
