@@ -159,8 +159,33 @@ td button:hover {
     border-radius: 5px;
     font-size: 10px;
     color: black;
+    position: relative;
+    bottom: 250px;
 }
 
 #back-button:hover {
     background-color: #635a3d
+}
+
+.tabelaFormatacao {
+    text-align: center;
+    width: 1000px;
+    font-weight: 900;
+}
+
+.imgBlusa {
+    height: 100px;
+    width: 100px;
+}
+.imgCalca {
+    height: 100px;
+    width: 100px;
+}
+.imgChinelo {
+    height: 100px;
+    width: 100px;
+}
+
+.divBranca {
+    height: 800px;
 }
