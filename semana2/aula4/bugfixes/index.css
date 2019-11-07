@@ -34,10 +34,6 @@ div>p:first-child {
     display: inline;
 }
 
-div img {
-    background: black;
-}
-
 .botao-amarelo {
     background-color: #ffaf43;
     width: 250px;
@@ -61,6 +57,7 @@ div img {
 
 .icone {
     height: 15px;
+    width: 15px;
 }
 
 
@@ -131,6 +128,7 @@ td button {
     height: 30px;
     border-radius: 5px;
     color: black;
+    font-weight: 900;
 }
 
 td button:hover {
@@ -138,7 +136,7 @@ td button:hover {
 }
 
 .container-do-search {
-    margin-top: 20px;
+    margin-top: 10px;
     height: 100px;
 }
 
