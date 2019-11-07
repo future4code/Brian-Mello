@@ -18,8 +18,10 @@ h2 {
 }
 
 input {
-    height: 20px;
+    height: 30px;
     width: 500px;
+    border: 0;
+    border-bottom: 1px solid black;
 }
 
 button:focus {
@@ -56,6 +58,7 @@ div>p:first-child {
 }
 
 .icone {
+    margin-top: 20px;
     height: 15px;
     width: 15px;
 }
