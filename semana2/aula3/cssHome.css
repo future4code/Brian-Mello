@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'McLaren', cursive;
+}
+body {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+
+#layer0 {
+    border: 2px solid white;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: auto;
+    height: 680px;
+    background-color: cadetblue;
+    
+}
+
+
+#layer2 {
+    margin-top: 30px;
+    border-radius: 8px;
+    background-color: whitesmoke;
+    width: 300px;
+    height: 25%;
+    margin-left: 20px;
+}
+
+.nomeLoja{
+    font-size: 50px;
+    color: whitesmoke;
+    text-align: center;
+}
+
+.mensagemBemVindo {
+    margin-top: 50px;
+    text-align: center;
+    color: whitesmoke;
+}
+
+.tituloReferencias {
+    text-align: center;
+}
+
+.Produtos {
+    border-top: 1px solid black;   
+    text-align: center;
+    margin-top: 10px;
+}
+
+.Funcionarios {
+    border-top: 1px solid black;   
+    text-align: center;
+    margin-top: 10px;
+}
+
+.Estoque {
+    border-top: 1px solid black;   
+    text-align: center;
+    margin-top: 10px;
+}
+.Descricao {
+    border-top: 1px solid black;  
+    text-align: center;
+    margin-top: 10px;
+}
+
+.tela_comp {
+    width: 100px;
+    height: 100px;
+    margin-left: 45%;
+}
