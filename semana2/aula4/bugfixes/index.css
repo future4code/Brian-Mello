@@ -18,9 +18,10 @@ h2 {
 }
 
 input {
-    height: 30px;
+    height: 20px;
     width: 500px;
-    border: 0;
+    outline: 0;
+    border: 0px;
     border-bottom: 1px solid black;
 }
 
@@ -46,6 +47,8 @@ div>p:first-child {
     position: absolute;
     bottom: 160px;
     left: 570px;
+    outline: 0;
+    
 }
 
 .botao-amarelo:hover {
@@ -132,6 +135,7 @@ td button {
     border-radius: 5px;
     color: black;
     font-weight: 900;
+    outline: 0;
 }
 
 td button:hover {
@@ -161,6 +165,7 @@ td button:hover {
     color: black;
     position: relative;
     bottom: 250px;
+    outline: 0;
 }
 
 #back-button:hover {
