@@ -1,0 +1,110 @@
+<!-- Flexbox Froggy:
+Level 1: justify-content: flex-end
+
+Level 2: justify-content: center
+
+Level 3: justify-content: space-around
+
+Level 4: justify-content: space-between
+
+Level 5: align-items: flex-end
+
+Level 6: justify-content: center;
+align-items: center;
+
+Level 7: justify-content: space-around;
+align-items: flex-end;
+
+Level 8: flex-direction: row-reverse;
+
+Level 9: flex-direction: column;
+
+Level 10: flex-direction: row-reverse;
+justify-content: flex-end;
+ 
+Level 11: flex-direction: column; justify-content: flex-end
+
+Level 12:flex-direction: column-reverse; justify-content: space-between; 
+
+Level 13: justify-content: center; align-items: flex-end; flex-direction: row-reverse;
+
+Level 14: order: 3;
+
+Level 15: order: -1;
+
+Level 16: align-self: flex-end;
+
+Level 17: order: 1; align-self: flex-end;
+
+Level 18: flex-wrap: wrap; 
+
+Level 19: flex-wrap: wrap; flex-direction: column;
+
+Level 20: flex-flow: row wrap; flex-direction: column;
+
+Level 21: align-content: flex-start;
+
+Level 22: align-content: flex-end;
+
+Level 23: flex-direction: column-reverse; align-content: center;
+
+Level 24: flex-flow: wrap-reverse; flex-direction: column-reverse; justify-content: center; align-items: flex-end; align-content: space-between;
+
+Grid Garden:
+grid-column-start: 
+
+Level 1: grid-column-start: 3;
+
+Level 2: grid-column-start: 5;
+
+Level 3: grid-column-start: 1; grid-column-end: 4;
+
+Level 4: grid-column-start: 2; grid-column-end: 5;
+ 
+Level 5: grid-column-start: 1; grid-column-end: 5;
+
+Level 6: grid-column-start: 4;
+
+Level 7: grid-column-end: span 2;
+
+Level 8: grid-column-end: span 6;
+
+Level 9: grid-column-start: span 3;
+
+Level 10: grid-column: 4/ 6;
+
+Level 11: grid-column: 2/ 5;
+
+Level 12: grid-row-start: 3;
+
+Level 13: grid-row-start: 3; grid-row-end: 6;
+
+Level 14: grid-row-start: 5; grid-column-start: 2;
+
+Level 15: grid-row: 1/ 6; grid-column: 2 /6;
+
+Level 16: grid-area: 1/ 2/ 4/ 6;
+
+Level 17: grid-area: 2/ 3/ 5/ 6;
+
+Level 18: order: 1;
+
+Level 19: order: -1;
+
+Level 20: grid-template-columns: 50%;
+
+Level 21: grid-template-columns: 12.5%;
+ 
+Level 22: grid-template-columns: 100px 3em 40%;
+
+Level 23: grid-template-columns: 1fr 5fr
+
+Level 24: grid-template-columns: 50px 1fr 1fr 1fr 50px
+
+Level 25: grid-template-columns: 75px 3fr 2fr
+
+Level 26: grid-template-rows: 0px 0px 0px 50px
+
+Level 27: grid-template: 60% / 200px
+
+Level 28: grid-template: 1fr 50px / 20% 80% -->
