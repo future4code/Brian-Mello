@@ -1,0 +1,138 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+#mainContainer div {
+    border: 1px solid black;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+#mainContainer {
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 50% 1fr;
+    row-gap: 10px;
+    column-gap: 10px;
+}
+
+.container0 {
+    height: 10vw;
+    background-color: red;
+    grid-column-start: 1;
+    grid-column-end: span 3;
+}
+
+.container1 {
+    margin-left: 10px;
+    height: 10vw;
+    background-color: blue;
+    grid-column-start: 1;
+    grid-row-start: 2;
+}
+
+.container2 {
+    height: 10vw;
+    background-color: yellow;
+    grid-column-start: 2;
+    grid-row-start: 2;
+}
+
+.container3 {
+    height: 10vw;
+    margin-right: 10px;
+    background-color: green;
+    grid-column-start: 3;
+    grid-row-start: 2;
+}
+
+.container4 {
+    margin-left: 10px;
+    height: 10vw;
+    background-color: blue;
+}
+
+.container5 {
+    height: 10vw;
+    background-color: yellow;
+
+}
+
+.container6 {
+    height: 10vw;
+    margin-right: 10px;
+    background-color: green;
+
+}
+
+.container-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-start: 1;
+    grid-column-end: span 3;
+    grid-row-start: 4;
+    grid-row-end: span 1;
+    column-gap: 10px;
+}
+
+.container7 {
+    color: white;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    margin-left: 10px;
+    background-color: black;
+    grid-column-start: 1;
+    grid-column-end: span 1;
+    justify-items: center;
+
+}
+
+.container8 {
+    margin-right: 10px;
+    color: white;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    margin-left: 10px;
+    background-color: black;
+    grid-column-start: 2;
+    grid-column-end: span 1;
+    justify-items: center;
+}
+
+.container9 {
+    height: 10vw;
+    margin-left: 10px;
+    background-color: white;
+    grid-column-start: 1;
+    grid-row-start: 5;
+}
+
+.container10 {
+    height: 10vw;
+    background-color: white;
+    grid-column-start: 2;
+    grid-row-start: 5;
+}
+
+.container11 {
+    height: 10vw;
+    margin-right: 10px;
+    background-color: white;
+    grid-column-start: 3;
+    grid-row-start: 5;
+}
+
+@media screen and (max-width: 900px){
+    #mainContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    }
+}
