@@ -1,0 +1,258 @@
+/* AboutMe and projects Commands */
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'ZCOOL XiaoWei', serif;
+}
+
+body {
+    height: 1200px;  
+}
+/* head do site */
+#topperHeader {
+    background-color: rgb(3, 68, 126);
+    color: white;
+    width: 100%;
+    height: 100px;
+    position: relative;
+    position: sticky;
+    top: 0px;
+}
+
+.botaoHome {
+    background-color: rgb(3, 68, 126);  
+    width: 200px;  
+    height: 60px;
+    border: none;
+    outline: 0;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 20px;
+    position: absolute;
+    left: auto;
+    right: auto;
+
+}
+
+.aboutMe {
+    position: absolute;
+    left: 70%;
+    bottom: 50%;
+}
+
+.aboutMeLink {
+    background-color: rgb(3, 68, 126);
+    font-size: 17px;
+    border: none;
+    outline: 0;
+    color: white;
+    cursor: pointer;
+    border-bottom: 2px solid white;
+}
+
+.projectsLink {
+    background-color: rgb(3, 68, 126);
+    font-size: 17px;
+    border: none;
+    outline: 0;
+    color: white;
+    cursor: pointer;
+    margin-left: 30px;
+    border-bottom: 2px solid white;
+}
+
+.aboutMeLink:hover, .projectsLink:hover {
+    opacity: 30%;
+}
+
+.botaoHome:hover {
+    opacity: 50%;
+}
+
+
+.logoImage {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 8px;
+    left: 0px;
+}
+
+.portifolioName {
+    position: absolute;
+    top: 10px;
+    right: 55px;
+    font-weight: 800;
+}
+
+.devType {
+    position: absolute;
+    top: 35px;
+    right: 13px;
+    font-weight: 800;
+}
+/* body do site */
+#bodyPortifolio {
+    background-color: rgb(3, 74, 138);
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.photoMe {
+    margin-top: 40px;
+    width: 200px;
+    height: 200px;
+}
+
+.aboutMeName {
+    margin-top: 30px;
+    font-size: 30px;
+    color: white;
+}
+
+.aboutMeText {
+    margin-top: 30px;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+}
+
+.aboutMeTextTopics{
+    margin-top: 30px;
+    font-size: 40px;
+    color: white;
+    text-align: center;
+}
+
+.list {
+    color: white;
+    margin-bottom: 10px;
+}
+
+table{
+    display: inline;
+    color: white;
+    font-size: 20px;
+}
+
+th {
+    border: 2px white;
+}
+
+tr {
+    margin-left: 100px;
+    background: rgb(3, 68, 126);
+    border: 2px solid white;
+}
+
+/* Pé do site */
+#fotterPortifolio {
+    background-color: rgb(2, 33, 61);
+    width: 100%;
+    height: 22%;
+}
+
+.socialMedias {
+    display: inline;
+    color: white;
+}
+.gitLogo {
+    margin-top: 30px;
+    margin-left: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+.gitLogo:hover{
+    opacity: 50%;
+}
+
+
+.faceLogo {
+    margin-top: 30px;
+    margin-left: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+.faceLogo:hover{
+    opacity: 50%;
+}
+
+
+.instaLogo {
+    margin-top: 30px;
+    margin-left: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+.instaLogo:hover{
+    opacity: 50%;
+}
+
+.linkedinLogo {
+    margin-top: 10px;
+    margin-left: -5px;
+    width: 60px;
+    height: 60px;
+}
+
+.linkedinLogo:hover{
+    opacity: 50%;
+}
+
+.gitButton {
+    background-color: rgb(2, 33, 61);
+    font-size: 17px;
+    border: none;
+    outline: 0;
+    color: white;
+    cursor: pointer;
+}
+
+.gitButton:hover {
+    opacity: 50%;
+}
+
+.faceButton {
+    background-color: rgb(2, 33, 61);
+    font-size: 17px;
+    border: none;
+    outline: 0;
+    color: white;
+    cursor: pointer;
+}
+
+.faceButton:hover {
+    opacity: 50%;
+}
+
+.instaButton {
+    background-color: rgb(2, 33, 61);
+    font-size: 17px;
+    border: none;
+    outline: 0;
+    color: white;
+    cursor: pointer;
+}
+
+.instaButton:hover {
+    opacity: 50%;
+}
+
+.telFotter {
+    margin-left: 40%;
+    color: white;
+    font-size: 18px;
+}
+
+.emailFotter {
+    margin-left: 40%;
+    color: white;
+    font-size: 18px;
+}
