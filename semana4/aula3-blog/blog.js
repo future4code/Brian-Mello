@@ -22,10 +22,20 @@ function cadastrarPost(){
     const formConteudo = document.getElementById("conteudo").value
     const formData = document.getElementById("data").value
     const formDescricao = document.getElementById("descricao").value
-    const formPostagem = document.getElementById("postagens")
     const newPost = new Post (formTitulo, formAutor, formConteudo, formData, formDescricao )
 
+    console.log(formTitulo)
+    console.log(formAutor)
+    console.log(formConteudo)
+    console.log(formData)
+    console.log(formDescricao)
+
     arrayDeDados.push(newPost)
+    formTitulo.value
+    formAutor.value
+    formConteudo.value
+    formData.value
+    formDescricao.value
     mostrarPost()
 
 }
