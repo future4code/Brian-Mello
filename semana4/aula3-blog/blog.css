@@ -127,10 +127,11 @@ main {
 }
 
 #descricao {
+    width: 200px;
     text-align: center;
     margin-top: 5px;
     margin-bottom: 5px;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 #botaoCadastrarPost {
@@ -168,12 +169,26 @@ main {
 .container-da-post {
     background-color: white;
     width: 200px;
-    height: 170px;
-    margin-top: 10px;
+    height: 220px;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     text-align: start;
     font-size: 20px;
+}
+
+.botao-de-deletar {
+    background-color: white;
+    border: 1px solid black;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.botao-de-deletar:hover {
+    background-color: red;
+    color: white;
 }
 
 /* footer */

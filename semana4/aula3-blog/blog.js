@@ -24,12 +24,8 @@ function cadastrarPost(){
     const formDescricao = document.getElementById("descricao").value
     const formPostagem = document.getElementById("postagens")
     const newPost = new Post (formTitulo, formAutor, formConteudo, formData, formDescricao )
-    arrayDeDados.push(newPost.value)
-    formTitulo.value=""
-    formAutor.value=""
-    formConteudo.value=""
-    formData.value=""
-    formDescricao.value=""
+
+    arrayDeDados.push(newPost)
     mostrarPost()
 
 }
@@ -44,12 +40,21 @@ function mostrarPost() {
 
 function postagem(newPost) {
     return "<article class=\"container-da-post\">" + 
-        "Titulo: " + Post.titulo + "<br>" +
-        "Autor: " + Post.autor + "<br>" +
-        "Conteúdo: " + Post.conteudo + "<br>" +
-        "Data: " + Post.data + "<br>" +
-        "Descrição: " + Post.descricao + 
-        "<p class=\"botao-de-deletar\" onclick=\"aoDeletar(\'" + newPost + "\')\">" + "Deletar" + "</p>" +
+        "Titulo: " + Post.titulo + "<br><br>" +
+        "Autor: " + Post.autor + "<br><br>" +
+        "Conteúdo: " + Post.conteudo + "<br><br>" +
+        "Data: " + Post.data + "<br><br>" +
+        "Descrição: " + Post.descricao + "<br><br>" +
+        "<button class=\"botao-de-deletar\" onclick=\"aoDeletar(\'" + newPost + "\')\">" + "Deletar" + "</button>" +
         "</article>"
         
+}
+
+function aoDeletar(newPost) {
+    for (const postagens of arrayDeDados) {
+        if (postagens === newPost) {
+            arrayDeDados.splice(arrayDeDados.indexOf(postagens), 1)
+        }
+    }
+    mostraTodasAsImagens()
 }
