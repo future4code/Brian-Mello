@@ -24,18 +24,12 @@ function cadastrarPost(){
     const formDescricao = document.getElementById("descricao").value
     const newPost = new Post (formTitulo, formAutor, formConteudo, formData, formDescricao )
 
-    console.log(formTitulo)
-    console.log(formAutor)
-    console.log(formConteudo)
-    console.log(formData)
-    console.log(formDescricao)
-
     arrayDeDados.push(newPost)
-    formTitulo.value
-    formAutor.value
-    formConteudo.value
-    formData.value
-    formDescricao.value
+    document.getElementById("titulo").value = ""
+    document.getElementById("autor").value = ""
+    document.getElementById("conteudo").value = ""
+    document.getElementById("data").value = ""
+    document.getElementById("descricao").value = ""
     mostrarPost()
 
 }
@@ -50,11 +44,11 @@ function mostrarPost() {
 
 function postagem(newPost) {
     return "<article class=\"container-da-post\">" + 
-        "Titulo: " + Post.titulo + "<br><br>" +
-        "Autor: " + Post.autor + "<br><br>" +
-        "Conteúdo: " + Post.conteudo + "<br><br>" +
-        "Data: " + Post.data + "<br><br>" +
-        "Descrição: " + Post.descricao + "<br><br>" +
+        "Titulo: " + newPost.titulo + "<br><br>" +
+        "Autor: " + newPost.autor + "<br><br>" +
+        "Conteúdo: " + newPost.conteudo + "<br><br>" +
+        "Data: " + newPost.data + "<br><br>" +
+        "Descrição: " + newPost.descricao + "<br><br>" +
         "<button class=\"botao-de-deletar\" onclick=\"aoDeletar(\'" + newPost + "\')\">" + "Deletar" + "</button>" +
         "</article>"
         
@@ -66,5 +60,5 @@ function aoDeletar(newPost) {
             arrayDeDados.splice(arrayDeDados.indexOf(postagens), 1)
         }
     }
-    mostraTodasAsImagens()
+    mostrarPost()
 }

@@ -137,7 +137,7 @@ main {
 #botaoCadastrarPost {
     margin-top: 10px;
     width: 200px;
-    font-size: 16px;
+    font-size: 20px;
     height: 30px;
 }
 
@@ -189,6 +189,7 @@ main {
 .botao-de-deletar:hover {
     background-color: red;
     color: white;
+    cursor: pointer;
 }
 
 /* footer */
