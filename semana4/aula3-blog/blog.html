@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Odibee+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="blog.css">
+    <script src="blog.js"></script>
+    <title>Brian's Blog</title>
+</head>
+<body>
+    <header>
+        <h1 id="tituloBlog">Brian's   Blog</h1>
+        <nav><a href="#posts"><button id="abaDePosts">Posts</button></a></nav>
+    </header>
+    <main id="main-container">
+        <div id="conteudoFormulario">
+            <div id="formPost"><h1>Formulário de Posts</h1></div>
+            <div id="fomulario">    
+                <p>TÍTULO</p>
+                <input type="text" name="titulo" id="titulo" placeholder="Digite Seu Título" required>
+                <hr>
+                <p>AUTOR</p>
+                <input type="text" name="autor" id="autor" placeholder="Digite o Nome do Autor"required>
+                <hr>
+                <p>CONTEÚDO</p>
+                <select name="conteúdo" id="conteudo">
+                    <option value="fantasia">Fantasia</option>
+                    <option value="açao">Ação</option>
+                    <option value="gastronomia">Gastronomia</option>
+                    <option value="fatos">Fatos</option>
+                    <option value="politica">Política</option>
+                </select>
+                <hr>
+                <p>DATA</p>
+                <input type="date" name="data" id="data" placeholder="">
+                <br>
+                <hr>
+                <p>Descrição</p>
+                <textarea name="descricao" id="descricao" cols="30" rows="5" placeholder="Descrição"></textarea>
+                <br>
+                <hr>
+                <button onclick="cadastrarPost()" id="botaoCadastrarPost">Cadastrar</button>
+            </div>
+        </div>
+        <div id="posts">
+            <div id="tituloPost"><h1>Posts</h1></div>
+            <div>
+                
+            </div>
+        </div>
+    </main>
+    <footer>       
+    </footer>  
+</body>
+</html>
