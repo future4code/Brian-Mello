@@ -24,14 +24,13 @@ function cadastrarPost(){
     const formDescricao = document.getElementById("descricao").value
     const formPostagem = document.getElementById("postagens")
     const newPost = new Post (formTitulo, formAutor, formConteudo, formData, formDescricao )
-
-    console.log(newPost)
-
-    console.log(formTitulo)
-    console.log(formAutor)
-    console.log(formConteudo)
-    console.log(formData)
-    console.log(formDescricao)
+    arrayDeDados.push(newPost.value)
+    formTitulo.value=""
+    formAutor.value=""
+    formConteudo.value=""
+    formData.value=""
+    formDescricao.value=""
+    mostrarPost()
 
 }
 
@@ -39,11 +38,18 @@ function mostrarPost() {
     const espacoPostagens = document.getElementById("postagens")
     espacoPostagens.innerHTML = ""
     for (const postagens of arrayDeDados) {
-        espacoPostagens.innerHTML += 
+        espacoPostagens.innerHTML += postagem(postagens)
     }
 }
 
 function postagem(newPost) {
     return "<article class=\"container-da-post\">" + 
-        "Titulo: "
+        "Titulo: " + Post.titulo + "<br>" +
+        "Autor: " + Post.autor + "<br>" +
+        "Conteúdo: " + Post.conteudo + "<br>" +
+        "Data: " + Post.data + "<br>" +
+        "Descrição: " + Post.descricao + 
+        "<p class=\"botao-de-deletar\" onclick=\"aoDeletar(\'" + newPost + "\')\">" + "Deletar" + "</p>" +
+        "</article>"
+        
 }

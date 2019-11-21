@@ -159,6 +159,23 @@ main {
     margin-top: 20px;
 }
 
+#postagens {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.container-da-post {
+    background-color: white;
+    width: 200px;
+    height: 170px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    font-size: 20px;
+}
+
 /* footer */
 
 footer {
