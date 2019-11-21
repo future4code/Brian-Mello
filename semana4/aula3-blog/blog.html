@@ -9,7 +9,7 @@
     <script src="blog.js"></script>
     <title>Brian's Blog</title>
 </head>
-<body>
+<body onkeydown="onKey(event)">
     <header>
         <h1 id="tituloBlog">Brian's   Blog</h1>
         <nav><a href="#posts"><button id="abaDePosts">Posts</button></a></nav>
@@ -19,11 +19,13 @@
             <div id="formPost"><h1>Formulário de Posts</h1></div>
             <div id="fomulario">    
                 <p>TÍTULO</p>
-                <input type="text" name="titulo" id="titulo" placeholder="Digite Seu Título" required>
+                <input type="text" name="titulo" id="titulo" placeholder="Digite o Título" required>
                 <hr>
+                <br>
                 <p>AUTOR</p>
                 <input type="text" name="autor" id="autor" placeholder="Digite o Nome do Autor"required>
                 <hr>
+                <br>
                 <p>CONTEÚDO</p>
                 <select name="conteúdo" id="conteudo">
                     <option value="fantasia">Fantasia</option>
@@ -33,11 +35,13 @@
                     <option value="politica">Política</option>
                 </select>
                 <hr>
+                <br>
                 <p>DATA</p>
                 <input type="date" name="data" id="data" placeholder="">
                 <br>
                 <hr>
-                <p>Descrição</p>
+                <br>
+                <p>DESCRIÇÃO</p>
                 <textarea name="descricao" id="descricao" cols="30" rows="5" placeholder="Descrição"></textarea>
                 <br>
                 <hr>
@@ -46,7 +50,7 @@
         </div>
         <div id="posts">
             <div id="tituloPost"><h1>Posts</h1></div>
-            <div>
+            <div id="postagens">
                 
             </div>
         </div>
