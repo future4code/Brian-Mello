@@ -1,0 +1,189 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 900;
+}
+body {
+    height: 1000px;
+}
+
+h4,h5 {
+    margin-top: 10px;
+    text-align: center;
+}
+
+input {
+    margin-left: 10px;
+    height: 20px;
+    width: 50%;
+}
+span {
+    margin-left: 10px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+select{
+    margin-left: 10px;
+    width: 100px;
+}
+
+
+
+/* header */
+header {
+    background-color: #3d768e;
+    height: 10%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Main */
+main {
+    background-color: #6ea5be;
+    height: 200%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#first-container {
+    background-color: #557c8d;
+    width: 80%;
+    height: 22%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#first-container div {
+    border: 1px solid white;
+    background-color: #285060;
+    color: white;
+    height:95%;
+    width: 30%;
+    margin-top: 5px;
+}
+
+#descricaoDespesa{
+    width: 93%;
+    align-self: center;
+}
+
+#buttonCadastrarDespesa{
+    margin-top: 60px;
+    width: 100px;
+    height: 30px;
+    align-self: center;
+}
+
+#buttonCadastrarDespesa:hover{
+    outline: o;
+    background-color: teal;
+    color: white;
+    cursor: pointer;
+}
+
+/* Controlador de Despesas */
+
+#controladorDespesas {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Despesas Detalhdas*/
+
+#despesasDetalhadas{
+    display: flex;
+    flex-direction: column;
+}
+
+#despesasDetalhadas span {
+    margin-top: 30px;
+}
+
+#despesasDetalhadas button{
+    margin-top: 30px;
+    width: 100px;
+    height: 30px;
+    align-self: center;
+}
+
+#despesasDetalhadas button:hover{
+    outline: o;
+    background-color: teal;
+    color: white;
+    cursor: pointer;
+}
+
+/* Extratos */
+
+#extratos{
+    display: flex;
+    flex-direction: column;
+}
+
+#extratos span {
+    margin-top: 30px;
+}
+
+/* Despesas Detalhadas */
+#second-container {
+    background-color: #557c8d;
+    width: 80%;
+    height: 80%;
+}
+
+#despesas{
+    height: 100%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#tituloDespsas {
+    text-align: center;
+    color: white;
+}
+
+#mostrarDespesas {
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container-do-Despesa{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    background-color: white;
+    width: 240px;
+    height: 210px;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+.botao-de-deletar {
+    width: 40%;
+    height: 30px;
+    margin-top: 10px;
+    align-self: center;
+    border-radius: 8px;
+    outline: 0;
+}
+
+.botao-de-deletar:hover {
+    color: white;
+    background-color: red;
+}
+
+/* Footer */
+footer {
+    background-color: #004a61;
+    height: 20%;
+}
