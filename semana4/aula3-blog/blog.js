@@ -43,7 +43,7 @@ function mostrarPost() {
 }
 
 function postagem(newPost) {
-    return "<article class=\"container-da-post\">" + 
+    return "<article class=\"container-do-post\">" + 
         "Titulo: " + newPost.titulo + "<br><br>" +
         "Autor: " + newPost.autor + "<br><br>" +
         "Conteúdo: " + newPost.conteudo + "<br><br>" +

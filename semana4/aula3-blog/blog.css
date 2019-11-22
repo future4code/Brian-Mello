@@ -14,20 +14,19 @@ p {
 }
 
 body {
-    background-color: #ffde71;
     height: 1000px;
 }
 
 /* HEADER */
 header {
-    background-color: #825314;
+    background-color: #8ca1c9;
     width: 100%;
     height: 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: black;
 }
 
 #tituloBlog {
@@ -35,12 +34,12 @@ header {
 }
 
 #abaDePosts {
-    background-color: #825314;
-    color: white;
+    background-color: #8ca1c9;
+    color: black;
     outline: 0;
     border: none;
     font-size: 30px;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid black;
     margin-top: 5px;
 }
 
@@ -52,7 +51,7 @@ header {
 /* MAIN */
 
 main {
-    background-color: #ffde71;
+    background-color: #6c84ae;
     width: 100%;
     height: 200%;
     display: flex;
@@ -69,7 +68,7 @@ main {
 }
 
 #conteudoFormulario {
-    background-color: #c47d1e;
+    background-image: url();
     width: 80%;
     height: 40%;
     display: flex;
@@ -149,7 +148,7 @@ main {
 /* Posts */
 
 #posts {
-    background-color: #fbac4f;
+    background-color: #c5dcff;
     width: 80%;
     height: 100%;
     text-align: center;
@@ -166,15 +165,17 @@ main {
     justify-content: space-evenly;
 }
 
-.container-da-post {
+.container-do-post {
     background-color: white;
     width: 200px;
-    height: 220px;
+    height: 240px;
     margin-top: 20px;
     display: flex;
     flex-direction: column;
     text-align: start;
     font-size: 20px;
+    border: 1px solid gray;
+    border-radius: 8px;
 }
 
 .botao-de-deletar {
@@ -183,6 +184,7 @@ main {
     height: 20px;
     display: flex;
     justify-content: center;
+    border-radius: 8px;
 
 }
 
@@ -195,7 +197,7 @@ main {
 /* footer */
 
 footer {
-    background-color: #522a00;
+    background-color: #5d7398;
     width: 100%;
     height: 190px;
 }
