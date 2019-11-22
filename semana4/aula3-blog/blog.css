@@ -1,0 +1,201 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Odibee Sans', cursive;
+}
+
+h1 {
+    font-size: 50px;
+    font-weight: 900;
+}
+
+p {
+    font-weight: 900;
+}
+
+body {
+    background-color: #ffde71;
+    height: 1000px;
+}
+
+/* HEADER */
+header {
+    background-color: #825314;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+#tituloBlog {
+    font-size: 3em;
+}
+
+#abaDePosts {
+    background-color: #825314;
+    color: white;
+    outline: 0;
+    border: none;
+    font-size: 30px;
+    border-bottom: 1px solid white;
+    margin-top: 5px;
+}
+
+#abaDePosts:hover {
+    opacity: 50%;
+    cursor: pointer;
+}
+
+/* MAIN */
+
+main {
+    background-color: #ffde71;
+    width: 100%;
+    height: 200%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#sectionFormulario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#conteudoFormulario {
+    background-color: #c47d1e;
+    width: 80%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#formPost {
+    text-align: center;
+}
+
+#formulario {
+    background-color: white;
+    width: 100px;
+    height: 400px;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Conteúdo Formulario */
+
+#titulo {
+    width: 200px;
+    height: 25px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+#autor {
+    width: 200px;
+    height: 25px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+#conteudo {
+    width: 200px;
+    height: 25px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+#data {
+    width: 200px;
+    height: 25px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+#descricao {
+    width: 200px;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+#botaoCadastrarPost {
+    margin-top: 10px;
+    width: 200px;
+    font-size: 20px;
+    height: 30px;
+}
+
+#botaoCadastrarPost:hover {
+    opacity: 80%;
+    cursor: pointer;
+}
+
+/* Posts */
+
+#posts {
+    background-color: #fbac4f;
+    width: 80%;
+    height: 100%;
+    text-align: center;
+}
+
+#tituloPost {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#postagens {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.container-da-post {
+    background-color: white;
+    width: 200px;
+    height: 220px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    font-size: 20px;
+}
+
+.botao-de-deletar {
+    background-color: white;
+    border: 1px solid black;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.botao-de-deletar:hover {
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
+
+/* footer */
+
+footer {
+    background-color: #522a00;
+    width: 100%;
+    height: 190px;
+}
