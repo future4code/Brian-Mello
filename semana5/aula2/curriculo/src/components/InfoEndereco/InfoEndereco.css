@@ -1,0 +1,20 @@
+.InfoEndereco{
+    width: 50%;
+    height: 50px;
+    border: 1px solid black;
+    margin: o auto 0 auto;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tamanhoImagemEnde{
+    width: 20px;
+    height: 20px;
+    margin: 10px 0 10px 10px;
+}
+
+p {
+    margin: 10px 10px 10px 5px;
+}

@@ -1,0 +1,18 @@
+.RedesSociais{
+    width: 230px;
+    border-bottom: 1px solid black;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.tamanhoImagem{
+    width: 35px;
+    height: 35px;
+}
+
+.linksRedeSocial {
+    margin-left: 20px;
+}
