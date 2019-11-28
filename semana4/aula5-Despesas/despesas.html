@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="despesas.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <script src="despesas.js" defer></script>
+    <title>Despesas.com</title>
+</head>
+<body onkeydown="onKey(event)">
+    <header id="header">
+        <h1>CONTROLADOR DE DESPESAS</h1>
+    </header>
+    <main id="main-container">
+        <section id="first-container">
+            <div id="controladorDespesas">
+                <h4>Controlador de Despesas</h4>
+                <h5>Cadastrar Despesa</h5>
+                <span>Valor:</span>
+                <input type="number" id="valorDespesa" placeholder="Digite o Valor">
+                <span>Tipo de Despesa: </span>
+                <select name="tipoDeDespesa" id="tipoDeDespesa">
+                    <option value="casa">Casa</option>
+                    <option value="viagem">Viagem</option>
+                    <option value="eventos">Evento</option>
+                    <option value="outros">Outros</option>
+                </select>
+                <span>Descrição: </span>
+                <textarea name="descricao" id="descricaoDespesa" cols="20" rows="5" placeholder="Descreva a Despesa">
+
+                </textarea>
+                <button onclick="cadastrarDespes()" id="buttonCadastrarDespesa">Cadastrar</button>
+            </div>
+            <div id="despesasDetalhadas">
+                <h4>Despesas Detalhadas</h4>
+                <span>Tipo de Despesa: </span>    
+                <select name="tipoDeDespesa" id="tipoDeDespesa">
+                    <option value="casa">Casa</option>
+                    <option value="viagem">Viagem</option>
+                    <option value="eventos">Evento</option>
+                    <option value="outros">Outros</option>
+                </select>
+                <span>Valor Mínimo:</span>
+                <input type="number" id="valorDespesaMin" placeholder="Digite o Valor"> 
+                <span>Valor Máximo:</span>
+                <input type="number" id="valorDespesaMax" placeholder="Digite o Valor">
+                <button onclick="" id="buttonFiltrar">Filtrar</button>
+                <button onclick="" id="buttonLimpar">Limpar Filtro</button>                 
+            </div>
+            <div id="extratos">
+                <h4>Extratos</h4>
+                <span>Valor Total:</span>
+            </div>
+        </section>
+        <section id="second-container">
+            <div id="despesas">
+                <div id="tituloDespsas"><h1>Despesas Detalhadas</h1></div>
+                <div id="mostrarDespesas">
+
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer id="footer">
+
+    </footer>
+</body>
+</html>
