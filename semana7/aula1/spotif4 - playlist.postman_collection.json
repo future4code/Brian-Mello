@@ -1,0 +1,267 @@
+{
+	"info": {
+		"_postman_id": "579299ca-5a85-4fe1-b019-6f6b2fddb1d0",
+		"name": "spotif4 - playlist",
+		"description": "playlist de músicas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CreatePlaylist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "auth",
+						"value": "Brian",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/createPlaylist",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"createPlaylist"
+					]
+				},
+				"description": "Cria uma playlist"
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllPlaylist",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "auth",
+						"value": "Brian",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getAllPlaylists",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"getAllPlaylists"
+					]
+				},
+				"description": "retorna todas as playlists"
+			},
+			"response": []
+		},
+		{
+			"name": "AddMusicToPlaylist",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "auth",
+						"value": "Brian",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"playlistId\": \"8caccfa3-beba-43fe-96cf-739817a7fb0c\", \r\n    \"music\": { \r\n        \"name\": \"Moonlight Sonata\", \r\n        \"artist\": \"Beethoven\",\r\n        \"url\": \"https://www.youtube.com/watch?v=pVAqHvxz7ao\"\r\n    }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/addMusicToPlaylist",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"addMusicToPlaylist"
+					]
+				},
+				"description": "Adiciona uma musica na playlist"
+			},
+			"response": []
+		},
+		{
+			"name": "GetPlaylistMusic",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "auth",
+						"value": "Brian",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getPlaylistMusics/9025dd3a-d1e0-4de8-9226-e7f77f1f0dc7",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"getPlaylistMusics",
+						"9025dd3a-d1e0-4de8-9226-e7f77f1f0dc7"
+					]
+				},
+				"description": "Pega as musicas da playlist"
+			},
+			"response": []
+		},
+		{
+			"name": "SearchPlaylist",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "auth",
+						"value": "Brian",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/searchPlaylist?playlistId=",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"searchPlaylist"
+					],
+					"query": [
+						{
+							"key": "playlistId",
+							"value": ""
+						}
+					]
+				},
+				"description": "Retorna a playlist procurada"
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteMusicFromPlaylist",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "auth",
+						"value": "Brian",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/removeMusicFromPlaylist?playlistId=0c4b8e3c-db58-4ce0-86f2-eeafaca6f5e0&musicId=a36bfb85-37c3-40fc-90ce-dc1c23b95d5a",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"removeMusicFromPlaylist"
+					],
+					"query": [
+						{
+							"key": "playlistId",
+							"value": "0c4b8e3c-db58-4ce0-86f2-eeafaca6f5e0"
+						},
+						{
+							"key": "musicId",
+							"value": "a36bfb85-37c3-40fc-90ce-dc1c23b95d5a"
+						}
+					]
+				},
+				"description": "Deleta uma música da playList"
+			},
+			"response": []
+		},
+		{
+			"name": "RemovePlaylist",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "auth",
+						"value": "Brian",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/deletePlaylist?playlistId=eb6f30cf-0f6c-421d-97d8-12b2d2de7ec9",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"deletePlaylist"
+					],
+					"query": [
+						{
+							"key": "playlistId",
+							"value": "eb6f30cf-0f6c-421d-97d8-12b2d2de7ec9"
+						}
+					]
+				},
+				"description": "Apaga a playlist"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
