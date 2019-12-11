@@ -14,8 +14,10 @@ const Button = styled.button`
     color: white;
     outline: 0;
     margin-top: 10px;
+    border: 0;
     :hover{
-      background-color: grey;
+      color: black;
+      background-color: white;
       cursor: pointer;
     }
 `

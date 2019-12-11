@@ -79,6 +79,7 @@ class UserSingup extends React.Component {
             headerConfig
         );
         this.setState({ name: "", email: ""});
+        alert(`Usuário criado com sucesso!`)
     };
 
     render () {

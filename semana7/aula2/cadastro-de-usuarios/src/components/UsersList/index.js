@@ -27,6 +27,7 @@ const ListaDeUsuarioContainer = styled.div `
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  font-size: 20px;
 `
 
 const baseUrl = "https://us-central1-future4-users.cloudfunctions.net/api";
@@ -66,7 +67,7 @@ class UsersList extends React.Component {
                 <ListaDeUsuarioContainer>
 
                   {this.state.allUsers.map(user => (
-                    <ListItem user = {user} OnDeleteUser = {this.getAllUsers}/>
+                    <ListItem key = {user.id} user = {user} OnDeleteUser = {this.getAllUsers}/>
                   ))}
 
                 </ListaDeUsuarioContainer>
