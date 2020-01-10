@@ -83,3 +83,8 @@ export const UserAge = styled.div`
   margin-left: 10px;
 	font-size: 20px;
 `
+export const UserBio = styled.p `
+	margin-left: 10px;
+	font-size: 15px;
+`
+

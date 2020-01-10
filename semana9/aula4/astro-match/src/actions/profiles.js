@@ -16,29 +16,25 @@ const getMatchesAction = (matches) => ({
 	}
 })
 
-const choosePersonAction = (isMatch) => ({
-	type: "CHOOSE_PERSON_ACTION",
-	payload: {
-		isMatch,
-	}
-})
-
 export const getMatches = () => async (dispatch) => {
 	const response = await axios.get(`${baseUrl}/matches`)
 
 	dispatch(getMatchesAction(response.data.matches))
 }
 
-export const fetchProfileToSwipe = () => async (dispatch) => {
+export const getProfileToSwipe = () => async (dispatch) => {
 	const response = await axios.get (`${baseUrl}/person`)
 
 	dispatch(setProfileToSwipe(response.data.profile))
 }
 
-export const choosePerson = () => async (dispatch) => {
-	const response = await axios.post(`${baseUrl}/choose-person`)
+export const choosePerson = (id, choice) => async (dispatch) => {
+	if (!id) {
+		dispatch(getProfileToSwipe())
+	}
+	await axios.post(`${baseUrl}/choose-person $`, {id, choice})
 
-	dispatch(choosePersonAction(response.data.isMatch))
+	dispatch(getProfileToSwipe())
 }
 
 export const clearSwipes = () => async (dispatch) => {
