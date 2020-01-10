@@ -32,7 +32,7 @@ export const choosePerson = (id, choice) => async (dispatch) => {
 	if (!id) {
 		dispatch(getProfileToSwipe())
 	}
-	await axios.post(`${baseUrl}/choose-person $`, {id, choice})
+	await axios.post(`${baseUrl}/choose-person`,{id, choice})
 
 	dispatch(getProfileToSwipe())
 }

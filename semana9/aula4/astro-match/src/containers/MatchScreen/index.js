@@ -46,11 +46,12 @@ MatchScreen.propTypes = {
 }
 
 const mapStateToProps = state => ({
-	
+	matches: state.profiles.matches
 })
 
 const mapDispatchToProps = dispatch => ({
 	goToSwipeScreen: () => dispatch(updateCurrentPage('SwipeScreen')),
+	getMatches: () => dispatch(getMatches())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MatchScreen)
