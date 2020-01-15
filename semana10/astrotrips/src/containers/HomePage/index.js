@@ -179,6 +179,7 @@ const HomeButton = styled.button `
     border: 0;
     :hover {
         cursor: pointer;
+        opacity: 50%;
     }
 `
 

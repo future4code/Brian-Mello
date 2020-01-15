@@ -81,7 +81,6 @@ const Main = styled.main `
     justify-content: space-evenly;
     align-items: center;
 `
-
 const Card = styled.div `
     display: flex;
     flex-direction: column;
@@ -126,7 +125,7 @@ const Footer = styled.footer `
 `
 
 // código
-class TripDetails extends React.Component {
+class AdminPage extends React.Component {
     constructor (props) {
         super (props);
 
@@ -137,7 +136,7 @@ class TripDetails extends React.Component {
 
     render () {
 
-        const { goToHomeScreen, goToAdminPage } = this.props;
+        const { goToHomeScreen, goToTripsDetailsScreen } = this.props;
 
         return (
             <HomeContainer>
@@ -146,7 +145,7 @@ class TripDetails extends React.Component {
                         <HomeButton onClick = {goToHomeScreen}><LogoImg src = {LogoTipo}/></HomeButton>
                     </LogoContainer>
                     <Menu>
-                        <Button onClick = {goToAdminPage}>Back to Admin Page</Button> 
+                        <Button onClick = {goToTripsDetailsScreen}> Trip Details</Button>
                     </Menu>
                 </Header>
                 <Main>
@@ -163,11 +162,11 @@ class TripDetails extends React.Component {
 const mapDispathToProps = dispath => {
     return {
         goToHomeScreen: () => dispath(push(routes.root)),
-        goToAdminPage: () => dispath(push(routes.adminPage))
+        goToTripsDetailsScreen: () => dispath(push(routes.trip_details))
     };
 };
 
 export default connect (
     null, 
     mapDispathToProps) 
-(TripDetails);
+(AdminPage);

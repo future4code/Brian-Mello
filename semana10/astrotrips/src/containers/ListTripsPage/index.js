@@ -10,7 +10,7 @@ import back from "../../images/back.jpg"
 // Estilização
 const Container = styled.div `
     width: 100%;
-    height: 100%;
+    height: 534px;
 `
 
 const Header = styled.header `
@@ -78,7 +78,7 @@ const Button = styled.button `
 
 const Main = styled.main `
     width: 100%;
-    min-height: 400px;
+    min-height: 80%;
     background-color: #e0e7e8;
     display: flex;
     flex-wrap: wrap;
@@ -100,6 +100,7 @@ const ButtonInscricao = styled.button `
         cursor: pointer;
     }
 `
+
 const CardHeader = styled.header `
     width: 100%;
     height: 20%;
@@ -139,6 +140,7 @@ const HomeButton = styled.button `
     border: 0;
     :hover {
         cursor: pointer;
+        opacity: 50%;
     }
 `
 
@@ -153,6 +155,7 @@ const TripCard = styled.div `
     border-radius: 5px;
     box-shadow: 0px 0px 5px black;
     background-image: url(${back});
+    margin: 10px;
 `
 
 const Hr = styled.hr `
@@ -183,7 +186,7 @@ class TripList extends React.Component {
     render () {
 
         const { goToLoginScreen, goToTripsScreen, goToFormScreen, goToHomeScreen } = this.props;
-        console.log(this.props)
+        
         return (
             <Container>
                 <Header>
@@ -206,6 +209,7 @@ class TripList extends React.Component {
                                 <h4>{trip.name}</h4>
                             </CardHeader>
                             <CardMain>
+                                <P>{trip.description}</P>
                                 <P>{trip.planet}</P>
                                 <P>{trip.date}</P>
                                 <P>days: {trip.durationInDays}</P>
@@ -236,7 +240,7 @@ const mapDispatchToProps = dispatch => {
         goToHomeScreen: () => dispatch(push(routes.root)),
         getTrips: () => dispatch(getTrips())
     };
-  };
+};
 
 export default connect(
     mapStateToProps,

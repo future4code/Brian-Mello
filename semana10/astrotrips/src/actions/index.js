@@ -1,4 +1,6 @@
 import axios from 'axios';
+import  { push } from 'connected-react-router'
+import { routes } from '../containers/Router';
 
 const baseUrl = "https://us-central1-missao-newton.cloudfunctions.net/futureX/brian"
 
@@ -27,4 +29,39 @@ export const getTripDetail = (tripId) => async (dispatch) => {
 
     dispatch(getTripDetailAction(response.data.tripId))
 }
+
+export const login = (email, password) => async (dispatch) => {
+
+    const login = {
+        email,
+        password,
+    }
+
+    try {
+        const response = await axios.post (`${baseUrl}/login`, login)
+        window.localStorage.setItem("token", response.data.token)
+        dispatch(push(routes.adminPage))
+    } catch (error) {
+        window.alert("Usuário ou senha inválidos")
+    }
+
+}
+
+// export const applyToTrip = (name, age, applicationText, profession, country) => async (dispatch) => {
+
+//     const Apply = {
+//         name,
+//         age,
+//         applicationText,
+//         profession,
+//         country,
+//     }
+
+//     try {
+//         const response = await axios.post (`${baseUrl}/${trips}/apply`, Apply)
+//         window.alert("Aplicação feita com sucesso")
+//     } catch (error) {
+//         window.alert("erro na aplicação")
+//     }
+// }
 
