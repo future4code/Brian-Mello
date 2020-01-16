@@ -30,6 +30,24 @@ export const getTripDetail = (tripId) => async (dispatch) => {
     dispatch(getTripDetailAction(response.data.tripId))
 }
 
+export const createTrip = (name, date, description, durationDays, planet) => async (dispatch) => {
+
+    const newTrip = {
+        name,
+        date,
+        description,
+        durationDays,
+        planet,
+    }
+    
+    try {
+        await axios.post (`${baseUrl}/trips`, newTrip)
+        dispatch(getTrips())
+    } catch (error) {
+        window.alert ("Erro na criação")
+    }
+}
+
 export const login = (email, password) => async (dispatch) => {
 
     const login = {
@@ -49,7 +67,7 @@ export const login = (email, password) => async (dispatch) => {
 
 // export const applyToTrip = (name, age, applicationText, profession, country) => async (dispatch) => {
 
-//     const Apply = {
+//     const apply = {
 //         name,
 //         age,
 //         applicationText,
@@ -58,7 +76,7 @@ export const login = (email, password) => async (dispatch) => {
 //     }
 
 //     try {
-//         const response = await axios.post (`${baseUrl}/${trips}/apply`, Apply)
+//         const response = await axios.post (`${baseUrl}/${tripId}/apply`, apply)
 //         window.alert("Aplicação feita com sucesso")
 //     } catch (error) {
 //         window.alert("erro na aplicação")

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
 import { routes } from '../Router';
-import { HomeScreen } from '../Router';
 import LogoTipo from '../../images/LogoTipo.png'
 
 // Estilização 
@@ -136,7 +135,7 @@ class AdminPage extends React.Component {
 
     render () {
 
-        const { goToHomeScreen, goToTripsDetailsScreen } = this.props;
+        const { goToHomeScreen, goToTripsDetailsScreen, goToCreateTripsScreen } = this.props;
 
         return (
             <HomeContainer>
@@ -146,6 +145,7 @@ class AdminPage extends React.Component {
                     </LogoContainer>
                     <Menu>
                         <Button onClick = {goToTripsDetailsScreen}> Trip Details</Button>
+                        <Button onClick = {goToCreateTripsScreen}> Create Trips</Button>
                     </Menu>
                 </Header>
                 <Main>
@@ -159,10 +159,11 @@ class AdminPage extends React.Component {
     }
 }
 
-const mapDispathToProps = dispath => {
+const mapDispathToProps = dispatch => {
     return {
-        goToHomeScreen: () => dispath(push(routes.root)),
-        goToTripsDetailsScreen: () => dispath(push(routes.trip_details))
+        goToHomeScreen: () => dispatch(push(routes.root)),
+        goToTripsDetailsScreen: () => dispatch(push(routes.trip_details)),
+        goToCreateTripsScreen: () => dispatch(push(routes.trip_create))
     };
 };
 
