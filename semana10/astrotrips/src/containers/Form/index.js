@@ -4,11 +4,22 @@ import { push } from 'connected-react-router';
 import { connect } from 'react-redux';
 import SelectCountry from '../../components/SelectCountry';
 import {applyToTrip} from '../../actions'
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 // Estilização 
 
+const FormWrapper = styled.form`
+  width: 100%;
+  height: 100vh;
+  gap: 10px;
+  place-content: center;
+  justify-items: center;
+  display: grid;
+`;
+
 const Input = styled.input `
-    margin-top: 10px;
+    margin: 10px;
 `
 const Main = styled.div `
     height: 100%;
@@ -20,7 +31,7 @@ const Main = styled.div `
 `
 const applyForm = [
     {
-        name: "username",
+        name: "name",
         type: "text",
         label: "Nome",
         required: true,
@@ -52,60 +63,106 @@ class Form extends React.Component {
 
         this.state = {
             form: {},
-            selectedCountry: "",
+            country: "",
         };
     };
 
-    handleInputOnChange = e => {
-        const { name, value } = e.target;
+    handleInputOnChange = event => {
+        const { name, value } = event.target;
 
         this.setState ({ form: { ...this.state.form, [name]: value }});
     }
 
-    handleOnSubmit = event => {
+    handleApplyTrip = event => {
         event.preventDefault();
-        window.alert ("Aplicação enviada com sucesso")
-        console.log(this.state)
-    }
+        
+        const {
+            country
+        } = this.state
 
+        const { 
+            name, 
+            age, 
+            applicationText, 
+            profession, 
+            tripId 
+        } = this.state.form
+
+        this.props.applyToTrip ( 
+            name, 
+            age, 
+            applicationText,
+            profession, 
+            country, 
+            tripId
+        )
+    }
+    
     handleSelectedCountryOnChange = event => {
         const { value } = event.target;
-        this.setState ({ selectedCountry: value });
+        this.setState ({ country: value });
     }
 
     render () {
         return (
-            <div>
-                <form onSubmit = {this.handleOnSubmit}>
-                    {applyForm.map (input => (
-                        <div key = {input.name}>
-                            <label htmlFor = {input.name}>{input.label}</label>
-                            <Input
-                                id = {input.id}
-                                name = {input.name}
-                                type = {input.type}
-                                value = {this.state.form[input.name] || ""}
-                                required = {input.required}
-                                onChange = {this.handleInputOnChange}
-                                pattern = {input.pattern}
-                            />
-                        </div>
-                    ))}
-                    <SelectCountry value = {this.state.selectedCountry} onChange = {this.handleSelectedCountryOnChange}/>
-                    <button type = "submit">Enviar</button>
-                </form>
-            </div>
+            <form>
+                {applyForm.map (input => (
+                    <div key = {input.name}>
+                        <label htmlFor = {input.name}>{input.label}</label>
+                        <Input
+                            id = {input.id}
+                            name = {input.name}
+                            type = {input.type}
+                            value = {this.state.form[input.name] || ""}
+                            required = {input.required}
+                            onChange = {this.handleInputOnChange}
+                            pattern = {input.pattern}
+                        />
+                    </div>
+                ))}
+                <SelectCountry 
+                    name = "country" 
+                    value = {this.state.country} 
+                    onChange = {this.handleSelectedCountryOnChange}
+                />
+                <br/>
+                <select 
+                    name = "tripId" 
+                    value = {this.state.form.tripId} 
+                    onChange = {this.handleInputOnChange}
+                    required
+                >
+                    {this.props.trips.map ((trip) => 
+                        <option value = {trip.id}>{trip.name}</option>
+                    )}
+                </select>
+                <br/>
+                <Button onClick = {this.handleApplyTrip}>Enviar</Button>
+            </form>
         )
     }
 
 }
 
 const mapStateToProps = state => ({
-    
+    trips: state.trips.allTrips
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    // applyToTrip: (name, age, applicationText, profession, country) => dispatch(applyToTrip(name, age, applicationText, profession, country))
+    applyToTrip: (
+        name, 
+        age, 
+        applicationText, 
+        profession, 
+        country, 
+        tripId
+        ) => dispatch(applyToTrip(
+            name, 
+            age, 
+            applicationText, 
+            profession, 
+            country, 
+            tripId))
 })
 
 export default connect (

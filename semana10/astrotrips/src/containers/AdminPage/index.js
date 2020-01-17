@@ -162,7 +162,7 @@ class AdminPage extends React.Component {
 const mapDispathToProps = dispatch => {
     return {
         goToHomeScreen: () => dispatch(push(routes.root)),
-        goToTripsDetailsScreen: () => dispatch(push(routes.trip_details)),
+        goToTripsDetailsScreen: () => dispatch(push(routes.trip_list_private)),
         goToCreateTripsScreen: () => dispatch(push(routes.trip_create))
     };
 };

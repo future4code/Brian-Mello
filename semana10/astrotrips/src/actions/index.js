@@ -11,12 +11,37 @@ const setTripsAction = (trips) => ({
     }
 })
 
-const getTripDetailAction = (tripId) => ({
+export const getTripDetailAction = (tripId) => ({
     type: "GET_TRIP_DETAIL_ACTION",
     payload: {
         tripId,
     }
 })
+
+export const setCandidatesAction = (candidates) => ({
+    type: "SET_CANDIDATES_ACTION",
+    payload: {
+        candidates,
+    }
+})
+
+export const decideCandidateAction = (candidateId) => ({
+    type: "DECIDE_CANDIDATE_ACTION",
+    payload: {
+        candidateId,
+    }
+})
+
+export const decideCandidates = (tripId, candidateId) => async (dispatch) => {
+
+    const token = window.localStorage.getItem("token")
+
+    const response = await axios.put (`${baseUrl}/trips/${tripId}/candidates/${candidateId}/decide`,{
+        headers: {
+            auth: token
+        }
+    })
+}
 
 export const getTrips = () => async (dispatch) => {
     const response = await axios.get (`${baseUrl}/trips`)
@@ -25,24 +50,38 @@ export const getTrips = () => async (dispatch) => {
 }
 
 export const getTripDetail = (tripId) => async (dispatch) => {
-    const response = await axios.get (`${baseUrl}/trip/${tripId}`)
 
-    dispatch(getTripDetailAction(response.data.tripId))
+    const token = window.localStorage.getItem("token")
+    
+    const response = await axios.get (`${baseUrl}/trip/${tripId}`,{
+        headers: {
+            auth: token
+        }
+    })
+    dispatch(setCandidatesAction(response.data.trip.candidates))
 }
 
-export const createTrip = (name, date, description, durationDays, planet) => async (dispatch) => {
+export const createTrip = (name, date, description, durationInDays, planet) => async (dispatch) => {
 
     const newTrip = {
         name,
         date,
         description,
-        durationDays,
+        durationInDays,
         planet,
     }
     
+    const token = window.localStorage.getItem("token")
+
     try {
-        await axios.post (`${baseUrl}/trips`, newTrip)
+        await axios.post (`${baseUrl}/trips`, newTrip,{
+            headers: {
+                auth: token
+            }
+        })
+        window.alert("criado com sucesso")
         dispatch(getTrips())
+        dispatch(push(routes.adminPage))
     } catch (error) {
         window.alert ("Erro na criação")
     }
@@ -65,21 +104,23 @@ export const login = (email, password) => async (dispatch) => {
 
 }
 
-// export const applyToTrip = (name, age, applicationText, profession, country) => async (dispatch) => {
+export const applyToTrip = (name, age, applicationText, profession, country, tripId) => async (dispatch) => {
 
-//     const apply = {
-//         name,
-//         age,
-//         applicationText,
-//         profession,
-//         country,
-//     }
+    const apply = {
+        name,
+        age,
+        applicationText,
+        profession,
+        country,
+    }
 
-//     try {
-//         const response = await axios.post (`${baseUrl}/${tripId}/apply`, apply)
-//         window.alert("Aplicação feita com sucesso")
-//     } catch (error) {
-//         window.alert("erro na aplicação")
-//     }
-// }
+    try {
+        await axios.post (`${baseUrl}/trips/${tripId}/apply`, apply)
+        window.alert("Aplicação feita com sucesso")
+        dispatch(push(routes.trip_list))
+    } catch (error) {
+        console.log(applyToTrip)
+        window.alert("erro na aplicação")
+    }
+}
 

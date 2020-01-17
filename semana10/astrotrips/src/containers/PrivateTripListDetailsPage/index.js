@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { routes } from "../Router";
-import { getTrips } from "../../actions/index"
-import styled from "styled-components"
-import LogoTipo from "../../images/LogoTipo.png"
-import back from "../../images/back.jpg"
+import { getTrips, getTripDetail } from "../../actions/index"
+import styled from 'styled-components';
+import back from '../../images/back.jpg'
+import LogoTipo from '../../images/LogoTipo.png'
 
 // Estilização
 const Container = styled.div `
@@ -43,22 +43,6 @@ const Menu = styled.div `
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-`
-
-const LoginContainer = styled.div `
-    width: 50%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`
-
-const TripsContainer = styled.div `
-    width: 50%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 `
 
 const Button = styled.button `
@@ -104,7 +88,7 @@ const ButtonInscricao = styled.button `
 
 const CardHeader = styled.header `
     width: 100%;
-    height: 20%;
+    height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -112,9 +96,9 @@ const CardHeader = styled.header `
 
 const CardMain = styled.main `
     width: 100%;
-    height: 50%;
+    min-height: 200px;
     display: grid;
-    grid-template-rows: 1fr 20px 50px 10px;
+    grid-template-rows: 40px 40px 40px 40px;
     align-content: center;
     justify-items: center;
     text-align: center;
@@ -122,7 +106,7 @@ const CardMain = styled.main `
 
 const CardFooter = styled.footer `
     width: 100%;
-    height: 20%;
+    min-height: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -132,6 +116,21 @@ const Footer = styled.footer `
     width: 100%;
     height: 150px;
     background-color: #aeb5b6;
+`
+const ButtonOption = styled.button `
+    width: 100px;
+    height: 40px;
+    color: black;
+    background-color: white;
+    outline: 0;
+    border: 0;
+    box-shadow: 0px 0px 5px;
+    border-radius: 5px;
+    margin: 10px;
+    :hover {
+        box-shadow: 0px 0px 10px;
+        cursor: pointer;
+    }
 `
 
 const HomeButton = styled.button `
@@ -151,8 +150,9 @@ const TripCard = styled.div `
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     width: 220px;
-    height: 310px;
+    min-height: 100%;
     color: white;
     border-radius: 5px;
     box-shadow: 0px 0px 5px black;
@@ -166,8 +166,7 @@ const P = styled.p `
     padding: 0;
 `
 
-
-class TripList extends React.Component {
+class PrivateTripListDetails extends React.Component {
     constructor (props) {
         super (props);
 
@@ -176,49 +175,45 @@ class TripList extends React.Component {
         }
     }
 
-    componentDidMount(dispatch){
-        this.props.getTrips()
+    componentDidMount () {
+        this.props.getTripDetail(this.props.selectedTripId)
     }
 
     render () {
+        const { goToPrivateTripListPage, goToHomeScreen } = this.props;
 
-        const { goToLoginScreen, goToTripsScreen, goToFormScreen, goToHomeScreen } = this.props;
-        
         return (
             <Container>
                 <Header>
                     <LogoContainer>
                         <HomeButton onClick = {goToHomeScreen}><LogoImg src = {LogoTipo} /></HomeButton>
-                    </LogoContainer>
+                    </LogoContainer>  
                     <Menu>
-                        <LoginContainer>
-                            <Button onClick = {goToLoginScreen}>Log-in</Button>
-                        </LoginContainer>
-                        <TripsContainer>
-                            <Button onClick = {goToTripsScreen}>Viagens</Button>
-                        </TripsContainer>
+                        <Button onClick = {goToPrivateTripListPage}> back to Private List</Button>
                     </Menu>
                 </Header>
                 <Main>
-                    {this.props.trips.map((trip) => 
+                    {this.props.candidates.map((candidate) => 
                         <TripCard>
                             <CardHeader>
-                                <h4>{trip.name}</h4>
+                                <P>Nome: {candidate.name}</P>
                             </CardHeader>
                             <CardMain>
-                                <P>{trip.description}</P>
-                                <P>{trip.planet}</P>
-                                <P>{trip.date}</P>
-                                <P>days: {trip.durationInDays}</P>
+                                <P>Id: {candidate.id}</P>
+                                <P>Idade: {candidate.age}</P>
+                                <P>País: {candidate.country}</P>
+                                <P>Motivo de viagem: {candidate.applicationText}</P>
+                                <P>Profissão: {candidate.profession}</P>
                             </CardMain>
                             <CardFooter>
-                                <ButtonInscricao onClick = {goToFormScreen}>Inscrever-se</ButtonInscricao>
+                                <ButtonOption>Accept</ButtonOption>
+                                <ButtonOption>Decline</ButtonOption>
                             </CardFooter>
                         </TripCard>
-                    )} 
+                    )}
                 </Main>
                 <Footer>
-                            
+
                 </Footer>
             </Container>
         )
@@ -226,20 +221,17 @@ class TripList extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    trips: state.trips.allTrips
+    selectedTripId: state.trips.selectedTripId,
+    candidates: state.trips.candidates
 })
 
-const mapDispatchToProps = dispatch => {
-    return {
-        goToLoginScreen: () => dispatch(push(routes.login)),
-        goToTripsScreen: () => dispatch(push(routes.trip_list)),
-        goToFormScreen: () => dispatch(push(routes.form)),
-        goToHomeScreen: () => dispatch(push(routes.root)),
-        getTrips: () => dispatch(getTrips())
-    };
-};
+const mapDispatchToProps = dispatch => ({
+    goToPrivateTripListPage: () => dispatch(push(routes.trip_list_private)),
+    goToHomeScreen: () => dispatch(push(routes.root)),
+    getTripDetail: (tripId) => dispatch(getTripDetail(tripId))
+})
 
-export default connect(
+export default connect (
     mapStateToProps,
     mapDispatchToProps
-)(TripList);
+) (PrivateTripListDetails);

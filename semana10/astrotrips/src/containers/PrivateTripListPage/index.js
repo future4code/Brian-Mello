@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { routes } from "../Router";
-import { getTrips } from "../../actions/index"
+import { getTrips, getTripDetailAction } from "../../actions/index"
 import styled from "styled-components"
 import LogoTipo from "../../images/LogoTipo.png"
 import back from "../../images/back.jpg"
@@ -43,22 +43,6 @@ const Menu = styled.div `
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-`
-
-const LoginContainer = styled.div `
-    width: 50%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`
-
-const TripsContainer = styled.div `
-    width: 50%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 `
 
 const Button = styled.button `
@@ -167,7 +151,7 @@ const P = styled.p `
 `
 
 
-class TripList extends React.Component {
+class PrivateTripListPage extends React.Component {
     constructor (props) {
         super (props);
 
@@ -180,9 +164,16 @@ class TripList extends React.Component {
         this.props.getTrips()
     }
 
+    handleTripDetails = (tripId) => {
+        // guardar tripId na store
+        this.props.setTripId(tripId) 
+        // enviar usuário para página de detalhes do usuário
+        this.props.goToDetailsScreen()
+    }
+
     render () {
 
-        const { goToLoginScreen, goToTripsScreen, goToFormScreen, goToHomeScreen } = this.props;
+        const { goToAdminScreen, goToHomeScreen } = this.props;
         
         return (
             <Container>
@@ -191,12 +182,7 @@ class TripList extends React.Component {
                         <HomeButton onClick = {goToHomeScreen}><LogoImg src = {LogoTipo} /></HomeButton>
                     </LogoContainer>
                     <Menu>
-                        <LoginContainer>
-                            <Button onClick = {goToLoginScreen}>Log-in</Button>
-                        </LoginContainer>
-                        <TripsContainer>
-                            <Button onClick = {goToTripsScreen}>Viagens</Button>
-                        </TripsContainer>
+                        <Button onClick = {goToAdminScreen}>back to Admin Page</Button>
                     </Menu>
                 </Header>
                 <Main>
@@ -212,7 +198,7 @@ class TripList extends React.Component {
                                 <P>days: {trip.durationInDays}</P>
                             </CardMain>
                             <CardFooter>
-                                <ButtonInscricao onClick = {goToFormScreen}>Inscrever-se</ButtonInscricao>
+                                <ButtonInscricao onClick = {() => this.handleTripDetails(trip.id)}>Details</ButtonInscricao>
                             </CardFooter>
                         </TripCard>
                     )} 
@@ -229,17 +215,16 @@ const mapStateToProps = state => ({
     trips: state.trips.allTrips
 })
 
-const mapDispatchToProps = dispatch => {
-    return {
-        goToLoginScreen: () => dispatch(push(routes.login)),
-        goToTripsScreen: () => dispatch(push(routes.trip_list)),
-        goToFormScreen: () => dispatch(push(routes.form)),
-        goToHomeScreen: () => dispatch(push(routes.root)),
-        getTrips: () => dispatch(getTrips())
-    };
-};
+const mapDispatchToProps = dispatch => ({
+
+    goToAdminScreen: () => dispatch(push(routes.adminPage)),
+    goToHomeScreen: () => dispatch(push(routes.root)),
+    goToDetailsScreen: () => dispatch(push(routes.trip_details)),
+    getTrips: () => dispatch(getTrips()),
+    setTripId: (tripId) => dispatch(getTripDetailAction(tripId))
+});
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(TripList);
+)(PrivateTripListPage);

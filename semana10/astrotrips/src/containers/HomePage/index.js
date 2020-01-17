@@ -8,7 +8,7 @@ import LogoTipo from "../../images/LogoTipo.png"
 // Estilização
 const HomeContainer = styled.div `
     width: 100%;
-    height: 534px;
+    height: 604px;
 `
 
 const Header = styled.header `
@@ -76,7 +76,7 @@ const Button = styled.button `
 
 const Main = styled.main `
     width: 100%;
-    height: 80%;
+    min-height: 80%;
     background-color: #e0e7e8;
     display: flex;
     justify-content: center;
@@ -85,7 +85,7 @@ const Main = styled.main `
 
 const AboutUsContainer = styled.div `
     width: 50%;
-    height: 100%;
+    min-height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -94,7 +94,7 @@ const AboutUsContainer = styled.div `
 
 const PlanetsTripContainer = styled.div `
     width: 50%;
-    height: 100%;
+    min-height: 100%;
     display: flex;
     flex-direction:column;
     justify-content: center;
@@ -103,7 +103,8 @@ const PlanetsTripContainer = styled.div `
 
 const AboutUsCard = styled.div `
     width: 60%;
-    height: 80%;
+    height: 420px;
+    max-height: 420px;
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -111,11 +112,29 @@ const AboutUsCard = styled.div `
     flex-direction: column;
     align-items: center;
     box-shadow: 0px 0px 5px;
+    text-align: center;
 `
+
+
+const PlanetsCard = styled.div `
+    width: 60%;
+    min-height: 80%;
+    max-height: 420px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 0px 5px;
+    text-align: center;
+`
+
+
 
 const CardHeader = styled.header `
     width: 100%;
-    height: 20%;
+    height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -123,15 +142,16 @@ const CardHeader = styled.header `
 
 const CardMain = styled.main `
     width: 100%;
-    height: 80%;
+    height: 380px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
 `
 
 const CardFooter = styled.footer `
     width: 100%;
-    height: 20%;
+    height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -146,24 +166,12 @@ const ButtonInscricao = styled.button `
     border: 0;
     box-shadow: 0px 0px 5px;
     border-radius: 5px;
+    margin: 10px;
     :hover {
         box-shadow: 0px 0px 10px;
         cursor: pointer;
     }
 `
-
-const PlanetsCard = styled.div `
-    width: 60%;
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    justify-content: flex-start;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0px 0px 5px;
-`
-
 
 const Footer = styled.footer `
     width: 100%;
@@ -181,6 +189,12 @@ const HomeButton = styled.button `
         cursor: pointer;
         opacity: 50%;
     }
+`
+
+const P = styled.p `
+    height: 20px;
+    margin: 5px;
+    font-size: 20px;
 `
 
 
@@ -219,7 +233,10 @@ class HomePage extends React.Component {
                                 <h2>Sobre Nós</h2>
                             </CardHeader>
                             <CardMain>
-
+                                <P>Somos uma empresa focada em viagens espaciais e InterEstelares. 
+                                    Temos diversos tipos e marcas de naves a sua disposição para os 
+                                    planetas que mais bombão na galáxia.
+                                </P>
                             </CardMain>
                         </AboutUsCard>
                     </AboutUsContainer>
@@ -229,10 +246,18 @@ class HomePage extends React.Component {
                                 <h2>Planetas disponíveis</h2>
                             </CardHeader>
                             <CardMain>
-
+                                <P>Mercúrio</P>
+                                <P>Vênus</P>
+                                <P>Terra</P>
+                                <P>Marte</P>
+                                <P>Júpiter</P>
+                                <P>Saturno</P>
+                                <P>Urano</P>
+                                <P>Netuno</P>
+                                <P>Plutão</P>
                             </CardMain>
                             <CardFooter>
-                                <ButtonInscricao onClick = {goToFormScreen}>Inscreva-se</ButtonInscricao>
+                                <ButtonInscricao onClick = {goToTripsScreen}>Inscreva-se</ButtonInscricao>
                             </CardFooter>
                         </PlanetsCard>
                     </PlanetsTripContainer>
