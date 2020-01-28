@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Teste Container Do LoginPage Snapshot 1`] = `
+<div>
+  <header
+    className="sc-AykKD jAea-Do"
+  >
+    <img
+      className="sc-fzXfNd dbbLyM"
+      src="4eddit.png"
+    />
+  </header>
+  <form
+    className="sc-fzXfNi bnexOn"
+    onSubmit={[Function]}
+  >
+    <h1>
+      Log in
+    </h1>
+    <div
+      className="MuiFormControl-root MuiTextField-root sc-fzXfMD kNKgYo"
+    >
+      <label
+        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated Mui-required Mui-required"
+        data-shrink={false}
+      >
+        E-mail
+        <span
+          className="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+        >
+           
+          *
+        </span>
+      </label>
+      <div
+        className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+        onClick={[Function]}
+      >
+        <input
+          aria-invalid={false}
+          autoFocus={false}
+          className="MuiInputBase-input MuiInput-input"
+          disabled={false}
+          name="email"
+          onAnimationStart={[Function]}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          required={true}
+          type="email"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="MuiFormControl-root MuiTextField-root sc-fzXfMD kNKgYo"
+    >
+      <label
+        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated Mui-required Mui-required"
+        data-shrink={false}
+      >
+        Password
+        <span
+          className="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+        >
+           
+          *
+        </span>
+      </label>
+      <div
+        className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+        onClick={[Function]}
+      >
+        <input
+          aria-invalid={false}
+          autoFocus={false}
+          className="MuiInputBase-input MuiInput-input"
+          disabled={false}
+          name="password"
+          onAnimationStart={[Function]}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          required={true}
+          type="password"
+          value=""
+        />
+      </div>
+    </div>
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-text sc-fzXfMz jpfkqO"
+      disabled={false}
+      onBlur={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="submit"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Entrar
+      </span>
+    </button>
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-text sc-fzXfMz jpfkqO"
+      disabled={false}
+      onBlur={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Cadastro
+      </span>
+    </button>
+  </form>
+</div>
+`;

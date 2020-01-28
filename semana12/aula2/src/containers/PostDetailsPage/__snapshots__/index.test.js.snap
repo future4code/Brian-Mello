@@ -1,0 +1,628 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Teste Container Da PostDetailsPage Snapshot 1`] = `
+<div
+  className="sc-AykKH kyuQYw"
+>
+  <header
+    className="sc-AykKC dPwDCU"
+  >
+    <div
+      className="sc-AykKF iiUUpZ"
+    >
+      <img
+        className="sc-fzXfNc eZVKyk"
+        src="4eddit.png"
+      />
+    </div>
+    <div
+      className="sc-AykKG bQggQD"
+    >
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-text sc-fzXfMy hTEuKb"
+        disabled={false}
+        onBlur={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          Voltar
+        </span>
+      </button>
+    </div>
+  </header>
+  <main
+    className="sc-AykKE dAXNrE"
+  >
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-text sc-fzXfMx efcMuW"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        voltar pro topo
+      </span>
+    </button>
+    <div
+      className="sc-fzXfLO hVQXsi"
+    >
+      <header
+        className="sc-fzXfLQ dxybfg"
+      >
+        <h2
+          className="sc-fzXfLW dIAlNL"
+        />
+      </header>
+      <main
+        className="sc-fzXfLR cBSWQp"
+      >
+        <h3
+          className="sc-fzXfLX elnuSc"
+        />
+        <p
+          className="sc-fzXfLV ilNyC"
+        />
+      </main>
+      <footer
+        className="sc-fzXfLS dryxIM"
+      >
+        <span
+          className="sc-fzXfLT bWdqOf"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"
+            />
+          </svg>
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+            />
+          </svg>
+        </span>
+        <span
+          className="sc-fzXfLU fyOrlS"
+        >
+           
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18zM18 14H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"
+            />
+          </svg>
+        </span>
+      </footer>
+    </div>
+    <div
+      className="sc-AykKK kOEpIb"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <div>
+          <label
+            className="sc-fzXfMw eeHudi"
+            htmlFor="text"
+          >
+            Comment
+          </label>
+          <input
+            className="sc-fzXfMv ghYKbo"
+            label="Comment"
+            name="text"
+            onChange={[Function]}
+            required={true}
+            type="text"
+            value=""
+          />
+        </div>
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-text"
+          disabled={false}
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="submit"
+        >
+          <span
+            className="MuiButton-label"
+          >
+             Enviar
+          </span>
+        </button>
+      </form>
+    </div>
+    <svg
+      height="150"
+      viewBox="0 0 40 60"
+      width="150"
+    >
+      <polygon
+        className="sc-fzXfNg YEtDz"
+        fill="none"
+        points="16,1 32,32 1,32"
+        stroke="black"
+      />
+      <text
+        className="sc-fzXfNf gEzFxf"
+        fill="black"
+        x="0"
+        y="45"
+      >
+        Loading...
+      </text>
+    </svg>
+  </main>
+</div>
+`;
+
+exports[`Teste Container Da feedPage Snapshot 1`] = `
+<div
+  className="sc-AykKH kyuQYw"
+>
+  <header
+    className="sc-AykKC dPwDCU"
+  >
+    <div
+      className="sc-AykKF iiUUpZ"
+    >
+      <img
+        className="sc-fzXfNc eZVKyk"
+        src="4eddit.png"
+      />
+    </div>
+    <div
+      className="sc-AykKG bQggQD"
+    >
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-text sc-fzXfMy hTEuKb"
+        disabled={false}
+        onBlur={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          Voltar
+        </span>
+      </button>
+    </div>
+  </header>
+  <main
+    className="sc-AykKE dAXNrE"
+  >
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-text sc-fzXfMx efcMuW"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        voltar pro topo
+      </span>
+    </button>
+    <div
+      className="sc-fzXfLO hVQXsi"
+    >
+      <header
+        className="sc-fzXfLQ dxybfg"
+      >
+        <h2
+          className="sc-fzXfLW dIAlNL"
+        />
+      </header>
+      <main
+        className="sc-fzXfLR cBSWQp"
+      >
+        <h3
+          className="sc-fzXfLX elnuSc"
+        />
+        <p
+          className="sc-fzXfLV ilNyC"
+        />
+      </main>
+      <footer
+        className="sc-fzXfLS dryxIM"
+      >
+        <span
+          className="sc-fzXfLT bWdqOf"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"
+            />
+          </svg>
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+            />
+          </svg>
+        </span>
+        <span
+          className="sc-fzXfLU fyOrlS"
+        >
+           
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18zM18 14H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"
+            />
+          </svg>
+        </span>
+      </footer>
+    </div>
+    <div
+      className="sc-AykKK kOEpIb"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <div>
+          <label
+            className="sc-fzXfMw eeHudi"
+            htmlFor="text"
+          >
+            Comment
+          </label>
+          <input
+            className="sc-fzXfMv ghYKbo"
+            label="Comment"
+            name="text"
+            onChange={[Function]}
+            required={true}
+            type="text"
+            value=""
+          />
+        </div>
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-text"
+          disabled={false}
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="submit"
+        >
+          <span
+            className="MuiButton-label"
+          >
+             Enviar
+          </span>
+        </button>
+      </form>
+    </div>
+    <svg
+      height="150"
+      viewBox="0 0 40 60"
+      width="150"
+    >
+      <polygon
+        className="sc-fzXfNg YEtDz"
+        fill="none"
+        points="16,1 32,32 1,32"
+        stroke="black"
+      />
+      <text
+        className="sc-fzXfNf gEzFxf"
+        fill="black"
+        x="0"
+        y="45"
+      >
+        Loading...
+      </text>
+    </svg>
+  </main>
+</div>
+`;
+
+exports[`Teste Container Do PostDetailsPage Snapshot 1`] = `
+<div
+  className="sc-AykKH kyuQYw"
+>
+  <header
+    className="sc-AykKC dPwDCU"
+  >
+    <div
+      className="sc-AykKF iiUUpZ"
+    >
+      <img
+        className="sc-fzXfNc eZVKyk"
+        src="4eddit.png"
+      />
+    </div>
+    <div
+      className="sc-AykKG bQggQD"
+    >
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-text sc-fzXfMy hTEuKb"
+        disabled={false}
+        onBlur={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          Voltar
+        </span>
+      </button>
+    </div>
+  </header>
+  <main
+    className="sc-AykKE dAXNrE"
+  >
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-text sc-fzXfMx efcMuW"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        voltar pro topo
+      </span>
+    </button>
+    <div
+      className="sc-fzXfLO hVQXsi"
+    >
+      <header
+        className="sc-fzXfLQ dxybfg"
+      >
+        <h2
+          className="sc-fzXfLW dIAlNL"
+        />
+      </header>
+      <main
+        className="sc-fzXfLR cBSWQp"
+      >
+        <h3
+          className="sc-fzXfLX elnuSc"
+        />
+        <p
+          className="sc-fzXfLV ilNyC"
+        />
+      </main>
+      <footer
+        className="sc-fzXfLS dryxIM"
+      >
+        <span
+          className="sc-fzXfLT bWdqOf"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"
+            />
+          </svg>
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+            />
+          </svg>
+        </span>
+        <span
+          className="sc-fzXfLU fyOrlS"
+        >
+           
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18zM18 14H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"
+            />
+          </svg>
+        </span>
+      </footer>
+    </div>
+    <div
+      className="sc-AykKK kOEpIb"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <div>
+          <label
+            className="sc-fzXfMw eeHudi"
+            htmlFor="text"
+          >
+            Comment
+          </label>
+          <input
+            className="sc-fzXfMv ghYKbo"
+            label="Comment"
+            name="text"
+            onChange={[Function]}
+            required={true}
+            type="text"
+            value=""
+          />
+        </div>
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-text"
+          disabled={false}
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="submit"
+        >
+          <span
+            className="MuiButton-label"
+          >
+             Enviar
+          </span>
+        </button>
+      </form>
+    </div>
+    <svg
+      height="150"
+      viewBox="0 0 40 60"
+      width="150"
+    >
+      <polygon
+        className="sc-fzXfNg YEtDz"
+        fill="none"
+        points="16,1 32,32 1,32"
+        stroke="black"
+      />
+      <text
+        className="sc-fzXfNf gEzFxf"
+        fill="black"
+        x="0"
+        y="45"
+      >
+        Loading...
+      </text>
+    </svg>
+  </main>
+</div>
+`;
