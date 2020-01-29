@@ -1,0 +1,193 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Teste Container Da feedPage Snapshot 1`] = `
+<div
+  className="sc-AykKH kyuQYw"
+>
+  <header
+    className="sc-AykKC dPwDCU"
+  >
+    <div
+      className="sc-AykKF iiUUpZ"
+    >
+      <img
+        className="sc-fzXfNc eZVKyk"
+        src="4eddit.png"
+      />
+    </div>
+    <div
+      className="sc-AykKG bQggQD"
+    >
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-text sc-fzXfMy hTEuKb"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          Log Out
+        </span>
+      </button>
+    </div>
+  </header>
+  <main
+    className="sc-AykKE dAXNrE"
+  >
+    <form
+      className="sc-fzXfNe bHFJhs"
+    >
+      <div
+        className="MuiFormControl-root MuiTextField-root sc-fzXfME bieoyP"
+      >
+        <label
+          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+          data-shrink={false}
+        >
+          Search
+        </label>
+        <div
+          className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+          onClick={[Function]}
+        >
+          <input
+            aria-invalid={false}
+            autoFocus={false}
+            className="MuiInputBase-input MuiInput-input"
+            disabled={false}
+            name="posts"
+            onAnimationStart={[Function]}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={false}
+            type="text"
+          />
+        </div>
+      </div>
+    </form>
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-text sc-fzXfMx efcMuW"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        voltar pro topo
+      </span>
+    </button>
+    <div
+      className="sc-AykKJ eTIeZq"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <div>
+          <label
+            className="sc-fzXfMw eeHudi"
+            htmlFor="title"
+          >
+            Título
+          </label>
+          <input
+            className="sc-fzXfMv ghYKbo"
+            label="Título"
+            name="title"
+            onChange={[Function]}
+            required={true}
+            type="text"
+            value=""
+          />
+        </div>
+        <div>
+          <label
+            className="sc-fzXfMw eeHudi"
+            htmlFor="text"
+          >
+            Post
+          </label>
+          <input
+            className="sc-fzXfMv ghYKbo"
+            label="Post"
+            name="text"
+            onChange={[Function]}
+            required={true}
+            type="text"
+            value=""
+          />
+        </div>
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-text"
+          disabled={false}
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="submit"
+        >
+          <span
+            className="MuiButton-label"
+          >
+             Enviar
+          </span>
+        </button>
+      </form>
+    </div>
+    <svg
+      height="150"
+      viewBox="0 0 40 60"
+      width="150"
+    >
+      <polygon
+        className="sc-fzXfNg YEtDz"
+        fill="none"
+        points="16,1 32,32 1,32"
+        stroke="black"
+      />
+      <text
+        className="sc-fzXfNf gEzFxf"
+        fill="black"
+        x="0"
+        y="45"
+      >
+        Loading...
+      </text>
+    </svg>
+  </main>
+</div>
+`;
