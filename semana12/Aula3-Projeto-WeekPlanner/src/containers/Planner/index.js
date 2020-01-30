@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import { Container ,StyledMain, CreateActivityContainer, StyledButton, FormWrapper, StyledSearchTextField } from "../../style/styled";
+import { Container ,StyledMain, CreateActivityContainer, StyledButton, FormWrapper, StyledSearchTextField, FormSection, DaysContainer } from "../../style/styled";
 import Header from "../../components/Header";
+import { SelectedDay } from "../../components/SelectForDay";
+import { createTask, getTasks } from "../../actions";
+import { TasksContainerComponent } from "../../components/TasksContainer"
 import Loader from "../../components/Loader";
-import { SelectedDay } from "../../components/SelectForDay"
-import { createTask, getTasks } from "../../actions"
-
 
 const CreateTaskForm = [
     {
@@ -45,6 +45,7 @@ class Planner extends React.Component {
     this.props.createTask( text, day )
 
     this.setState({form: {}})
+    this.setState({day:""})
   }
 
   handleSelectedDayOnChange = event => {
@@ -53,42 +54,192 @@ class Planner extends React.Component {
   }
   
   render() {
+
+     const {tasks} = this.props;
+
+     const mondayFilter = tasks.filter((task) => {
+       return task.day === "Segunda"
+     })
+
+     let orderedMonday;
     
+     if(mondayFilter) {
+      orderedMonday = mondayFilter.sort((a,b) => {
+         if(a.text > b.text) {
+           return 1;
+         } else if (a.text < b.text) {
+           return -1;
+         } else {
+           return 0
+         }
+       })
+     }
+
+     const tuesdayFilter = tasks.filter((task) => {
+      return task.day === "Terça"
+    })
+
+    let orderedTuesday;
+    
+    if(tuesdayFilter) {
+      orderedTuesday = tuesdayFilter.sort((a,b) => {
+        if(a.text > b.text) {
+          return 1;
+        } else if (a.text < b.text) {
+          return -1;
+        } else {
+          return 0
+        }
+      })
+    }
+
+    const wednesdayFilter = tasks.filter((task) => {
+      return task.day === "Quarta"
+    })
+
+    let orderedWednesday;
+
+    if(wednesdayFilter) {
+      orderedWednesday = wednesdayFilter.sort((a,b) => {
+        if(a.text > b.text) {
+          return 1;
+        } else if (a.text < b.text) {
+          return -1;
+        } else {
+          return 0
+        }
+      })
+    }
+
+    const thursdayFilter = tasks.filter((task) => {
+      return task.day === "Quinta"
+    })
+    let orderedThursday;
+    
+    if(thursdayFilter) {
+      orderedThursday = thursdayFilter.sort((a,b) => {
+        if(a.text > b.text) {
+          return 1;
+        } else if (a.text < b.text) {
+          return -1;
+        } else {
+          return 0
+        }
+      })
+    }
+
+    const fridayFilter = tasks.filter((task) => {
+      return task.day === "Sexta"
+    })
+
+    let orderedFriday;
+    
+    if(fridayFilter) {
+      orderedFriday = fridayFilter.sort((a,b) => {
+        if(a.text > b.text) {
+          return 1;
+        } else if (a.text < b.text) {
+          return -1;
+        } else {
+          return 0
+        }
+      })
+    }
+
+    const saturdayFilter = tasks.filter((task) => {
+      return task.day === "Sábado"
+    })
+
+    let orderedSaturday;
+    if(saturdayFilter) {
+      orderedSaturday = saturdayFilter.sort((a,b) => {
+        if(a.text > b.text) {
+          return 1;
+        } else if (a.text < b.text) {
+          return -1;
+        } else {
+          return 0
+        }
+      })
+    }
+
+    const sundayFilter = tasks.filter((task) => {
+      return task.day === "Domingo"
+    })
+
+    let orderedSunday;
+    if(sundayFilter) {
+      orderedSunday = sundayFilter.sort((a,b) => {
+        if(a.text > b.text) {
+          return 1;
+        } else if (a.text < b.text) {
+          return -1;
+        } else {
+          return 0
+        }
+      })
+    }
+
     return (
       <Container>
         <Header text="Criar tarefa"/>
         <StyledMain>
-          <CreateActivityContainer>
-          <FormWrapper onSubmit={this.handleCreateTask}>
-            {CreateTaskForm.map (input => (
-                      <div key = {input.name}>
-                          <StyledSearchTextField
-                              id = {input.id}
-                              name = {input.name}
-                              type = {input.type}
-                              label = {input.label}
-                              value = {this.state.form[input.name] || ""}
-                              required = {input.required}
-                              onChange = {this.handleInputOnChange}
-                              pattern = {input.pattern}
-                          />
-                      </div>
-                  ))}
+          <FormSection>
+            <CreateActivityContainer>
+              <FormWrapper onSubmit={this.handleCreateTask}>
+                {CreateTaskForm.map (input => (
+                  <div key = {input.name}>
+                      <StyledSearchTextField
+                          id = {input.id}
+                          name = {input.name}
+                          type = {input.type}
+                          label = {input.label}
+                          value = {this.state.form[input.name] || ""}
+                          required = {input.required}
+                          onChange = {this.handleInputOnChange}
+                          pattern = {input.pattern}
+                      />
+                  </div>
+                ))}
                 <SelectedDay 
                   name= "day" 
                   value= {this.state.day}
                   onChange= {this.handleSelectedDayOnChange}
                 />
                 <StyledButton type="submit">Criar Tarefa</StyledButton>
-            </FormWrapper>
-          </CreateActivityContainer>
-          {/* {this.props.tasks.map((task) => {
-            <Fragment>
-              <p>{task.text}</p>
-              <p>{task.day}</p>
-            </Fragment>
-          })} */}
-          {/* <Loader/> */}
+              </FormWrapper>
+            </CreateActivityContainer>
+          </FormSection>
+          <DaysContainer>
+            <TasksContainerComponent 
+              day="Monday" 
+              text = {orderedMonday.map((task) => <Fragment><p>{task.text}</p></Fragment>)}
+            />
+            <TasksContainerComponent 
+              day="Tuesday" 
+              text = {orderedTuesday.map((task) => <Fragment><p>{task.text}</p></Fragment>)}
+            />
+            <TasksContainerComponent 
+              day="Wednesday" 
+              text = {orderedWednesday.map((task) => <Fragment><p>{task.text}</p></Fragment>)}
+            />
+            <TasksContainerComponent 
+              day="Thursday" 
+              text = {orderedThursday.map((task) => <Fragment><p>{task.text}</p></Fragment>)}
+            />
+            <TasksContainerComponent 
+              day="Friday" 
+              text = {orderedFriday.map((task) => <Fragment><p>{task.text}</p></Fragment>)}
+            />
+            <TasksContainerComponent 
+              day="Saturday" 
+              text = {orderedSaturday.map((task) => <Fragment><p>{task.text}</p></Fragment>)}
+            />
+            <TasksContainerComponent 
+              day="Sunday" 
+              text = {orderedSunday.map((task) => <Fragment><p>{task.text}</p></Fragment>)}
+            />
+          </DaysContainer>
         </StyledMain>
       </Container>
     )
@@ -96,7 +247,8 @@ class Planner extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  tasks: state.tasks.allTasks
+  tasks: state.tasks.allTasks,
+  
 })
 
 const mapDispatchToProps = (dispatch) => ({

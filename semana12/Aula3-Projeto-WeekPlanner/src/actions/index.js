@@ -2,18 +2,18 @@ import axios from 'axios';
 
 const baseUrl = "https://us-central1-missao-newton.cloudfunctions.net/generic/planner-bouman-brian"
 
-const setTasksAction = (tasks) => ({
-    type: "SET_TASKS_ACTION",
+const setTaskDayAction = (task) => ({
+    type: "SET_TASK_DAY_ACTION",
     payload: {
-        tasks,
+        task,
     }
 })
 
 export const getTasks = () => async (dispatch) => {
 
     try {
-        const response = await axios.get (`${baseUrl}`)
-        dispatch(setTasksAction(response.data.tasks))
+        const response = await axios.get(`${baseUrl}`)
+        dispatch(setTaskDayAction(response.data))
     } catch (error) {
         window.alert ("Erro de renderização")
     }
@@ -27,10 +27,7 @@ export const createTask = (text, day) => async (dispatch) => {
     }
 
     try {
-
         await axios.post(`${baseUrl}`, newTask)
-
-        window.alert("Tarefa Criada com sucesso")
 
         dispatch(getTasks())
     } catch (error) {

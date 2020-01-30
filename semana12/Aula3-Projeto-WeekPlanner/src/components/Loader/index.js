@@ -9,7 +9,7 @@ function Loader ( ) {
                     fill="none" 
                     stroke="black" 
                     stroke-width="1"
-                    points="16,1 32,32 1,32"
+                    points="32,16 32,32 1,32 1,16"
                 />
                 <Loading x="0" y="45" fill="black">Loading...</Loading>
             </svg>

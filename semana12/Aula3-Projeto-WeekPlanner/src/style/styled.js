@@ -12,11 +12,33 @@ export const StyledHeader = styled.header `
     margin-bottom: 20px;
     position: absolute;
     top: 0px;
+
 `
+
+export const FormSection = styled.div `
+    width: 100%;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #7b5e57;
+
+`
+export const DaysContainer = styled.main `
+    width: 100%;
+    min-height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: #7b5e57;
+
+`  
 
 export const StyledMain = styled.main `
     width: 100%;
-    min-height: 689px;
+    min-height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -79,6 +101,9 @@ export const TitleContainer = styled.div `
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    @media (max-width: 400) {
+        flex-direction: column
+    }
 `
 
 // loader animado 
@@ -111,3 +136,51 @@ export const StyledSearchTextField = styled(TextField)`
     color: white;
     margin: 20px;
 `
+
+export const TasksContainer = styled.div `
+    width: 200px;
+    min-height: 300px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    margin: 10px;
+    :hover{
+        box-shadow: 0 0 10px;
+    }
+`
+
+export const TasksContainerHeader = styled.header `
+    width: 100%;
+    height: 30px;
+`
+export const TasksContainerMain = styled.main `
+    width: 100%;
+    min-height: 100%;
+`
+
+export const StyledSelect = styled.select `
+    width: 90%;
+    height: 30px;
+    border-radius: 5px;
+    outline: 0;
+    text-align: center;
+    padding: 0 10px 0 25px;
+    :hover {
+        cursor: pointer;
+    }
+`
+
+export const StyledHr = styled.hr `
+    width: 90%;
+    color: gray;
+    margin: 5px;
+    opacity: 50%;
+`
+
+
+
