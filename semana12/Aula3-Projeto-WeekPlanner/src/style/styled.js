@@ -93,16 +93,20 @@ export const CreateActivityContainer = styled.div `
 
 export const PageName = styled.h1 `
     color: white;
+    margin: 5px;
 `
 
 export const TitleContainer = styled.div `
-    width: 40%;
+    width: 60%;
     height: 100%;
+    max-width: 470px;
+    min-width: 408px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    @media (max-width: 400) {
-        flex-direction: column
+    text-align: center;
+    @media (max-width: 750px) {
+        flex-direction: column;
     }
 `
 

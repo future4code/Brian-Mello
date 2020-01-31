@@ -4,19 +4,18 @@ import { Container ,StyledMain, CreateActivityContainer, StyledButton, FormWrapp
 import Header from "../../components/Header";
 import { SelectedDay } from "../../components/SelectForDay";
 import { createTask, getTasks } from "../../actions";
-import { TasksContainerComponent } from "../../components/TasksContainer"
-import Loader from "../../components/Loader";
+import { TasksContainerComponent } from "../../components/TasksContainer";
 
 const CreateTaskForm = [
     {
         name: "text",
         type: "text",
-        label: "Tarefa",
+        label: "Task",
         required: true, 
     }
 ]
 
-class Planner extends React.Component {
+export class Planner extends React.Component {
   constructor (props) {
     super( props );
     this.state = {
