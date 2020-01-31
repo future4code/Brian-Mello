@@ -1,6 +1,6 @@
 import React from 'react'
 import {shallow} from 'enzyme'
-import renderer from "react-test-renderer";
+import {renderer} from "react-test-renderer";
 import { FeedPage } from './index'
 
 describe('Teste Container Da feedPage', () => {
