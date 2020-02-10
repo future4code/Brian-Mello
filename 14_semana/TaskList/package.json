@@ -1,0 +1,22 @@
+{
+  "name": "tasklist",
+  "version": "1.0.0",
+  "description": "Criador de tarefas",
+  "main": "\u001b[D",
+  "scripts": {
+    "start": "node TaskList.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "TaskList",
+    "Criador",
+    "de",
+    "tarefas",
+    "Tarefas",
+    "Tasks",
+    "List",
+    "lista"
+  ],
+  "author": "Brian Mello",
+  "license": "ISC"
+}
