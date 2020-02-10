@@ -1,2 +1,5 @@
 
 Comprar batata
+Comprar pão
+'comprar'
+comprar

@@ -4,7 +4,7 @@
   "description": "Criador de tarefas",
   "main": "\u001b[D",
   "scripts": {
-    "start": "node TaskList.js",
+    "start": "node TaskList.js comprar",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
