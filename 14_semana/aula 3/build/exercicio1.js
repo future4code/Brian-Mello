@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = require("fs");
-const pastaDeTextos = "../textos";
+const pastaDeTextos = "./textos/";
 const promiseReddirAction = new Promise((resolve, reject) => {
     fs_1.readdir(pastaDeTextos, (err, files) => {
         if (err) {
@@ -26,7 +26,7 @@ const archivesReader = () => __awaiter(void 0, void 0, void 0, function* () {
         const listaArquivos = (yield promiseReddirAction);
         for (let i = 0; i < listaArquivos.length; i++) {
             let file = "";
-            fs_1.readFile(`../textos/${listaArquivos[i]}`, (err, files) => {
+            fs_1.readFile(`${pastaDeTextos}${listaArquivos[i]}`, (err, files) => {
                 if (err) {
                     console.error(err);
                 }

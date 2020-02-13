@@ -1,7 +1,7 @@
 import { readFile, readdir } from "fs";
 
 
-const pastaDeTextos = "../textos"
+const pastaDeTextos = "./textos/"
 
 const promiseReddirAction = new Promise <string[]> ((resolve , reject) => {
     readdir( pastaDeTextos, ( err: Error, files: string[] ) => {
@@ -18,7 +18,7 @@ const archivesReader = async() => {
         const listaArquivos: string[] = (await promiseReddirAction);
         for(let i: number = 0; i < listaArquivos.length; i++) {
             let file: string = ""
-            readFile(`../textos/${listaArquivos[i]}`, (err: Error, files: Buffer ) => {
+            readFile(`${pastaDeTextos}${listaArquivos[i]}`, (err: Error, files: Buffer ) => {
                 if(err){
                     console.error(err)
                 } else {
