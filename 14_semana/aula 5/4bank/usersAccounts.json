@@ -1,0 +1,67 @@
+{
+  "usersAccountsList": [
+    {
+      "user": {
+        "name": "Brian",
+        "birth": "15 06 1996",
+        "CPF": "123.123.123-12"
+      },
+      "expenses": [],
+      "balance": 0
+    },
+    {
+      "user": {
+        "name": "biruleibi",
+        "birth": "15/06/1996",
+        "CPF": "123.123.123-12"
+      },
+      "expenses": [],
+      "balance": 0
+    },
+    {
+      "user": {
+        "name": "biruleibi",
+        "birth": "15/06/1996",
+        "CPF": "123.123.123-12"
+      },
+      "expenses": [],
+      "balance": 0
+    },
+    {
+      "user": {
+        "name": "biruleibi",
+        "birth": "15/06/2010",
+        "CPF": "123.123.123-12"
+      },
+      "expenses": [],
+      "balance": 0
+    },
+    {
+      "user": {
+        "name": "Brian",
+        "birth": "15/06/2010",
+        "CPF": "123.123.123-12"
+      },
+      "expenses": [],
+      "balance": 0
+    },
+    {
+      "user": {
+        "name": "Brian",
+        "birth": "15/06/1997",
+        "CPF": "123.123.123-12"
+      },
+      "expenses": [],
+      "balance": 0
+    },
+    {
+      "user": {
+        "name": "Brian",
+        "birth": "15/06/1997",
+        "CPF": "123.123.123-12"
+      },
+      "expenses": [],
+      "balance": 0
+    }
+  ]
+}
