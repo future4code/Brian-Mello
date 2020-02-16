@@ -11,7 +11,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc && node build/bank.js 1 --target es6"
+    "start": "tsc && node build/bank.js 2 --target es6"
   },
   "keywords": [
     "banco",
