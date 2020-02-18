@@ -13,13 +13,6 @@
       "age": 20,
       "balance": 0,
       "transactions": []
-    },
-    {
-      "name": "Joao",
-      "cpf": "123.123.123.12",
-      "age": 20,
-      "balance": 0,
-      "transactions": []
     }
   ]
 }

@@ -30,11 +30,10 @@ switch(op){
             if ( newUser.getAge() < 18){
                 console.log("não foi possível criar o cadastro por conta de sua idade")
             } else {
-                creatingAccounts.usersAccountsList.push(
-                    newUser
-                );
-        
-                console.log('Conta criada com sucesso')
+                creatingAccounts.usersAccountsList.find((user) => {
+                        return console.log(user.getCpf())
+                    }
+                )   
             }
         
             const data: string = JSON.stringify(creatingAccounts, null, 2)
@@ -55,6 +54,8 @@ switch(op){
         };
         
         createAccount()
+
+        createAccount().then((creatingAccounts: any) => console.log(creatingAccounts))
 
         break;
 
