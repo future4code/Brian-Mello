@@ -2,6 +2,7 @@ import { Dish } from "./dish";
 import { SaltyDish } from "./saltydish";
 import { Dessert } from "./dessert";
 
+export const newDish: SaltyDish = new SaltyDish('Pizza', 50, 10, ["farinha","molho de tomate", "queijo"], 30)
 const petiGateau: Dessert = new Dessert('Petit Gateau', 40, 10, ["Chocolate", "Café", "Creme de Leite"], 60, 1)
 const cremeBrulee: Dessert = new Dessert('Creme Brulee', 50, 15, ["Leite", "Ovo", "Creme de leite"], 30, 1)
 const redVelvetCake: Dessert = new Dessert('Red Velvet', 120, 30, ["Farinha", "Leite", "manteiga", "chocolate"], 120, 12)
