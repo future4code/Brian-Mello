@@ -1,0 +1,18 @@
+{
+  "missions": [
+    {
+      "startDate": "21/02/2020",
+      "endDate": "21/10/2020",
+      "teachers": [],
+      "students": [],
+      "patrono": "Bouman"
+    },
+    {
+      "startDate": "21/02/2020",
+      "endDate": "21/08/2020",
+      "teachers": [],
+      "students": [],
+      "classNumber": 1
+    }
+  ]
+}

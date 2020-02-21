@@ -1,0 +1,26 @@
+{
+  "name": "4bank",
+  "version": "1.0.0",
+  "description": "aplicativo em typescript simulando um banco com ações como criar conta, transferências, saques, depósito, etc ",
+  "main": "index.js",
+  "dependencies": {
+    "@types/node": "^13.7.1",
+    "axios": "^0.19.2",
+    "moment": "^2.24.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node build/index.js --target es6"
+  },
+  "keywords": [
+    "banco",
+    "bank",
+    "account",
+    "conta",
+    "money",
+    "dinheiro"
+  ],
+  "author": "Brian Mello",
+  "license": "ISC"
+}
