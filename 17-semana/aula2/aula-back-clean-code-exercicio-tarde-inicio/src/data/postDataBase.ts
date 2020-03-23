@@ -56,10 +56,13 @@ export class PostDB extends BaseDB {
 
   public async getPost(id: string): Promise<PostWithUser | undefined> {
     const result = await this.connection.raw(`
-SELECT * FROM ${this.userTableName} u
-LEFT JOIN ${this.postTableName} p 
-ON u.id = p.userId
-WHERE p.id='${id}'`);
+      SELECT * 
+      FROM ${this.userTableName} u
+      LEFT JOIN ${this.postTableName} p 
+      ON u.id = p.userId
+      WHERE p.id='${id}'`
+    );
+
     let postType = PostType.normal;
 
     if (!result[0][0]) {
@@ -95,7 +98,7 @@ WHERE p.id='${id}'`);
       SELECT * 
       FROM ${this.userTableName} u
       JOIN ${this.postTableName} p 
-      ON u.id = p.id
+      ON u.id = p.userId
       WHERE type='${type}'`);
 
     let postType = PostType.normal;

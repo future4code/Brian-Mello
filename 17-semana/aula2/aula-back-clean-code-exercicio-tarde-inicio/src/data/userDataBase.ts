@@ -29,19 +29,20 @@ export class UserDB extends BaseDB {
 
   public async createUser(user: User): Promise<void> {
     await this.connection.raw(`
-INSERT INTO ${this.userTableName} (id, name, email, birthDate) 
-VALUES(
-	'${user.getId()}',
-	'${user.getName()}',
-	'${user.getEmail()}',
-  STR_TO_DATE('${this.mapDateToDbDate(user.getBirthDate())}', '%Y-%m-%d')
-);
+      INSERT INTO ${this.userTableName} (id, name, email, birthDate) 
+      VALUES(
+        '${user.getId()}',
+        '${user.getName()}',
+        '${user.getEmail()}',
+        STR_TO_DATE('${this.mapDateToDbDate(user.getBirthDate())}', '%Y-%m-%d')
+      );
     `);
   }
 
   public async getAllUsers(): Promise<User[]> {
     const result = await this.connection.raw(
-      `SELECT * FROM ${this.userTableName}`
+        `SELECT * 
+        FROM ${this.userTableName}`
     );
 
     return result[0].map((res: any) => this.mapDbUserToUser(res)!);
