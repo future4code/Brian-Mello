@@ -7,7 +7,7 @@ export class FeedDB extends BaseDB implements FeedGateway{
     private userTableName = "user";
     private postTableName = "post";
 
-    public async getPostsForFeed(id: string): Promise<Feed[] | undefined>{
+    public async getPostsForFeed(id: string, orderBy: string, orderType: string, limit: number, offset: number): Promise<Feed[] | undefined>{
         const result = await this.connection.raw(`
             SELECT p.*, u.name
             FROM ${this.relationTableName} ur
@@ -16,7 +16,7 @@ export class FeedDB extends BaseDB implements FeedGateway{
             JOIN ${this.postTableName} p
             ON ur.friendAddedId = p.userId
             WHERE adderFriendId = '${id}'
-            ORDER BY p.creationDate DESC;
+            ORDER BY ${orderBy} ${orderType};
         `)
 
         if (!result[0][0]) {
@@ -35,8 +35,8 @@ export class FeedDB extends BaseDB implements FeedGateway{
             );
         });
     };
-    
-    public async getPostsForFeedByType(id: string, type: string): Promise<Feed[] | undefined>{
+
+    public async getPostsForFeedByType(id: string, type: string, orderBy: string, orderType: string, limit: number, offset: number): Promise<Feed[] | undefined>{
         const result = await this.connection.raw(`
             SELECT p.*, u.name
             FROM ${this.relationTableName} ur

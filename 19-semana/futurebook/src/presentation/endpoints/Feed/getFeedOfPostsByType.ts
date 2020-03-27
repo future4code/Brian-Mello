@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { FeedOfPostsByTypeUC } from "../../../bussiness/usecase/Feed/getFeedOfPostsByType";
+import { FeedOfPostsByTypeUC, FeedOrderType } from "../../../bussiness/usecase/Feed/getFeedOfPostsByType";
 import { FeedDB } from "../../../data/feedDataBase";
 import * as jwt from 'jsonwebtoken';
 
@@ -11,9 +11,18 @@ export const FeedOfPostsByType = async (req: Request, res: Response) => {
 
         const token_verify = await jwt.verify(req.headers.auth as string, JWT_SECRET) as {id: string};
 
+        let orderType = FeedOrderType.ASC;
+
+        if(req.body.orderType === "DESC"){
+            orderType = FeedOrderType.DESC
+        }
+        
         const result = await feedOfPostsByType.execute({
             id: token_verify.id,
-            type: req.query.type
+            type: req.query.type,
+            orderBy: req.body.orderBy,
+            orderType,
+            limit: req.body.limit
         })
 
         res.status(200).send({

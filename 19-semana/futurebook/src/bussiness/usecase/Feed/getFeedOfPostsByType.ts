@@ -5,9 +5,30 @@ export class FeedOfPostsByTypeUC{
         private feedGateway: FeedGateway
     ){}
 
+    private POST_PET_PAGE = 10;
+
     public async execute(input: FeedOfPostsByTypeUCInput): Promise<FeedOfPostsByTypeUCOutput >{
 
-        const posts = await this.feedGateway.getPostsForFeedByType(input.id, input.type);
+        let orderBy = "p.creationDate";
+        if(input.orderBy === "p.creationDate" || input.orderBy === "p.description") {
+            orderBy = input.orderBy;
+        } else if (input.orderBy !== undefined) {
+            throw new Error("Invalid Order By!");
+        }
+
+        let orderType = FeedOrderType.ASC;
+        if(input.orderType === "DESC"){
+            orderType = FeedOrderType.DESC
+        } else if( input.orderType === "ASC"){
+            orderType = FeedOrderType.ASC
+        } else if (input.orderType !== undefined){
+            throw new Error("Invalid Order Type!")
+        }
+
+        let limit = input.limit >= 1 ? input.limit : 1;
+        const offset = this.POST_PET_PAGE * (limit -1)
+
+        const posts = await this.feedGateway.getPostsForFeedByType(input.id, input.type, orderBy, orderType, this.POST_PET_PAGE, offset);
 
         if(!posts){
             throw new Error("Feed is Empty!");
@@ -32,6 +53,9 @@ export class FeedOfPostsByTypeUC{
 export interface FeedOfPostsByTypeUCInput{
     id: string;
     type: string;
+    orderBy: string;
+    orderType: string;
+    limit: number;
 }
 
 export interface FeedOfPostsByTypeUCOutput{
@@ -45,4 +69,9 @@ export interface FeedOfPostsByTypeUCOutputPost{
     type: string;
     userId: string;
     name: string;
+}
+
+export enum FeedOrderType {
+    ASC = "ASC",
+    DESC = "DESC"
 }
