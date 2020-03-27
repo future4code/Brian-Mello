@@ -1,15 +1,21 @@
 import { PostType, Post } from "../../entities/Post";
 import { PostDB } from "../../../data/postDataBase";
 import { v4 } from "uuid"
+import { AuthenticationGateway } from "../../gateways/authenticationGateway";
 
 export class CreatePostUC {
     constructor(
-        private postDB: PostDB
+        private postDB: PostDB,
+        private authenticationGateway: AuthenticationGateway
     ){}
 
     public async execute(input: CreatePostUCInput): Promise<CreatePostUCOutput>{
         const id = v4()
 
+        const userInfo = this.authenticationGateway.getUsersInfoFromToken(input.token)
+
+        console.log(userInfo)
+        
         let postType = PostType.normal;
 
         if(input.type === "event"){
@@ -24,7 +30,7 @@ export class CreatePostUC {
             input.description,
             new Date(),
             postType,
-            input.userId
+            userInfo.id
         )
 
         await this.postDB.createPost(post)
@@ -39,7 +45,7 @@ export interface CreatePostUCInput {
     photo: string;
     description: string;
     type: PostType;
-    userId: string;
+    token: string;
 }
 
 export interface CreatePostUCOutput {

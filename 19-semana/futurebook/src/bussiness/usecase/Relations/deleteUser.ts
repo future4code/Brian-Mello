@@ -1,19 +1,23 @@
 import { RelationGateway } from "../../gateways/relationsGateway";
+import { AuthenticationGateway } from "../../gateways/authenticationGateway";
 
 export class DeleteUserUC{
     constructor(
-        private relationGateway: RelationGateway
+        private relationGateway: RelationGateway,
+        private authenticationGateway: AuthenticationGateway
     ){}
     
     public async execute(input: DeleteUserUCInput): Promise<DeleteUserUCOutput>{
 
-        const user = await this.relationGateway.getUsersRelationsData(input.adderFriendId, input.friendAddedId)
+        const userInfo = this.authenticationGateway.getUsersInfoFromToken(input.token)
+
+        const user = await this.relationGateway.getUsersRelationsData(userInfo.id, input.friendAddedId)
 
         if(!user){
             throw new Error("You are not friends!")
         }
 
-        await this.relationGateway.unfollowUserRelation(input.adderFriendId, input.friendAddedId)
+        await this.relationGateway.unfollowUserRelation(userInfo.id, input.friendAddedId)
 
         return{
             message: "Friendship ended successfully"
@@ -23,7 +27,7 @@ export class DeleteUserUC{
 }
 
 export interface DeleteUserUCInput{
-    adderFriendId: string;
+    token: string;
     friendAddedId: string;
 }
 

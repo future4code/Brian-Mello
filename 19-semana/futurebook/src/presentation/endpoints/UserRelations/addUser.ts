@@ -1,18 +1,14 @@
 import { Request, Response } from "express";
 import { UserRelationsDB } from "../../../data/relationDataBase";
-import * as jwt from "jsonwebtoken";
 import { AddUserUC } from "../../../bussiness/usecase/Relations/addUser";
+import { JwtAuthorizer } from "../../../services/jwtAuthorizer";
 
 export const AddUserEndpoit = async(req: Request, res: Response) => {
     try{
-        const addUserUC = new AddUserUC(new UserRelationsDB);
+        const addUserUC = new AddUserUC(new UserRelationsDB(), new JwtAuthorizer());
 
-        const JWT_SECRET: string = process.env.JWT_SECRET || "";
-
-        const token_verify = jwt.verify(req.headers.auth as string, JWT_SECRET) as { id: string};
-        
         const result = await addUserUC.execute({
-            adderFriendId: token_verify.id,
+            token: req.headers.auth as string,
             friendAddedId: req.body.friendAddedId
         });
 

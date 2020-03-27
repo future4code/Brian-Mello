@@ -1,10 +1,13 @@
 import { UserGateway } from '../../gateways/userGateway';
-import * as bcrypt from 'bcrypt';
-import * as jwt from 'jsonwebtoken';
+import { AuthenticationGateway } from "../../gateways/authenticationGateway";
+import { CryptographyGateway } from "../../gateways/cryptographyGateway";
 
 export class LoginUC{
     constructor(
-        private userGateway: UserGateway
+        private userGateway: UserGateway,
+        private authenticationGateway: AuthenticationGateway,
+        private cryptographyGateway: CryptographyGateway,
+        private refreshTokenGateway: RefreshTokenGateway
     ){}
 
     public async execute(input: LoginUCInput): Promise<LoginUCOutput>{
@@ -19,22 +22,41 @@ export class LoginUC{
             throw new Error("User not found!");
         };
 
-        const passwordCompare = await bcrypt.compare(input.password, user.getPassword());
+        const compare = await this.cryptographyGateway.compare(input.password, user.getPassword())
 
-        if(!passwordCompare) {
+        if(!compare) {
             throw new Error("invalid password or email");
         };
 
-        const JWT_SECRET: string = process.env.JWT_SECRET || "";
+        const accessToken = this.authenticationGateway.generateToken({
+            id: user.getId(),
+            type: user.getType()
+        }, process.env.ACCESS_TOKEN_TIME as string)
 
-        const token = jwt.sign({id: user.getId()}, JWT_SECRET, {
-                expiresIn: "10h"
-            }
-        );
+        const refreshToken = this.authenticationGateway.generateToken({
+            id: user.getId(),
+            userDevice: input.device
+        }, process.env.REFRESH_TOKEN_TIME as string)
+
+        const refreshTokenForUserAndDevice = await this.refreshTokenGateway.getRefreshToken(
+            input.device,
+            user.getId()
+        )
+
+        if(refreshTokenForUserAndDevice){
+            await this.refreshTokenGateway.deleteRefreshToken(input.device, user.getId())
+        }
+
+        await this.refreshTokenGateway.createRefreshToken({
+            token: refreshToken,
+            userId: user.getId(),
+            device: input.device
+        })
 
         return {
             message: "User Logged Successfully",
-            token: token
+            accessToken: accessToken,
+            refreshToken: refreshToken
         }
     }
 }
@@ -42,9 +64,11 @@ export class LoginUC{
 export interface LoginUCInput{
     email: string;
     password: string;
+    device: string;
 }
 
 export interface LoginUCOutput{
     message: string;
-    token: string;
+    accessToken: string;
+    refreshToken: string;
 }

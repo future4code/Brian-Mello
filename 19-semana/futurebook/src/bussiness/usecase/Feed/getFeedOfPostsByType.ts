@@ -1,13 +1,17 @@
 import { FeedGateway } from "../../gateways/feedGateway";
+import { AuthenticationGateway } from "../../gateways/authenticationGateway";
 
 export class FeedOfPostsByTypeUC{
     constructor(
-        private feedGateway: FeedGateway
+        private feedGateway: FeedGateway,
+        private authenticationGateway: AuthenticationGateway
     ){}
 
     private POST_PET_PAGE = 10;
 
     public async execute(input: FeedOfPostsByTypeUCInput): Promise<FeedOfPostsByTypeUCOutput >{
+
+        const userInfo = await this.authenticationGateway.getUsersInfoFromToken(input.token);
 
         let orderBy = "p.creationDate";
         if(input.orderBy === "p.creationDate" || input.orderBy === "p.description") {
@@ -25,10 +29,10 @@ export class FeedOfPostsByTypeUC{
             throw new Error("Invalid Order Type!")
         }
 
-        let limit = input.limit >= 1 ? input.limit : 1;
-        const offset = this.POST_PET_PAGE * (limit -1)
+        let page = input.page >= 1 ? input.page : 1;
+        const offset = this.POST_PET_PAGE * (page -1)
 
-        const posts = await this.feedGateway.getPostsForFeedByType(input.id, input.type, orderBy, orderType, this.POST_PET_PAGE, offset);
+        const posts = await this.feedGateway.getPostsForFeedByType(userInfo.id, input.type, orderBy, orderType, this.POST_PET_PAGE, offset);
 
         if(!posts){
             throw new Error("Feed is Empty!");
@@ -51,11 +55,11 @@ export class FeedOfPostsByTypeUC{
 }
 
 export interface FeedOfPostsByTypeUCInput{
-    id: string;
+    token: string;
     type: string;
     orderBy: string;
     orderType: string;
-    limit: number;
+    page: number;
 }
 
 export interface FeedOfPostsByTypeUCOutput{

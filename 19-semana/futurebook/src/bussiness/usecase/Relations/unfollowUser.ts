@@ -1,19 +1,23 @@
 import { RelationGateway } from "../../gateways/relationsGateway";
+import { AuthenticationGateway } from "../../gateways/authenticationGateway";
 
 export class UnfollowUserUC{
     constructor(
-        private relationGateway: RelationGateway
+        private relationGateway: RelationGateway,
+        private authenticationGateway: AuthenticationGateway
     ){}
     
     public async execute(input: UnfollowUserUCInput): Promise<UnfollowUserUCOutput>{
 
-        const user = await this.relationGateway.getUsersRelationsData(input.adderFriendId, input.friendAddedId)
+        const userInfo = this.authenticationGateway.getUsersInfoFromToken(input.token)
+
+        const user = await this.relationGateway.getUsersRelationsData(userInfo.id, input.friendAddedId)
 
         if(!user){
             throw new Error("You don't follow this user!")
         }
 
-        await this.relationGateway.unfollowUserRelation(input.adderFriendId, input.friendAddedId)
+        await this.relationGateway.unfollowUserRelation(userInfo.id, input.friendAddedId)
 
         return{
             message: "User Unfollowed Successfully"
@@ -23,7 +27,7 @@ export class UnfollowUserUC{
 }
 
 export interface UnfollowUserUCInput{
-    adderFriendId: string;
+    token: string;
     friendAddedId: string;
 }
 

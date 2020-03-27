@@ -16,7 +16,8 @@ export class FeedDB extends BaseDB implements FeedGateway{
             JOIN ${this.postTableName} p
             ON ur.friendAddedId = p.userId
             WHERE adderFriendId = '${id}'
-            ORDER BY ${orderBy} ${orderType};
+            ORDER BY ${orderBy} ${orderType}
+            LIMIT ${limit} OFFSET ${offset};
         `)
 
         if (!result[0][0]) {
@@ -29,8 +30,8 @@ export class FeedDB extends BaseDB implements FeedGateway{
                 post.photo,
                 post.description,
                 post.creationDate,
-                post.userId,
                 post.type,
+                post.userId,
                 post.name
             );
         });
@@ -45,7 +46,8 @@ export class FeedDB extends BaseDB implements FeedGateway{
             JOIN ${this.postTableName} p
             ON ur.friendAddedId = p.userId
             WHERE adderFriendId = '${id}' AND p.type = '${type}'
-            ORDER BY p.creationDate DESC;
+            ORDER BY ${orderBy} ${orderType}
+            LIMIT ${limit} OFFSET ${offset};
         `);
 
         if (!result[0][0]) {
@@ -58,8 +60,8 @@ export class FeedDB extends BaseDB implements FeedGateway{
                 post.photo,
                 post.description,
                 post.creationDate,
-                post.userId,
                 post.type,
+                post.userId,
                 post.name
             );
         });

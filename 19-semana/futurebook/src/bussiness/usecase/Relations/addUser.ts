@@ -1,19 +1,23 @@
 import { RelationGateway } from "../../gateways/relationsGateway";
+import { AuthenticationGateway } from "../../gateways/authenticationGateway";
 
 export class AddUserUC{
     constructor(
-        private relationGateway: RelationGateway
+        private relationGateway: RelationGateway,
+        private authenticationGateway: AuthenticationGateway
     ){}
     
     public async execute(input: AddFriendUCInput): Promise<AddFriendUCOutput>{
 
-        const user = await this.relationGateway.getUsersRelationsData(input.adderFriendId, input.friendAddedId)
+        const userInfo = this.authenticationGateway.getUsersInfoFromToken(input.token)
+
+        const user = await this.relationGateway.getUsersRelationsData(userInfo.id, input.friendAddedId)
 
         if(user){
             throw new Error("You are already friends!")
         }
 
-        await this.relationGateway.addUserRelation(input.adderFriendId, input.friendAddedId)
+        await this.relationGateway.addUserRelation(userInfo.id, input.friendAddedId)
 
         return{
             message: "User Added Successfully"
@@ -23,7 +27,7 @@ export class AddUserUC{
 }
 
 export interface AddFriendUCInput{
-    adderFriendId: string;
+    token: string;
     friendAddedId: string;
 }
 

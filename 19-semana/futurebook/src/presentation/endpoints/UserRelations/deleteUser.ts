@@ -1,18 +1,14 @@
 import { Request, Response } from "express";
 import { DeleteUserUC } from "../../../bussiness/usecase/Relations/deleteUser";
 import { UserRelationsDB } from "../../../data/relationDataBase";
-import * as jwt from "jsonwebtoken";
+import { JwtAuthorizer } from "../../../services/jwtAuthorizer";
 
 export const DeleteUserEndpoit = async(req: Request, res: Response) => {
     try{
-        const deleteUserUC = new DeleteUserUC(new UserRelationsDB);
-
-        const JWT_SECRET: string = process.env.JWT_SECRET || "";
-
-        const token_verify = jwt.verify(req.headers.auth as string, JWT_SECRET) as { id: string};
+        const deleteUserUC = new DeleteUserUC(new UserRelationsDB(), new JwtAuthorizer());
         
         const result = await deleteUserUC.execute({
-            adderFriendId: token_verify.id,
+            token: req.headers.auth as string,
             friendAddedId: req.body.friendAddedId
         });
 

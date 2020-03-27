@@ -2,12 +2,15 @@ import { UserGateway } from "../../gateways/userGateway";
 import { v4 } from "uuid";
 import { UserType, User } from "../../entities/User";
 import { InvalidParameterError } from "../../error/InvalidParams";
-import * as bcrypt from 'bcrypt';
-import * as jwt from 'jsonwebtoken';
+import { AuthenticationGateway } from "../../gateways/authenticationGateway";
+import { CryptographyGateway } from "../../gateways/cryptographyGateway";
 
 export class SignUpUC{
     constructor(
-        private userGateway: UserGateway
+        private userGateway: UserGateway,
+        private authenticationGateway: AuthenticationGateway,
+        private cryptographyGateway: CryptographyGateway,
+        private refreshTokenGateway: RefreshTokenGateway
     ){}
 
     public async execute(input: SignUpUCInput): Promise<SignUpUCOutput>{
@@ -29,7 +32,7 @@ export class SignUpUC{
 
         } else {
 
-            const hashPassword = await bcrypt.hash(input.password, 15);
+            const hashPassword = await this.cryptographyGateway.encrypt(input.password);
 
             const user = new User(
                 id,
@@ -41,19 +44,25 @@ export class SignUpUC{
 
             await this.userGateway.singUp(user)
 
-            const JWT_SECRET: string = process.env.JWT_SECRET || "";
+            const accessToken = this.authenticationGateway.generateToken({
+                id: user.getId(),
+                type: user.getType()
+            }, process.env.ACCESS_TOKEN_TIME as string)
 
-            const token = jwt.sign({
-                id: user.getId()},
-                JWT_SECRET,
-                {
-                    expiresIn: "10h"
-                }
-            )
+            const refreshToken = this.authenticationGateway.generateToken({
+                id: user.getId(),
+                userDevice: input.device
+            }, process.env.REFRESH_TOKEN_TIME as string)
 
+            await this.refreshTokenGateway.createRefreshToken({
+                token: refreshToken,
+                userId: user.getId(),
+                device: input.device
+            })
             return {
                 message: "User Created Successfully",
-                token: token
+                accessToken: accessToken,
+                refreshToken: refreshToken
             }
         }
 
@@ -65,9 +74,11 @@ export interface SignUpUCInput{
     email: string;
     password: string;
     type: string;
+    device: string;
 }
 
 export interface SignUpUCOutput{
     message: string;
-    token: string;
+    accessToken: string;
+    refreshToken: string;
 }
