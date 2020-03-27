@@ -33,7 +33,8 @@ export class UserRelationsDB extends BaseDB implements RelationGateway{
         await this.connection.raw(`
             INSERT INTO ${this.userRelationsTableName}(adderFriendId, friendAddedId)
             VALUES('${adderFriendId}', '${friendAddedId}'),
-            ('${friendAddedId}', '${adderFriendId}');
+            ('${friendAddedId}', '${adderFriendId}'),
+            ('${adderFriendId}', '${adderFriendId}');
         `);  
     };
 
