@@ -1,0 +1,41 @@
+const execute = (cep, apiKey) => {
+    if (!apiKey || !cep) {
+        throw new Error("Está faltando informação");
+    }
+    
+    if (apiKey !== "key") {
+        throw new Error("Chave de API inválida");
+    }
+    
+    if (cep.indexOf("-") === -1){
+        throw new Error("está faltando o -")
+    }
+  
+    if(cep.length < 9 || cep.length >9){
+      throw new Error("Está faltando digitos no cep")
+    }
+  
+  return cep;
+};
+
+exports.handler = async event => {
+    try{
+        const body = JSON.parse(event.body)
+        const cep = body.cep
+        const apikey = event.headers.apikey
+        const result = execute(cep, apikey)
+        return {
+            statusCode: 200,
+            body: JSON.stringify({
+            message: result ? "Esse cpf é válido" : "Esse cpf não é valido"
+        })
+    }; 
+    } catch(err){
+        return{
+            statusCode: 400,
+            body: JSON.stringify({
+                errorMessage: err.message
+            })
+        }
+    }
+};
