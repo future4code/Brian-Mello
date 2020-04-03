@@ -43,17 +43,17 @@ const StyledDiv = styled.div`
 
 function App() {
   return (
-    <StyledDiv>
-      <StyledForm 
+    <div>
+      <form 
         action="http://localhost:3000/uploadFile" 
         method="POST" 
         enctype="multipart/form-data" 
       >
         <p>Link</p>
-        <StyledInput name="data" type="file"/>
-        <StyledButton type="submit">Enviar</StyledButton>
-      </StyledForm>
-    </StyledDiv>
+        <input name="data" type="file"/>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
   );
 }
 
