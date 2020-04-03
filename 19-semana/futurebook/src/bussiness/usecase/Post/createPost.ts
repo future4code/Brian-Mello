@@ -13,8 +13,6 @@ export class CreatePostUC {
         const id = v4()
 
         const userInfo = this.authenticationGateway.getUsersInfoFromToken(input.token)
-
-        console.log(userInfo)
         
         let postType = PostType.normal;
 
