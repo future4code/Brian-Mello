@@ -1,1 +1,0 @@
-tabela foi criada com id, nome, foto e preço, endpoint criado e nomeado como /createProduct e subido para o lambda
