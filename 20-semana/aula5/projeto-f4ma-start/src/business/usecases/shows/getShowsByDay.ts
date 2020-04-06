@@ -16,7 +16,7 @@ export class GetShowsByDayUC {
         return {
             shows: show.map(band => {
                 return {
-                    id: band.getBandId(),
+                    id: band.getId(),
                     week_day: band.getWeekDate(),
                     start_time: band.getStartTime(),
                     end_time: band.getEndTime(),
