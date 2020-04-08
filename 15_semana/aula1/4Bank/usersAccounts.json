@@ -1,0 +1,25 @@
+{
+  "usersAccountsList": [
+    {
+      "name": "Brian Mello",
+      "cpf": "123.123.123-12",
+      "age": 22,
+      "balance": 0,
+      "transactions": []
+    },
+    {
+      "name": "Joao",
+      "cpf": "122.122.122.12",
+      "age": 20,
+      "balance": 0,
+      "transactions": []
+    },
+    {
+      "name": "Brian Mello",
+      "cpf": "123.456.789-10",
+      "age": 22,
+      "balance": 0,
+      "transactions": []
+    }
+  ]
+}

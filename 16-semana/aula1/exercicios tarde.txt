@@ -1,0 +1,119 @@
+1.a
+a) 
+SELECT first_name, last_name
+FROM actors
+WHERE first_name OR last_name LIKE "%a%";
+
+b)
+SELECT last_name
+FROM actors
+WHERE first_name="DAN" OR first_name="JULIA";
+
+c)
+SELECT first_name, last_name
+FROM actors
+WHERE first_name="ANGELINA" OR first_name LIKE "%b%";
+
+1.b
+a)
+criando tabela
+CREATE TABLE brian_actors(
+	actor_ID int PRIMARY KEY,
+    first_name varchar(45) NOT NULL,
+    last_name varchar(45) NOT NULL
+);
+
+b)
+adicionando item na tabela
+INSERT INTO brian_actors (actor_ID, first_name, last_name)
+VALUES (1, "Brian", "Mello")
+
+DESCRIBE brian_actors
+
+2.a)
+a)
+SELECT title, description
+FROM films
+WHERE length >= 120
+
+b)
+SELECT description, release_year, rating
+FROM films
+WHERE special_features LIKE "%Commentaries%";
+
+c)
+SELECT title, release_year, special_features
+FROM films
+Where rating="NC-17" AND title LIKE "A%"
+
+d)
+SELECT *
+FROM films
+WHERE rating = "PG-13" AND special_features Like "%Trailers%" AND title LIKE "%d%"
+
+
+2.b)
+tabela de filmes criada
+
+a)CREATE TABLE brian_films (
+	film_ID int PRIMARY KEY,
+    title varchar(128) NOT NULL,
+    description varchar(255) NOT NULL,
+    release_year year(4) NOT NULL,
+    length int(11) NOT NULL,
+    rating enum('G','PG','PG-13','R','NC-17') NOT NULL,
+    special_features set('Trailers','Commentaries','Deleted Scenes','Behind the Scenes') NOT NULL
+);
+
+b)
+inserção de dados feita
+INSERT INTO brian_films
+
+VALUES(
+1, 
+"Fuga das galinhas", 
+"várias galinhas querem fugir do galinheiro, mas grandes aventuras as esperam",
+2000,
+95,
+"G",
+"Trailers"
+)
+
+(
+2, 
+"Pokémon the Movie: Mewtwo Strikes Back: Evolution", 
+"Remake de Pokémon - O filme, o longa começa quando um grupo de cientistas decide criar o pokémon mais poderoso de todos os tempos. Mas a criatura chamada de Mewtwo se rebela e convoca grandes treinadores, escondendo um plano mirabolante.",
+2019,
+98,
+"G",
+"Trailers"
+)
+
+(3, 
+"O Massacre do JSON", 
+"JSON um arquivo tão de boa que sempre ferrava seus coleguinhas quando pediam para ele ler ou escrever algo no seu caderno",
+2020,
+98,
+"NC-17",
+"Terror, drama, suspense"
+)
+
+(4, 
+"A viagem da Api", 
+"Esse filme conta com o processo da viagem da api através dó código javascript",
+2019,
+98,
+"G",
+"documentário, drama, aventura"
+)
+
+(5, 
+"Future4 e a viagem ao centro da web", 
+"uma turma de exploradores do mundo da programação e seus companheiros acabam viajando para o mundo da web onde descobrem várias coisas nunca antes vistas",
+2020,
+98,
+"G",
+"aventura, suspense"
+)
+
+DESCRIBE brian_films

@@ -1,0 +1,92 @@
+1)
+a)
+select * 
+from city
+order by population desc
+limit 5
+
+b)
+select avg(population) 
+from city
+group by District
+
+c)
+select count(Name)
+from city
+group by District
+
+d)
+select count(*), CountryCode
+from city
+group by CountryCode
+order by count(CountryCode) DESC
+limit 10
+
+2)
+a)
+select *
+from country
+where Population>=100000
+limit 100
+
+b)
+select count(*)
+from country
+where Population>=5000000
+
+c)
+select sum(Population) as "Soma da População"
+from country
+where Continent = "Asia"
+
+d)
+select count(*), GovernmentForm
+from country
+where GovernmentForm Like "%Republic%" OR GovernmentForm like "%Monarchy%"
+group by GovernmentForm;
+
+e)
+select count(*), GovernmentForm
+from country
+group by GovernmentForm
+order by count(*) Desc
+limit 1;
+
+f)
+select avg(population), continent
+from country
+group by continent;
+
+f)
+select Name, indepYear
+from country
+order by indepYear DESC
+limit 10;
+
+g)
+select avg(LifeExpectancy), lower(Continent)
+from country
+group by Continent;
+
+h)
+select continent, SurfaceArea 
+from country
+order by SurfaceArea DESC
+limit 3;
+
+Escrita
+INSERT INTO brian_films (film_Id, title, description, release_year, length, rating, special_features)
+VALUES(10, "Dragon test - the last trial on final fantasy", "the film passed on a cybernetic world where the peoples are dying and the hero need to find the greatest evil and defeat him.", 2023, 150, "R", "fantasy, adventure");
+
+ALTER TABLE brian_films
+ADD watched BOOL NOT NULL DEFAULT false;
+
+UPDATE brian_films
+SET watched = false
+WHERE rating = 3 OR rating = 4 OR rating = 5;
+
+ALTER TABLE brian_films
+ADD lucky_number int NOT NULL DEFAULT 0;
+
+UPDATE brian_films
+SET lucky_number = floor(RAND()*1000)

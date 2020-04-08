@@ -1,0 +1,18 @@
+{
+  "usersAccountsList": [
+    {
+      "name": "Brian Mello",
+      "birth": "15/06/1997",
+      "CPF": "123.123.123-13",
+      "expenses": [],
+      "balance": 0
+    },
+    {
+      "name": "Joao",
+      "birth": "15/06/1997",
+      "CPF": "123.123.123-12",
+      "expenses": [],
+      "balance": 0
+    }
+  ]
+}

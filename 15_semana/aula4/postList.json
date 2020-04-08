@@ -1,0 +1,34 @@
+{
+  "posts": [
+    {
+      "author": "Welcome",
+      "postText": "Brian",
+      "publishedDate": "2020-02-20T18:27:25.462Z"
+    },
+    {
+      "author": "Brian",
+      "postText": "Welcome",
+      "publishedDate": "2020-02-20T18:51:34.672Z"
+    },
+    {
+      "author": "Brian",
+      "postText": "Welcome",
+      "publishedDate": "2020-02-20T19:12:14.291Z"
+    },
+    {
+      "author": "Brian",
+      "postText": "Welcome",
+      "publishedDate": "2020-02-20T19:14:29.240Z"
+    },
+    {
+      "author": "",
+      "postText": "Welcome",
+      "publishedDate": "2020-02-20T19:19:41.697Z"
+    },
+    {
+      "author": "Brian",
+      "postText": "Welcome",
+      "publishedDate": "2020-02-20T19:55:48.826Z"
+    }
+  ]
+}

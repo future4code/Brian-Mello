@@ -1,0 +1,24 @@
+a) eu entendi, essa função no caso valida se os dados que estão sendo passados para a criação de um usuário estão corretas.
+
+b) caso o objeto seja vazio, ela retorna um "missing input".
+
+c) caso não seja passado os parametros corretos, faltando o input nesse caso, ele irá retornará "missing input".
+
+d) ele irá retornar "missing email" pois ele só fornece o nome do usuário e além disso, pela ordem, a validação do email vem antes do password.
+
+e)ele retornará "invalid password" pois o password tem menos de 6 caracteres.
+
+f) ele vai retornar o status 200
+
+g)na verificação do email poderia ser feito um if/else if que caso o !input.email validaria se existe o email, mandaria o status 400 e a mensagem, no else if ele validaria com um input.email.indexOf("@") === -1 e validaria a sintaxe do email, caso estivesse errada retornaria status 422 e uma mensagem.
+
+h) para retornar o status 200 será necessário passar o objeto:
+{
+    user{
+         input{
+               "name": "Astrodev",
+               "email": "astrodev@f4.com.br",
+               "password": "123456"  
+         }
+    }
+}

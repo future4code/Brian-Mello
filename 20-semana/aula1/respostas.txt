@@ -1,0 +1,11 @@
+exericio1)
+1)comparado com a aula eu busquei fazer o deploy antes de testar o projeto pois eu ja sabia que ele estava funcionando.
+2)peguei o projeto do 4eddit pois estava lindo.
+3)ssh -i ec2-awskey-brian.pem ubuntu@3.90.242.227.
+4,5,6)eu usei um git clone pra pegar o projeto, dei cd 4eddit pra entrar no repositório projeto, dei um npm run build pra gerar uma build dele, dei um npm run start pra ver ele rodandado na porta 3000, depois dei ctrl+c pra fechar o npm start, em seguida entrei na pasta build com o comando cd build/ e por ultimo rodei o comando sudo python -mSimpleHTTPServer 80 para rodar o projeto sem ter que passar uma porta.
+
+7) única diferença foi que demos git clone ao invés de rodar um npx create-react-app, e foi um processo mais rápido por já sabermos fazer as coisas. 
+
+exercicio2) 
+
+A maior dificuldade da minha parte foi na hora do password porque fiquei meio confuso mas de resto acho que foi simples, a questão de editar o arquivo via terminal também foi esquisito de resto foi bem simples, a parte que foi mais fácil para mim foi na questão de criar a porta 3306 e também a parte de criar o database.

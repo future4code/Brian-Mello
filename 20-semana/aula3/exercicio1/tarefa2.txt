@@ -1,0 +1,10 @@
+1 - se fizer um input que tenha só o body e não tenha query ele retorna missing input, caso o tenha query, mas o body seja vazio, ele retornar um missing input,  o tamanho do body 
+precisa ser diferente de 0 e ter uma query string para que ele retorne 200.
+
+2 - o json.parse(event.body) serve para o arquivo .json seja transformado em um código javascript para que consigar ser feita a verificação.
+
+3 - ele retorna 200 quando tanto o body quanto o querys tiver preenchidos. Ele retorna no body hasBody = true e hasQuery = true.
+
+4 - ele retorna 400 com a mensagem missing input quando não passamos nem o body nem o query para a api.
+
+5 - teste foi feito, quando eu passei so o body ele deu 400 pois faltava a query, quando passei so a query, ele retornou 400 pois faltava o body, quando passei ambos, ele retornou 200.
