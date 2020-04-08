@@ -8,6 +8,7 @@ import { DeleteVideoEndpoint } from "./endpoints/video/deleteVideo";
 import { UpdateVideoEndpoint } from "./endpoints/video/updateVideo";
 import { GetVideoDetailEndpoint } from "./endpoints/video/getVideoDetail";
 import { GetVideoByUserEndpoint } from "./endpoints/video/getVideoByUser";
+import { UpdatePasswordEndpoint } from "./endpoints/user/updatePassword";
 
 const app = express();
 app.use(express.json()); // Linha mágica (middleware)
@@ -16,6 +17,7 @@ app.use(express.json()); // Linha mágica (middleware)
 app.post("/signup", SignUpEndpoint);
 app.get("/login", LoginEndpoint);
 app.get("/users", GetAllUsersEndpoint);
+app.post("/updatePassword", UpdatePasswordEndpoint);
 
 // video
 app.post("/createVideo", CreateVideoEndpoint);
@@ -32,6 +34,7 @@ app.get('/', (req: Request, res: Response) => {
         '/signup': 'Criação dos usuários',
         '/login': 'Login do usuário',
         '/users': 'Retorna todos usuários. Apenas administradores podem usar esse endpoint',
+        '/updatePassword': 'atualiza a senha de um usuário',
         '/createVideo': 'Cria um video',
         '/feed': 'Mostra todos videos',
         '/deleteVideo': 'Deleta um vídeo ao passar um id no body',
