@@ -21,7 +21,7 @@ export class CreateVideoUC {
         const userInfo = this.authenticationGateway.getUsersInfoFromToken(input.token)
 
         if(!userInfo){
-            throw new Error("User info are wrong")
+            throw new Error("User info is wrong")
         }
 
         const video = new Video(

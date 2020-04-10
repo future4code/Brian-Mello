@@ -6,7 +6,7 @@ export interface VideoGateway{
     createVideo(video: Video): Promise<void>;
     getVideos(orderBy: string, orderType: string, limit: number, offset: number): Promise<Feed[] | undefined>;
     getVideoById(id: string): Promise<Feed | undefined>;
-    deleteVideo(id: string): Promise<void>;
-    updateVideo(id: string, description: string, title: string): Promise<void>;
-    getVideoByUser(id: string): Promise<Feed[] | undefined>;
+    deleteVideo(id: string, user_id: string): Promise<void>;
+    updateVideo(id: string, user_id: string, title: string, description: string): Promise<void>;
+    getAllUserVideos(id: string): Promise<Feed[] | undefined>;
 }

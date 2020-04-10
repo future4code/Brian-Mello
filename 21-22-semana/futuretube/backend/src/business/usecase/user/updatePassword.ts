@@ -26,7 +26,7 @@ export class UpdatePasswordUC {
         const oldPassword = await this.cryptographyGateway.compare(input.oldPassword, user.getPassword());
 
         if(!oldPassword){
-            throw new InvalidParameterError("Invalid password or email!");
+            throw new InvalidParameterError("Invalid password!");
         };
 
         const newPassword = await this.cryptographyGateway.encrypt(input.newPassword)

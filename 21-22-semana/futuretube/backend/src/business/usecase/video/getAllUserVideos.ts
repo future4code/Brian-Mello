@@ -2,13 +2,13 @@ import { VideoGateway } from "../../gateways/videoGateway";
 import { AuthenticationGateway } from "../../gateways/authenticationGateway";
 import { Feed } from "../../entites/feed";
 
-export class GetVideoByUserUC {
+export class GetAllUserVideosUC {
     constructor(
         private videoGateway: VideoGateway,
         private authenticationGateway: AuthenticationGateway
     ){}
 
-    public async execute(input: GetVideoByUserUCInput): Promise<GetVideoByUserUCOuput>{
+    public async execute(input: GetAllUserVideosUCInput): Promise<GetAllUserVideosUCOuput>{
         const userInfo = await this.authenticationGateway.getUsersInfoFromToken(input.token)
         
         let videos: Feed[] | undefined;
@@ -18,10 +18,10 @@ export class GetVideoByUserUC {
         }
 
         if(input.id){
-            videos = await this.videoGateway.getVideoByUser(input.id)
+            videos = await this.videoGateway.getAllUserVideos(input.id)
             
         } else if (!input.id){
-            videos = await this.videoGateway.getVideoByUser(userInfo.id)
+            videos = await this.videoGateway.getAllUserVideos(userInfo.id)
         }
 
         if(!videos) {
@@ -45,16 +45,16 @@ export class GetVideoByUserUC {
     }
 }
 
-export interface GetVideoByUserUCInput {
+export interface GetAllUserVideosUCInput {
     token: string;
     id: string;
 }
 
-export interface GetVideoByUserUCOuput {
-    videos: GetVideoByUserUCOutputVideo[]
+export interface GetAllUserVideosUCOuput {
+    videos: GetAllUserVideosUCOutputVideo[]
 }
 
-export interface GetVideoByUserUCOutputVideo {
+export interface GetAllUserVideosUCOutputVideo {
     id: string;
     title: string;
     link: string;

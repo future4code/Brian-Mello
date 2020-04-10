@@ -6,7 +6,7 @@ export const GetVideoDetailEndpoint = async (req: Request, res: Response) => {
     try {
         const getVideoDetailuc = new GetVideoDetailUC(new VideoDB());
         const result = await getVideoDetailuc.execute({
-            id: req.query.id
+            id: req.params.id
         })
 
         res.status(200).send(result)

@@ -8,7 +8,7 @@ export const UpdateVideoEndpoint = async (req: Request, res: Response) => {
         const updateVideoUC = new UpdateVideoUC(new VideoDB(), new JwtAuthorizer());
         const result = await updateVideoUC.execute({
             token: req.headers.auth as string,
-            id: req.query.id,
+            id: req.params.id,
             title: req.body.title,
             description: req.body.description
         })

@@ -1,14 +1,15 @@
 import { Request, Response } from "express";
-import { GetVideoByUserUC } from "../../../business/usecase/video/getVideoByUser";
+import { GetAllUserVideosUC } from "../../../business/usecase/video/getAllUserVideos";
 import { VideoDB } from "../../../data/videoDatabase";
 import { JwtAuthorizer } from "../../lambda/services/jwtAuthorizer";
 
-export const GetVideoByUserEndpoint = async (req: Request, res: Response) => {
+export const GetAllUserVideosEndpoint = async (req: Request, res: Response) => {
     try{
-        const getVideoByUserUC = new GetVideoByUserUC(new VideoDB, new JwtAuthorizer())
-        const result = await getVideoByUserUC.execute({
+
+        const getAllUserVideosUC = new GetAllUserVideosUC(new VideoDB, new JwtAuthorizer())
+        const result = await getAllUserVideosUC.execute({
             token: req.headers.auth as string,
-            id: req.query.id
+            id: req.query ? req.query.id : ""
         })
 
         res.status(200).send(result)
