@@ -54,7 +54,7 @@ export class FeedDB extends BaseDB implements FeedGateway{
             return undefined;
         };
 
-        return result[0].map((post: any) => {
+        return await result[0].map((post: any) => {
             return new Feed(
                 post.id,
                 post.photo,

@@ -8,7 +8,7 @@ export const DeleteVideoEndpoint = async (req: Request, res: Response) => {
         const deleteVideoUC = new DeleteVideoUC(new VideoDB(), new JwtAuthorizer());
         const result = await deleteVideoUC.execute({
             token: req.headers.auth as string,
-            id: req.query.id
+            id: req.params.id
         })
 
         res.status(200).send(result)

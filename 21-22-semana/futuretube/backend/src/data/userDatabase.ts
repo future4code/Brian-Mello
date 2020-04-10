@@ -20,18 +20,11 @@ export class UserDB extends BaseDB implements UserGateway{
         )
     }
 
-    private mapDateToDbDate(input: Date): string {
-        const year = input.getFullYear();
-        const month = input.getMonth() + 1;
-        const date = input.getDate();
-        return `${year + "-" + month + "-" + date}`;
-    }
-
-    public async getUserById(id: string, email: string): Promise<User | undefined>{
+    public async getUserById(id: string): Promise<User | undefined>{
         const result = await this.connection.raw(`
             SELECT *
             FROM ${this.userTableName}
-            WHERE id = '${id}' AND email = '${email}'
+            WHERE id = '${id}'
         `)
 
         if(!result[0][0]){
@@ -53,6 +46,14 @@ export class UserDB extends BaseDB implements UserGateway{
                 '${user.getType()}',
                 '${user.getPhoto()}'
             )
+        `)
+    }
+
+    public async updatePassword(id: string, password: string): Promise<void>{
+        await this.connection.raw(`
+            UPDATE ${this.userTableName}
+            SET password = '${password}'
+            WHERE id = '${id}'
         `)
     }
 

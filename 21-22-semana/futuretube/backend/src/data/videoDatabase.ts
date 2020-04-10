@@ -75,19 +75,18 @@ export class VideoDB extends BaseDB implements VideoGateway{
         `);
     };
 
-    
-    public async deleteVideo(id: string): Promise<void>{
+    public async deleteVideo(id: string, user_id: string): Promise<void>{
         await this.connection.raw(`
             DELETE FROM ${this.videoTableName}
-            WHERE id = '${id}';
+            WHERE id = '${id}' AND user_id = '${user_id}';
         `)
     }
 
-    public async updateVideo(id: string, title: string, description: string): Promise<void>{
+    public async updateVideo(id: string, user_id: string, title: string, description: string): Promise<void>{
         await this.connection.raw(`
             UPDATE ${this.videoTableName}
             SET title = '${title}', description = '${description}'
-            WHERE id = '${id}'
+            WHERE id = '${id}' AND user_id = '${user_id}'
         `)
     }
     
@@ -120,7 +119,7 @@ export class VideoDB extends BaseDB implements VideoGateway{
         });
     };
 
-    public async getVideoByUser(id: string): Promise<Feed[] | undefined>{
+    public async getAllUserVideos(id: string): Promise<Feed[] | undefined>{
         const result = await this.connection.raw(`
             SELECT v.*, u.name
             FROM ${this.videoTableName} v

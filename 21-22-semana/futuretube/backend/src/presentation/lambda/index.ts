@@ -23,8 +23,10 @@ export const handler = async (event: LambdaEvent): Promise<any> => {
     const response = {
       statusCode: err.statusCode || 400,
       body: JSON.stringify({
-        message: err.message || "An unknown error occured"
-      })
+        message: err.data
+          ? err.data.message
+          : err.message || "An unknown error occured",
+      }),
     };
     console.log("Error output: ", response);
 
