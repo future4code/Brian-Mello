@@ -23,10 +23,18 @@ export class UpdatePasswordUC {
             throw new Error("User not found!")
         }
 
+        if(!input.oldPassword) {
+            throw new Error("You need to send the old password input!")
+        }
+
+        if(!input.newPassword) {
+            throw new Error("You need to send the new password input!")
+        }
+
         const oldPassword = await this.cryptographyGateway.compare(input.oldPassword, user.getPassword());
 
         if(!oldPassword){
-            throw new InvalidParameterError("Invalid password!");
+            throw new InvalidParameterError("Old Password is wrong!");
         };
 
         const newPassword = await this.cryptographyGateway.encrypt(input.newPassword)

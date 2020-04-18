@@ -16,7 +16,8 @@ export class VideoDB extends BaseDB implements VideoGateway{
                 input.link,
                 input.description,
                 input.creationDate,
-                input.user_id
+                input.user_id,
+                input.photo
             )
         );
     };
@@ -31,8 +32,9 @@ export class VideoDB extends BaseDB implements VideoGateway{
                 input.description,
                 input.creationDate,
                 input.user_id,
+                input.photo,
                 input.name,
-                input.photo
+                input.userPhoto
             )
         );
     };
@@ -63,14 +65,15 @@ export class VideoDB extends BaseDB implements VideoGateway{
 
     public async createVideo(video: Video): Promise<void>{
         await this.connection.raw(`
-            INSERT INTO ${this.videoTableName} (id, title, link, description, creationDate, user_id)
+            INSERT INTO ${this.videoTableName} (id, title, link, description, creationDate, user_id, photo)
             VALUES(
                 '${video.getId()}',
                 '${video.getTitle()}',
                 '${video.getLink()}',
                 '${video.getDescription()}',
                 STR_TO_DATE('${this.mapDateToDbDate(video.getCreationDate())}', '%Y-%m-%d %H:%i:%s'),
-                '${video.getUser_id()}'
+                '${video.getUser_id()}',
+                '${video.getPhoto()}'
             )
         `);
     };
@@ -89,16 +92,31 @@ export class VideoDB extends BaseDB implements VideoGateway{
             WHERE id = '${id}' AND user_id = '${user_id}'
         `)
     }
+
+    public async updateVideoTitle(id: string, user_id: string, title: string): Promise<void> {
+        await this.connection.raw(`
+            UPDATE ${this.videoTableName}
+            SET title = '${title}'
+            WHERE id = '${id}' AND user_id = '${user_id}'
+        `)
+    }
+
+    public async updateVideoDescription(id: string, user_id: string, description: string): Promise<void>{
+        await this.connection.raw(`
+            UPDATE ${this.videoTableName}
+            SET description = '${description}'
+            WHERE id = '${id}' AND user_id = '${user_id}'
+        `)
+    }
     
 
-    public async getVideos(orderBy: string, orderType: string, limit: number, offset: number): Promise<Feed[] | undefined>{
+    public async getVideos(): Promise<Feed[] | undefined>{
         const videos = await this.connection.raw(`
-            SELECT v.*, u.name
+            SELECT v.*, u.name, u.photo as userPhoto
             FROM ${this.videoTableName} v
             JOIN ${this.userTableName} u
             ON v.user_id = u.id
-            ORDER BY ${orderBy} ${orderType}
-            LIMIT ${limit} OFFSET ${offset}
+            ORDER BY v.creationDate DESC
         `);
 
         if(!videos[0][0]){
@@ -113,8 +131,9 @@ export class VideoDB extends BaseDB implements VideoGateway{
                 video.description,
                 video.creationDate,
                 video.user_id,
+                video.photo,
                 video.name,
-                video.photo
+                video.userPhoto
             );
         });
     };
@@ -140,15 +159,16 @@ export class VideoDB extends BaseDB implements VideoGateway{
                 video.description,
                 video.creationDate,
                 video.user_id,
+                video.photo,
                 video.name,
-                video.photo
+                video.userPhoto
             );
         });
     }
 
     public async getVideoById(id: string): Promise<Feed | undefined>{
         const result = await this.connection.raw(`
-            SELECT v.*, u.name
+            SELECT v.*, u.name, u.photo as userPhoto
             FROM ${this.videoTableName} v
             JOIN ${this.userTableName} u
             ON u.id = v.user_id

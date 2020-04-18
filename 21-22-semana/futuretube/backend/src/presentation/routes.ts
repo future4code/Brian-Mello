@@ -9,15 +9,19 @@ import { UpdateVideoEndpoint } from "./endpoints/video/updateVideo";
 import { GetVideoDetailEndpoint } from "./endpoints/video/getVideoDetail";
 import { GetAllUserVideosEndpoint } from "./endpoints/video/getAllUserVideos";
 import { UpdatePasswordEndpoint } from "./endpoints/user/updatePassword";
+import { GetUserDataEndpoint } from "./endpoints/user/getUserData";
+import cors from 'cors';
 
 const app = express();
+app.use(cors());
 app.use(express.json()); // Linha mágica (middleware)
 
 // user
 app.post("/signup", SignUpEndpoint);
-app.get("/login", LoginEndpoint);
+app.post("/login", LoginEndpoint);
 app.get("/users", GetAllUsersEndpoint);
-app.post("/updatePassword", UpdatePasswordEndpoint);
+app.post("/user/updatePassword", UpdatePasswordEndpoint);
+app.get("/user", GetUserDataEndpoint);
 
 // video
 app.post("/createVideo", CreateVideoEndpoint);

@@ -16,6 +16,22 @@ export class CreateVideoUC {
             throw new Error("Already have a vídeo with this link")
         }
         
+        if(!input.title){
+            throw new Error("You need to send title input!")
+        }
+
+        if(!input.link){
+            throw new Error("You need to send link input!")
+        }
+
+        if(!input.description){
+            throw new Error("You need to send description input!")
+        }
+
+        if(!input.photo){
+            throw new Error("You need to send photo input!")
+        }
+
         const id = v4();
 
         const userInfo = this.authenticationGateway.getUsersInfoFromToken(input.token)
@@ -30,7 +46,8 @@ export class CreateVideoUC {
             input.link,
             input.description,
             new Date(),
-            userInfo.id
+            userInfo.id,
+            input.photo
         )
 
         await this.videoGateway.createVideo(video)
@@ -45,6 +62,7 @@ export interface CreateVideoUCInput {
     title: string;
     link: string;
     description: string;
+    photo: string;
     token: string;
 }
 

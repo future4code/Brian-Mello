@@ -36,6 +36,7 @@ export class GetAllUserVideosUC {
                     link: video.getLink(),
                     description: video.getDescription(),
                     creationDate: video.getCreationDate(),
+                    photo: video.getPhoto(),
                     user_id: video.getUser_id(),
                     name: video.getName(),
                 }
@@ -60,6 +61,7 @@ export interface GetAllUserVideosUCOutputVideo {
     link: string;
     description: string;
     creationDate: Date;
+    photo: string;
     user_id: string;
     name: string;
 }

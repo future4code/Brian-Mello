@@ -13,14 +13,17 @@ export class GetVideoDetailUC {
         }
 
         return{
-            id: video.getId(),
-            title: video.getTitle(),
-            link: video.getLink(),
-            description: video.getDescription(),
-            creationDate: video.getCreationDate(),
-            user_id: video.getUser_id(),
-            name: video.getName(),
-            photo: video.getPhoto()
+            video: {
+                id: video.getId(),
+                title: video.getTitle(),
+                link: video.getLink(),
+                description: video.getDescription(),
+                creationDate: video.getCreationDate(),
+                user_id: video.getUser_id(),
+                photo: video.getPhoto(),
+                name: video.getName(),
+                userPhoto: video.getUserPhoto()
+            }
         }
     }
 }
@@ -30,12 +33,16 @@ export interface GetVideoDetailUCInput{
 }
 
 export interface GetVideoDetailUCOutput{
+    video: GetVideoDetailUCOutputVideo
+}
+export interface GetVideoDetailUCOutputVideo{
     id: string;
     title: string;
     link: string;
     description: string;
     creationDate: Date;
     user_id: string;
-    name: string;
     photo: string;
+    name: string;
+    userPhoto: string;
 }

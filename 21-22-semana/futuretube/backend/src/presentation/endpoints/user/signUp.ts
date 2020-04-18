@@ -9,14 +9,22 @@ export const SignUpEndpoint = async (req: Request, res: Response) => {
     try {
         const signUpUC = new SignUpUC(new UserDB(), new JwtAuthorizer(), new BcryptService(), new RefreshTokenDB());
 
+        const name = req.body.name
+        const birthdate = req.body.birthdate
+        const email = req.body.email
+        const password = req.body.password
+        const type = req.body.type
+        const photo = req.body.photo
+        const device = req.body.device
+
         const newUser = await signUpUC.execute({
-            name: req.body.name,
-            birthdate: req.body.birthdate,
-            email: req.body.email,
-            password: req.body.password,
-            type: req.body.type,
-            photo: req.body.photo,
-            device: req.body.device
+            name,
+            birthdate,
+            email,
+            password,
+            type,
+            photo,
+            device
         });
 
         res.status(200).send(newUser);

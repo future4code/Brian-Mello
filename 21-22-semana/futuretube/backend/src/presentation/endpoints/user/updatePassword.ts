@@ -3,13 +3,20 @@ import { UpdatePasswordUC } from "../../../business/usecase/user/updatePassword"
 import { UserDB } from "../../../data/userDatabase";
 import { JwtAuthorizer } from "../../lambda/services/jwtAuthorizer";
 import { BcryptService } from "../../lambda/services/bcryptServices";
+import { JwtMustBeProvided } from "../../../business/error/JwtMustBeProvided";
 
 export const UpdatePasswordEndpoint = async (req: Request, res: Response) => {
     try {
 
+        const auth = req.headers.Authorization || req.headers.authorization
+
+        if(!auth){
+            throw new JwtMustBeProvided()
+        }
+
         const oldPassword = req.body.oldPassword;
         const newPassword = req.body.newPassword;
-        const token =  req.headers.auth as string;
+        const token = auth as string;
 
         if(oldPassword === newPassword){
             throw new Error("You cannot use the last same password!")
