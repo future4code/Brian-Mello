@@ -116,4 +116,8 @@ export const StyledP = styled.p`
     margin: 25px 0 0 0;
     padding: 0 20px 0 60px;
     font-size: 15px;
+    @media (max-width: 600px){
+        margin: 10px 0 0 0;
+        padding: 0 20px 0 30px;
+    }
 `

@@ -27,6 +27,9 @@ export const StyledLogo = styled.img `
         cursor: pointer;
         opacity: 80%;
     }
+    @media (max-width: 600px) {
+        width: 100px;
+    }
 `
 
 export const LogoContainer = styled.div `

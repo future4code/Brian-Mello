@@ -5,7 +5,7 @@ import { routes } from '../containers/Router';
 
 const baseUrl = "https://vj4kbpy8c0.execute-api.us-east-1.amazonaws.com/v1"
 
-
+// const baseUrl = "http://localhost:3003"
 // Video Actions
 
 export const setFeed = (feed) => ({
@@ -218,7 +218,7 @@ export const getProfile = () => async (dispatch) => {
         })
 
         dispatch(setProfile(response.data.User))
-        console.log(response.data.User)
+        
     } catch(err) {
         window.alert("Erro ao renderizar o perfil")
     }

@@ -39,7 +39,7 @@ export class VideoDetailPage extends React.Component {
 
     handleDeleteVideo = (videoId) => {
         this.props.deleteVideo(videoId)
-      };
+    };
 
     handleSetUpdateVideoId = (videoId) => {
         this.props.setVideoId(videoId)
@@ -63,28 +63,28 @@ export class VideoDetailPage extends React.Component {
             video.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
           });
       
-          let orderedVideo;
-      
-          let mapVideos = (<h1>Vídeo não encontrado!</h1>)
-      
-          if(filterVideos) {
-              orderedVideo = filterVideos.sort((a,b) => (a.title > b.title ? 1 : -1));
-          };
-      
-          if (this.props.feed.length === 0){
+        let orderedVideo;
+    
+        let mapVideos = (<h1>Vídeo não encontrado!</h1>)
+    
+        if(filterVideos) {
+            orderedVideo = filterVideos.sort((a,b) => (a.title > b.title ? 1 : -1));
+        };
+    
+        if (this.props.feed.length === 0){
             mapVideos = (<Loader/>)
-          } else if (orderedVideo.length > 0) {
+        } else if (orderedVideo.length > 0) {
             { mapVideos = orderedVideo.map((video) => 
-              <VideoContainer
+                <VideoContainer
                 key={video.id}
                 img={video.photo}
                 videoTitle={video.title}
                 username={video.name}
                 onDelete={() => this.handleDeleteVideo(video.id)}
                 onClick={() => this.handleSetVideoId(video.id)}
-              />
+                />
             )}
-          }
+        }
 
         return(
             <BodyContainer>
