@@ -8,6 +8,7 @@ import CreateVideoPage from "../CreateVideoPage";
 import ProfilePage from "../ProfilePage";
 import VideoDetailPage from "../VideoDetailPage";
 import UpdatePasswordPage from "../UpdatePassword";
+import UpdateVideoPage from "../UpdateVideo";
 
 export const routes = {
   home: "/",
@@ -15,8 +16,9 @@ export const routes = {
   login: "/login",
   createVideo: "/createVideo",
   profile: "/profile",
-  videoDetail: "/videoDetails",
-  updatePassword: "/profile/updatePassword"
+  videoDetail: "/video",
+  updatePassword: "/profile/updatePassword",
+  updateVideo: "/video/updateVideo"
   // Outras rotas aqui
 };
 
@@ -31,6 +33,7 @@ function Router(props) {
         <Route exact path={routes.profile} component={ProfilePage} />
         <Route exact path={routes.videoDetail} component={VideoDetailPage} />
         <Route exact path={routes.updatePassword} component={UpdatePasswordPage} />
+        <Route exact path={routes.updateVideo} component={UpdateVideoPage} />
       </Switch>
     </ConnectedRouter>
   );

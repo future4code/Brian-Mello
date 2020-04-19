@@ -3,27 +3,25 @@ import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { routes } from '../Router/index';
 import { StyledTextField, StyledButtonForms, StyledWrapper } from "../../style/globalStyles";
-import { updatePassword } from '../../actions/index'
+import { updateVideo, getVideoDetails } from '../../actions/index';
 
-const updatePasswordForm = [
+const updateVideoForm = [
 
     {
-        name: 'oldPassword',
+        name: 'title',
         type: 'text',
-        label: 'Old Password: ',
-        required: true,
-        pattern: "(?=^.{6,}$)((?=.*)|(?=.*+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+        label: 'Título: ',
+        pattern: "[a-zA-Z0-9]+"
     },
     {
-        name: 'newPassword',
+        name: 'description',
         type: 'text',
-        label: 'New Password: ',
-        required: true,
-        pattern: "(?=^.{6,}$)((?=.*)|(?=.*+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+        label: 'Descrição: ',
+        pattern: "[a-zA-Z0-9]+"
     }
 ]
 
-class UpdatePasswordPage extends React.Component{
+class UpdateVideoPage extends React.Component{
     constructor(props){
         super(props)
         this.state = {
@@ -35,8 +33,13 @@ class UpdatePasswordPage extends React.Component{
         const accessToken = window.localStorage.getItem("accessToken")
         if(accessToken === null){
           this.props.goToFeedPage()
+        } else if (this.props.selectedVideoId !== ""){
+            this.props.getVideoDetails(this.props.selectedVideoId)
+        } else {
+
         }
     };
+
 
     handleFieldChange = event => {
         const { name, value } = event.target
@@ -45,22 +48,23 @@ class UpdatePasswordPage extends React.Component{
         });
     };
 
-    handleOnSubmit = (event) =>{
+    handleOnSubmit = (event, videoId) =>{
         event.preventDefault();
-        const { oldPassword, newPassword } = this.state.form
-        this.props.updatePassword(oldPassword, newPassword)
+        const { title, description } = this.state.form
+        this.props.updateVideo(videoId, title, description )
         this.setState({form: {}})
+        console.log(videoId)
     }
 
     render(){
 
-        const { goToProfilePage } = this.props
+        const { goToVideoDetailPage, selectedVideo } = this.props
 
         return(
             <Fragment>
-                <StyledWrapper onSubmit={this.handleOnSubmit}>
-                    <h1>Update Password</h1>
-                    {updatePasswordForm.map(input =>(
+                <StyledWrapper onSubmit={() => this.handleOnSubmit(selectedVideo.id)}>
+                    <h1>Update Video</h1>
+                    {updateVideoForm.map(input =>(
                         <StyledTextField
                             key={input.name}
                             color='primary'
@@ -73,7 +77,7 @@ class UpdatePasswordPage extends React.Component{
                         />
                     ))}
                     <StyledButtonForms type="submit"> Update </StyledButtonForms>
-                    <StyledButtonForms onClick={goToProfilePage}> Voltar </StyledButtonForms>
+                    <StyledButtonForms onClick={goToVideoDetailPage}> Voltar </StyledButtonForms>
                 </StyledWrapper> 
             </Fragment>
         )
@@ -81,12 +85,19 @@ class UpdatePasswordPage extends React.Component{
 
 }
 
+const mapStateToProps = state => ({
+    selectedVideoId: state.videos.selectedVideoId,
+    selectedVideo: state.videos.selectedVideo
+})
+
 const mapDispatchToProps = (dispatch) =>({
-    goToProfilePage: () => dispatch(push(routes.profile)),
-    updatePassword: (oldPassword, newPassword) => dispatch(updatePassword(oldPassword, newPassword))
+    goToVideoDetailPage: () => dispatch(push(routes.videoDetail)),
+    goToFeedPage: () => dispatch(push(routes.home)),
+    getVideoDetails: (videoId) => dispatch(getVideoDetails(videoId)),
+    updateVideo: (videoId, title, description) => dispatch(updateVideo(videoId, title, description))
 })
 
 export default connect(
-    null, 
+    mapStateToProps, 
     mapDispatchToProps
-)(UpdatePasswordPage);
+)(UpdateVideoPage);

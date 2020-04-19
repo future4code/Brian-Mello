@@ -11,6 +11,7 @@ export const StyledHeader = styled.header`
     justify-content: space-between;
     background-color: #660008;
     color: white;
+    font-family: 'Manrope', sans-serif;
     @media (max-width: 600px) {
         height: 330px;
         flex-direction: column;
@@ -19,7 +20,7 @@ export const StyledHeader = styled.header`
     }
 `
 export const StyledLogo = styled.img `
-    width: 130px;
+    width: 80px;
     height: 100%;
     margin: 0;
     :hover {
@@ -82,6 +83,7 @@ export const StyledButton = styled.button `
     background-color: #3c0000;
     border-radius: 5px;
     color: white;
+    font-family: 'Manrope', sans-serif;
     :hover {
         cursor: pointer;
         background-color: white;
@@ -104,6 +106,7 @@ export const StyledInput = styled.input `
     border-bottom: 1px solid white;
     color: white;
     outline: none;
+    font-family: 'Manrope', sans-serif;
     @media (max-width: 600px){
         width: 90%;
     }

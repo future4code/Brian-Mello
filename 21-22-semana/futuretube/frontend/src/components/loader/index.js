@@ -1,9 +1,9 @@
-import React, { Fragment } from "react";
-import { Loading, Triangle } from "./styled";
+import React from "react";
+import { Loading, Triangle, LoadingContainer } from "./styled";
 
 function Loader ( ) {
     return (
-        <Fragment>   
+        <LoadingContainer>   
             <svg width="150" height="150" viewBox="0 0 40 60">
                 <Triangle 
                     fill="none" 
@@ -11,9 +11,9 @@ function Loader ( ) {
                     stroke-width="1"
                     points="16,1 32,32 1,32"
                 />
-                <Loading x="0" y="45" fill="black">Loading...</Loading>
+                <Loading x="4" y="45" fill="black">Loading</Loading>
             </svg>
-        </Fragment>
+        </LoadingContainer>
     )
 }
 

@@ -7,7 +7,7 @@ function VideoContainer (props) {
             <StyledImg onClick={props.onClick} alt="not avaible" src={props.img}/>
             <VideoFooterContainer>
                 <StyledTitle>{props.videoTitle}</StyledTitle>
-                <StyledP>Canal: {props.username}</StyledP>
+                <StyledP>{props.username}</StyledP>
             </VideoFooterContainer>
             <DeleteContainer>
                 <TrashIcon onClick={props.onDelete}/>

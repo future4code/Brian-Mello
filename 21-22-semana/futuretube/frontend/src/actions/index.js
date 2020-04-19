@@ -60,6 +60,29 @@ export const createVideo = (title, link, description, photo) => async (dispatch)
     }
 }
 
+export const updateVideo = (title, description, videoId) => async (dispatch) => {
+
+    const accessToken = window.localStorage.getItem("accessToken")
+
+    const updateVideo = {
+        title,
+        description
+    }
+
+    try{
+
+        await axios.post(`${baseUrl}/updateVideo/${videoId}`, updateVideo, {
+            headers: {
+                Authorization: accessToken
+            }
+        })
+        window.alert("Video atualizado com sucesso!")
+        dispatch(push(routes.videoDetail))
+    } catch(err){
+        window.alert("Não foi possível atualizar o vídeo!")
+    }
+}
+
 // deletar um video
 export const deleteVideo = (videoId) => async (dispatch) => {
 

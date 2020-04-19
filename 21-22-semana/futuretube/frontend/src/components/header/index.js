@@ -14,7 +14,6 @@ export function Header (props) {
             <ButtonMenu>
                 <StyledButton onClick={props.onClick1}>{props.button1}</StyledButton>
                 <StyledButton onClick={props.onClick2}>{props.button2}</StyledButton>
-                <StyledButton onClick={props.onClick3}>{props.button3}</StyledButton>
             </ButtonMenu>
         </StyledHeader>
     )

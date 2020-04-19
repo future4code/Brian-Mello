@@ -6,15 +6,13 @@ export const StyledContainer = styled.div `
     min-width: 200px;
     max-width: 250px;
     height: 250px;
-    border-radius: 5px;
     background-color: #efecec;
     margin: 10px;
-    box-shadow: 0 0 5px;
     display: flex;
     flex-direction: column;
+    font-family: 'Manrope', sans-serif;
     :hover {
         cursor: pointer;
-        box-shadow: 0 0 10px;
     }
 `
 
@@ -23,7 +21,7 @@ export const VideoFooterContainer = styled.div `
     height: 40%;
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-direction: column;
     margin: 0;
     padding: 5px;
@@ -36,15 +34,14 @@ export const StyledTitle = styled.h4 `
 export const StyledP = styled.p `
     margin: 0;
     padding: 0;
-    font-weight: 600;
+    color: #93938f;
+    font-weight: 500;
 `
 
 export const StyledImg = styled.img`
     width: 100%;
     height: 150px;
     min-height: 60%;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
 `
 
 export const DeleteContainer = styled.div`
@@ -67,7 +64,6 @@ export const DeleteButton = styled.div `
     align-items: flex-end;
     margin: 0;
     padding: 0;
-    border-radius: 5px;
     :hover {
         background-color: red;
         color: white;

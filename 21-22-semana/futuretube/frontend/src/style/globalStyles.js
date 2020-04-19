@@ -11,12 +11,14 @@ export const StyledWrapper = styled.form`
   display: grid;
   background-color: #c4c4be;
   color: black;
+  font-family: 'Manrope', sans-serif;
 `;
 
 export const StyledButtonForms = styled(Button) `
     cursor: pointer;
     color: black;
     width: auto;
+    font-family: 'Manrope', sans-serif;
     :hover {
         border: 1px solid white;
         background-color: #c4c4be;

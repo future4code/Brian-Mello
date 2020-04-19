@@ -7,6 +7,7 @@ export const StyledMain = styled.main `
     min-height: 100vh;
     background-color: #dbdbd3;
     display: flex;
+    font-family: 'Manrope', sans-serif;
     @media (max-width: 600px){
         flex-direction: column;
     }

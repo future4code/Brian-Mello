@@ -18,11 +18,16 @@ export class ProfilePage extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getProfile()
+        const accessToken = window.localStorage.getItem("accessToken")
+        if(accessToken === null){
+          this.props.goToFeedPage()
+        } else {
+            this.props.getProfile()
+        }
       };
 
     render(){
-        const { name, email, birthdate, photo, password } = this.props.profile
+        const { name, email, birthdate, photo, password, type } = this.props.profile
 
         const { goToFeedPage, goToUpdatePasswordPage } = this.props
 
@@ -37,7 +42,8 @@ export class ProfilePage extends React.Component {
                     <p>{email}</p>
                     <p>{birthdate}</p>
                     <img alt="not found" src={photo}/>
-                    <p>{password}</p>
+                    <p type="password">{password}</p>
+                    <p>{type}</p>
                     <button onClick={goToUpdatePasswordPage}>atualizar senha</button>
                 </StyledMain>
                 <Footer/>
