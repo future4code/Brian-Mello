@@ -17,7 +17,10 @@ export const StyledMain = styled.main `
     display: flex;
     font-family: 'Manrope', sans-serif;
     @media (max-width: 600px){
-        
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 10px 5px 10px 5px;
     }
 `
 
@@ -27,6 +30,10 @@ export const StyledIFrame = styled.iframe `
     background-color: black;
     outline: 0;
     border: 0;
+    @media (max-width: 600px){
+        width: 100%;
+        height: 240px;
+    }
 `
 
 export const VideoSettingsContainer = styled.div `
@@ -35,6 +42,9 @@ export const VideoSettingsContainer = styled.div `
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    @media (max-width: 600px){
+        width: 90%;
+    }
 `
 
 export const FeedOfVideosContainer = styled.div `
@@ -44,6 +54,7 @@ export const FeedOfVideosContainer = styled.div `
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    text-align: center;
     padding: 0;
 `
 
@@ -79,6 +90,9 @@ export const DescriptionContainer = styled.div `
     min-height: 200px; 
     padding: 0 20px 0 0;
     border-bottom: 1px solid #b7b7b1;
+    @media (max-width: 600px){
+        min-height: 150px;
+    }
 `
 
 // text

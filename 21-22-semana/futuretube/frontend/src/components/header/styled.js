@@ -13,7 +13,7 @@ export const StyledHeader = styled.header`
     color: white;
     font-family: 'Manrope', sans-serif;
     @media (max-width: 600px) {
-        height: 330px;
+        height: 260px;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
@@ -66,9 +66,10 @@ export const ButtonMenu = styled.menu `
     padding: 10px;
     @media (max-width: 600px){
         width: 100%;
+        height: 120px;
     }
     @media(max-width: 300px){
-        height: 140px;
+        height: 120px;
         flex-direction: column;
     }
 `
