@@ -49,9 +49,10 @@ class UpdateVideoPage extends React.Component{
         });
     };
 
-    handleOnSubmit = (event, videoId) =>{
+    handleOnSubmit = (event) =>{
         event.preventDefault();
         const { title, description } = this.state.form
+        const videoId = this.props.selectedVideo.id
         this.props.updateVideo(videoId, title, description )
         this.setState({form: {}})
         console.log(videoId)
@@ -59,11 +60,11 @@ class UpdateVideoPage extends React.Component{
 
     render(){
 
-        const { goToVideoDetailPage, selectedVideo } = this.props
+        const { goToVideoDetailPage } = this.props
 
         return(
             <Fragment>
-                <StyledWrapper onSubmit={() => this.handleOnSubmit(selectedVideo.id)}>
+                <StyledWrapper onSubmit={this.handleOnSubmit}>
                     <h1>Update Video</h1>
                     {updateVideoForm.map(input =>(
                         <StyledTextField

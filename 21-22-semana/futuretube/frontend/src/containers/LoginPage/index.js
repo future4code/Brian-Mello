@@ -17,8 +17,9 @@ const loginForm = [
     {
         name: 'password',
         type: 'password',
-        label: 'password',
+        label: 'Password',
         required: true,
+        id: 'password'
     }
 ]
 
@@ -59,6 +60,17 @@ class LoginPage extends Component {
         this.setState ({ device: value});
     }
 
+    // tentativa de fazer um "olho mágico" para a senha
+    
+    // showPassword = () => {
+    //     let tipo = document.getElementById("password");
+    //     if(tipo.type="password"){
+    //         tipo.type ==="text"
+    //     } else {
+    //         tipo.type === "password"
+    //     }
+    // }
+
   render() {
     const { goToSignupPage, goToFeedPage } = this.props;
 
@@ -75,8 +87,10 @@ class LoginPage extends Component {
                     label={input.label}
                     required={input.required}
                     pattern={input.pattern}
+                    id={input.id}
                 />
             ))}
+            {/* <button  type="button" onClick={this.showPassword}>mostrar senha</button> */}
             <SelectDevice
                 name="device"
                 value= {this.state.device}

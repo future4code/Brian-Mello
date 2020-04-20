@@ -60,7 +60,7 @@ export const createVideo = (title, link, description, photo) => async (dispatch)
     }
 }
 
-export const updateVideo = (title, description, videoId) => async (dispatch) => {
+export const updateVideo = (videoId, title, description) => async (dispatch) => {
 
     const accessToken = window.localStorage.getItem("accessToken")
 
@@ -117,7 +117,7 @@ export const getVideoDetails = (videoId) => async (dispatch) => {
     try{
         const response = await axios.get (`${baseUrl}/getVideoDetail/${videoId}`)
         dispatch(setVideoDetail(response.data.video))
-        console.log(response.data.video)
+
     } catch (error) {
         window.alert("Falha ao renderizar os detalhes do vídeo!")
     }
@@ -151,7 +151,7 @@ export const updatePassword = (oldPassword, newPassword) => async (dispatch) => 
         })
         window.alert("Senha atualizada com sucesso!")
         dispatch(push(routes.profile))
-        
+        dispatch(getProfile())
     } catch(err){
         window.alert("Atualização de senha falhou!")
     }

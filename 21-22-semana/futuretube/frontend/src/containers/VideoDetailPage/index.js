@@ -22,10 +22,9 @@ export class VideoDetailPage extends React.Component {
     componentDidMount() {
         if(this.props.selectedVideoId !== ""){
             this.props.getVideoDetails(this.props.selectedVideoId)
-        } else if(this.props.selectedVideoId === "") {
-            this.props.goToFeedPage()
-        } else {
             this.props.getVideos()
+        } else {
+            this.props.goToFeedPage()
         }
     }
 
@@ -44,6 +43,7 @@ export class VideoDetailPage extends React.Component {
     handleSetUpdateVideoId = (videoId) => {
         this.props.setVideoId(videoId)
         this.props.goToUpdateVideo()
+        console.log(videoId)
     };
 
     handleSetVideoId = (videoId) => {
