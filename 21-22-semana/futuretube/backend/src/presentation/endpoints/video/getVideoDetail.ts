@@ -4,9 +4,12 @@ import { VideoDB } from "../../../data/videoDatabase";
 
 export const GetVideoDetailEndpoint = async (req: Request, res: Response) => {
     try {
+        
         const getVideoDetailuc = new GetVideoDetailUC(new VideoDB());
+
+        const id = req.params.id
         const result = await getVideoDetailuc.execute({
-            id: req.query.id
+            id
         })
 
         res.status(200).send(result)

@@ -7,12 +7,17 @@ import { RefreshTokenDB } from "../../../data/refreshTokenDataBase";
 
 export const LoginEndpoint = async(req: Request, res: Response) =>{
     try {
+
         const loginUC = new LoginUC(new UserDB(), new JwtAuthorizer(), new BcryptService(), new RefreshTokenDB());
 
+        const email = req.body.email;
+        const password = req.body.password;
+        const device = req.body.device;
+
         const result = await loginUC.execute({
-            email: req.body.email,
-            password: req.body.password,
-            device: req.body.device
+            email,
+            password,
+            device
         });
 
         res.status(200).send(result);

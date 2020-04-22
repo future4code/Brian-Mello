@@ -31,7 +31,8 @@ export class GetAllUserUC{
                     name: user.getName(),
                     birthdate: user.getBirthdate(),
                     email: user.getEmail(),
-                    type: user.getType()
+                    type: user.getType(),
+                    photo: user.getPhoto()
                 }
             })
         }
@@ -53,4 +54,5 @@ export interface GetAllUserUCOutputUser {
     birthdate: Date;
     email: string;
     type: string;
+    photo: string;
 }

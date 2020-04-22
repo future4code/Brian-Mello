@@ -19,6 +19,7 @@ export class SignUpUC {
         if(user){
             throw new Error("This email has already been registered!")
         }
+        
         const id = v4()
 
         let type = UserType.USER
