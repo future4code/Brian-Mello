@@ -33,7 +33,6 @@ class UpdateVideoPage extends React.Component{
         const accessToken = window.localStorage.getItem("accessToken")
         if(accessToken === null){
           this.props.goToFeedPage()
-          window.alert("Você precisa estar logado para ver essa página")
         } else if (this.props.selectedVideoId !== ""){
             this.props.getVideoDetails(this.props.selectedVideoId)
         } else {

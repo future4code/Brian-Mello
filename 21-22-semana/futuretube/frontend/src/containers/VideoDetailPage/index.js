@@ -39,6 +39,7 @@ export class VideoDetailPage extends React.Component {
     handleLogout = (videoId) => {
         localStorage.removeItem("accessToken")
         videoId = this.props.selectedVideo.id
+        window.alert("Usuário deslogado com sucesso!")
         this.props.goToVideoDetailsPage(videoId)
     }
 

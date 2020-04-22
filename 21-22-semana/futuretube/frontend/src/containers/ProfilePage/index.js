@@ -26,7 +26,6 @@ export class ProfilePage extends React.Component {
         const accessToken = window.localStorage.getItem("accessToken")
         if(accessToken === null){
           this.props.goToFeedPage()
-          window.alert("Você precisa estar logado para ver essa página")
         } else {
             this.props.getProfile()
             this.props.getVideos()
@@ -79,7 +78,7 @@ export class ProfilePage extends React.Component {
       
         let orderedVideo;
     
-        let mapVideos = (<h3>Não possui Videos!</h3>)
+        let mapVideos = (<h3>Vídeo não encontrado!</h3>)
     
         if(filterVideos) {
             orderedVideo = filterVideos.sort((a,b) => (a.title > b.title ? 1 : -1));
