@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { LabelContainer, StyledP } from './styled';
+import { LabelContainer, StyledP, StyledInput } from './styled';
 
 export function UserInfo (props){
     return(
@@ -7,9 +7,10 @@ export function UserInfo (props){
             <LabelContainer>
                 {props.Label}
             </LabelContainer>
-            <StyledP>
+            {props.userData && <StyledP>
                 {props.userData}
-            </StyledP>
+            </StyledP>}
+            {props.value && <StyledInput type="password" defaultValue={props.value}/>}
         </Fragment>
     )
 }

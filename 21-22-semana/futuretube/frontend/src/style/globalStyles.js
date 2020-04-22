@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 
 export const StyledWrapper = styled.form`
   width: 100%;
@@ -25,6 +27,14 @@ export const StyledButtonForms = styled(Button) `
     }
 `
 
+export const FormPasswordContainer = styled.div`
+    display: flex;
+    width: 200px;
+    height: auto;
+    justify-content: space-between;
+    align-items: flex-end;
+`
+
 export const StyledTextField = styled(TextField)`
     background-color: #c4c4be;
     color: black;
@@ -35,4 +45,20 @@ export const BodyContainer = styled.div `
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+`
+
+export const StyledVisibilityOffIcon = styled(VisibilityOffIcon)`
+    width: 20px;
+    height: 20px;
+    :hover{
+        cursor: pointer;
+    }
+`
+
+export const StyledVisibilityIcon = styled(VisibilityIcon)`
+    width: 20px;
+    height: 20px;
+    :hover{
+        cursor: pointer;
+    }
 `

@@ -5,10 +5,11 @@ import { connect } from "react-redux";
 import { BodyContainer } from '../../style/globalStyles';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
-import { getVideoDetails, setVideoId, getVideos, deleteVideo } from '../../actions';
+import { getVideoDetails, setVideoId, getVideos, deleteVideo, getProfile } from '../../actions';
 import { StyledMain, StyledIFrame, VideoSettingsContainer, FeedOfVideosContainer, TitleAndUpdateContainer, UsersInformation, StyledUserImage, DescriptionContainer, StyledUserName, StyledP, StyledH2, StyledH3, StyledUpdateIcon } from './styled';
 import VideoContainer from '../../components/videoContainer';
 import Loader from '../../components/loader';
+import ScrollToTop from '../../components/ScrollToTop';
 
 export class VideoDetailPage extends React.Component {
     constructor(props){
@@ -20,12 +21,25 @@ export class VideoDetailPage extends React.Component {
     }
 
     componentDidMount() {
-        if(this.props.selectedVideoId !== ""){
-            this.props.getVideoDetails(this.props.selectedVideoId)
+        let videoId = this.props.selectedVideoId ? this.props.selectedVideoId : this.props.match.params.videoId 
+        const accessToken = window.localStorage.getItem("accessToken")
+        if(!accessToken){
+            this.props.getVideoDetails(videoId)
             this.props.getVideos()
+
+        } else if (videoId){
+                this.props.getVideoDetails(videoId)
+                this.props.getVideos()
+                this.props.getProfile()
         } else {
             this.props.goToFeedPage()
         }
+    }
+
+    handleLogout = (videoId) => {
+        localStorage.removeItem("accessToken")
+        videoId = this.props.selectedVideo.id
+        this.props.goToVideoDetailsPage(videoId)
     }
 
     handleFieldChange = event => {
@@ -42,21 +56,46 @@ export class VideoDetailPage extends React.Component {
 
     handleSetUpdateVideoId = (videoId) => {
         this.props.setVideoId(videoId)
-        this.props.goToUpdateVideo()
-        console.log(videoId)
+        this.props.goToUpdateVideo(videoId)
     };
 
     handleSetVideoId = (videoId) => {
         this.props.setVideoId(videoId)
-        this.props.goToVideoDetailsPage()
+        this.props.goToVideoDetailsPage(videoId)
+        this.props.getVideoDetails(videoId)
+        window.scroll({
+            top: 0,
+            behavior: 'auto'
+        });
     };
-    
 
     render() {
 
         const { search, feed } = this.state
 
-        const { goToFeedPage, selectedVideo } = this.props
+        const { goToFeedPage, goToLoginPage, goToSignupPage, selectedVideo } = this.props
+
+        const { id } = this.props.profile
+
+        const isLogged = window.localStorage.getItem("accessToken")
+
+        let showUpdateButton
+
+        let buttonRenderization 
+
+        if(isLogged && selectedVideo.user_id === id){
+            showUpdateButton = (<StyledUpdateIcon onClick={() => this.handleSetUpdateVideoId(selectedVideo.id)}/>)
+        }
+
+        if(isLogged){
+            buttonRenderization = (
+                <Header onClick={goToFeedPage} button1={"Voltar"} onClick1={goToFeedPage} button2={"Logout"} onClick2={this.handleLogout} value={feed} onChange={this.handleFieldChange}/>
+            )
+        } else {
+            buttonRenderization = (
+                <Header onClick={goToFeedPage} button1={"Login"} onClick1={goToLoginPage} button2={"Signup"} onClick2={goToSignupPage} button3={"Voltar"} onClick3={goToFeedPage} value={feed} onChange={this.handleFieldChange}/>
+        )
+        }
 
         let filterVideos = this.props.feed.filter((video) => {
             return video.title.toLowerCase().indexOf(search.toLowerCase()) !== -1 || 
@@ -65,7 +104,7 @@ export class VideoDetailPage extends React.Component {
       
         let orderedVideo;
     
-        let mapVideos = (<h1>Vídeo não encontrado!</h1>)
+        let mapVideos = (<h3>Vídeo não encontrado!</h3>)
     
         if(filterVideos) {
             orderedVideo = filterVideos.sort((a,b) => (a.title > b.title ? 1 : -1));
@@ -74,7 +113,7 @@ export class VideoDetailPage extends React.Component {
         if (this.props.feed.length === 0){
             mapVideos = (<Loader/>)
         } else if (orderedVideo.length > 0) {
-            { mapVideos = orderedVideo.map((video) => 
+            mapVideos = orderedVideo.map((video) => 
                 <VideoContainer
                 key={video.id}
                 img={video.photo}
@@ -83,23 +122,18 @@ export class VideoDetailPage extends React.Component {
                 onDelete={() => this.handleDeleteVideo(video.id)}
                 onClick={() => this.handleSetVideoId(video.id)}
                 />
-            )}
+            )
         }
 
         return(
             <BodyContainer>
-                <Header
-                    button1={"Voltar"}
-                    onClick1={goToFeedPage}
-                    value={feed}
-                    onChange={this.handleFieldChange.bind(this)}
-                />
+                {buttonRenderization}
                 <StyledMain>
                     <VideoSettingsContainer>
-                        <StyledIFrame title="Video" allowFullScreen="true" type="video/webm" width="900" height="500" src={`https://www.youtube.com/embed/${selectedVideo.link}`} controls/>
+                        <StyledIFrame title="Video" allowFullScreen={true} type="video/webm" width="900" height="500" src={`https://www.youtube.com/embed/${selectedVideo.link}`} controls/>
                         <TitleAndUpdateContainer>
                             <StyledH2>{selectedVideo.title}</StyledH2>
-                            <StyledUpdateIcon onClick={() => this.handleSetUpdateVideoId(selectedVideo.id)}/>
+                            {showUpdateButton}
                         </TitleAndUpdateContainer>
                         <UsersInformation>
                             <StyledUserImage src={selectedVideo.userPhoto}/>
@@ -114,6 +148,7 @@ export class VideoDetailPage extends React.Component {
                         <StyledH2>Outros vídeos</StyledH2>
                         {mapVideos}
                     </FeedOfVideosContainer>
+                    <ScrollToTop/>
                 </StyledMain>
                 <Footer/>
             </BodyContainer>
@@ -124,17 +159,21 @@ export class VideoDetailPage extends React.Component {
 const mapStateToProps = state => ({
     selectedVideoId: state.videos.selectedVideoId,
     selectedVideo: state.videos.selectedVideo,
-    feed: state.videos.allVideos
+    feed: state.videos.allVideos,
+    profile: state.users.profile
 })
 
 const mapDispatchToProps = dispatch => ({
-    goToVideoDetailsPage: () => dispatch(push(routes.videoDetail)),
+    goToVideoDetailsPage: (videoId) => dispatch(push(`/video/${videoId}`)),
     goToFeedPage: () => dispatch(push(routes.home)),
-    goToUpdateVideo: () => dispatch(push(routes.updateVideo)),
+    goToUpdateVideo: (videoId) => dispatch(push(`/video/${videoId}/updateVideo`)),
+    goToLoginPage: () => dispatch(push(routes.login)),
+    goToSignupPage: () => dispatch(push(routes.signup)),
     getVideoDetails: (videoId) => dispatch(getVideoDetails(videoId)),
     deleteVideo: (videoId) => dispatch(deleteVideo(videoId)),
     getVideos: () => dispatch(getVideos()),
-    setVideoId: (videoId) => dispatch(setVideoId(videoId))
+    setVideoId: (videoId) => dispatch(setVideoId(videoId)),
+    getProfile: () => dispatch(getProfile())
 })
 
 export default connect(

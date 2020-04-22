@@ -3,48 +3,32 @@ import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { routes } from "../Router"
 import { login } from "../../actions";
-import {StyledTextField, StyledButtonForms, StyledWrapper} from "../../style/globalStyles";
-import SelectDevice from '../../components/selectDevice'
+import {StyledTextField, StyledButtonForms, StyledWrapper, StyledVisibilityIcon, FormPasswordContainer, StyledVisibilityOffIcon} from "../../style/globalStyles";
+import SelectDevice from '../../components/selectDevice';
 
-const loginForm = [
-    {
-       name: 'email',
-       type: 'email',
-       label: 'E-mail: ',
-       required: true,
-       pattern: "[A-Za-^([a-zA-Z0-9_-.]+)@([a-zA-Z0-9_-.]+).([a-zA-Z]{2,5})$]{3,}",
-    },
-    {
-        name: 'password',
-        type: 'password',
-        label: 'Password',
-        required: true,
-        id: 'password'
-    }
-]
 
 class LoginPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            form: {},
-            device: ""
+            email: "",
+            password: "",
+            device: "",
+            type: "password"
         };
     }
 
     handleFieldChange = event => {
-        const { name, value } = event.target
-        
         this.setState({
-            form: { ...this.state.form, [name]: value }
+          [event.target.name]: event.target.value
         });
-    };
+    }
 
     handleFormSubmit = (event) => {
         event.preventDefault()
 
         const { device } = this.state
-        const { email, password } = this.state.form;
+        const { email, password } = this.state;
 
         this.props.login( email, password, device )
         this.setState({
@@ -59,38 +43,60 @@ class LoginPage extends Component {
 
         this.setState ({ device: value});
     }
-
-    // tentativa de fazer um "olho mágico" para a senha
     
-    // showPassword = () => {
-    //     let tipo = document.getElementById("password");
-    //     if(tipo.type="password"){
-    //         tipo.type ==="text"
-    //     } else {
-    //         tipo.type === "password"
-    //     }
-    // }
+    showPassword = () => {
+        if(this.state.type ==="password"){
+            this.setState({
+                type: "text"
+            })
+        } else if( this.state.type === "text"){
+            this.setState({
+                type: "password"
+                
+            })
+        }
+    }
 
   render() {
+
+    const { type, email, password } = this.state
     const { goToSignupPage, goToFeedPage } = this.props;
+
+    let magicEye
+
+    if(type === "password"){
+        magicEye = (<StyledVisibilityIcon onClick={this.showPassword}/>)
+    } else {
+        magicEye = (<StyledVisibilityOffIcon onClick={this.showPassword}/>)
+    }
 
     return (
       <Fragment>
           <StyledWrapper onSubmit={this.handleFormSubmit}>
             <h1>Log in</h1>
-            {loginForm.map(input =>(
+            <FormPasswordContainer>
                 <StyledTextField
-                    key={input.name}
-                    onChange={this.handleFieldChange}
-                    name={input.name}
-                    type={input.type}
-                    label={input.label}
-                    required={input.required}
-                    pattern={input.pattern}
-                    id={input.id}
+                color="primary"
+                onChange={this.handleFieldChange}
+                name="email"
+                type="email"
+                label="E-mail"
+                required
+                value={email}
                 />
-            ))}
-            {/* <button  type="button" onClick={this.showPassword}>mostrar senha</button> */}
+            </FormPasswordContainer>
+            
+            <FormPasswordContainer>
+                <StyledTextField
+                onChange={this.handleFieldChange}
+                name="password"
+                type={type}
+                label="Password"
+                required
+                value={password}
+                />
+                {magicEye}
+            </FormPasswordContainer>
             <SelectDevice
                 name="device"
                 value= {this.state.device}

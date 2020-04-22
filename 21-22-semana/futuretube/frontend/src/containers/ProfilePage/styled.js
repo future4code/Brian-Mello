@@ -144,7 +144,7 @@ export const Password = styled.div `
     height: 100%;
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-end;
     @media (max-width: 600px){
         padding: 0;
         width: 95%;

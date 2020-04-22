@@ -11,13 +11,14 @@ import { StyledH2 } from '../VideoDetailPage/styled';
 import UserInfo from '../../components/UserInfo';
 import Loader from '../../components/loader';
 import VideoContainer from '../../components/videoContainer';
+import ScrollToTop from '../../components/ScrollToTop';
 
 export class ProfilePage extends React.Component {
     constructor(props){
         super(props);
 
         this.state={
-            search: ""
+            search: "",
         }
     }
 
@@ -31,6 +32,12 @@ export class ProfilePage extends React.Component {
             this.props.getVideos()
         }
     };
+
+    handleLogout = () => {
+        localStorage.removeItem("accessToken")
+        window.alert("Usuário deslogado com sucesso!")
+        this.props.goToFeedPage()
+    }
 
     handleFieldChange = event => {
         this.setState({
@@ -46,7 +53,11 @@ export class ProfilePage extends React.Component {
 
     handleSetVideoId = (videoId) => {
         this.props.setVideoId(videoId)
-        this.props.goToVideoDetailsPage()
+        this.props.goToVideoDetailPage(videoId)
+        window.scroll({
+            top: 0,
+            behavior: 'auto'
+        });
     };
 
     render(){
@@ -68,7 +79,7 @@ export class ProfilePage extends React.Component {
       
         let orderedVideo;
     
-        let mapVideos = (<h1>Vídeo não encontrado!</h1>)
+        let mapVideos = (<h3>Não possui Videos!</h3>)
     
         if(filterVideos) {
             orderedVideo = filterVideos.sort((a,b) => (a.title > b.title ? 1 : -1));
@@ -77,7 +88,7 @@ export class ProfilePage extends React.Component {
         if (this.props.feed.length === 0){
             mapVideos = (<Loader/>)
         } else if (orderedVideo.length > 0) {
-            { mapVideos = orderedVideo.map((video) => 
+            mapVideos = orderedVideo.map((video) => 
                 <VideoContainer
                 key={video.id}
                 img={video.photo}
@@ -86,7 +97,7 @@ export class ProfilePage extends React.Component {
                 onDelete={() => this.handleDeleteVideo(video.id)}
                 onClick={() => this.handleSetVideoId(video.id)}
                 />
-            )}
+            )
         }
 
         return(
@@ -94,6 +105,8 @@ export class ProfilePage extends React.Component {
                 <Header
                     button1={"Voltar"}
                     onClick1={goToFeedPage}
+                    button2={"Logout"}
+                    onClick2={this.handleLogout}
                     value={feed}
                     onChange={this.handleFieldChange}
                 />
@@ -120,7 +133,7 @@ export class ProfilePage extends React.Component {
                         </EmailAndBirthdateContainer>
                         <PasswordContainer>
                             <Password>
-                                <UserInfo Label="Password: " userData={password}/>
+                                <UserInfo Label="Password: " value={password}/>
                                 <UpdatePasswordIcon>
                                     <StyledUpdateIcon onClick={goToUpdatePasswordPage}/>
                                 </UpdatePasswordIcon>
@@ -133,6 +146,7 @@ export class ProfilePage extends React.Component {
                         </MyVideosContainer>
                         {mapVideos}
                     </UserVideosContainer>
+                    <ScrollToTop/>
                 </StyledMain>
                 <Footer/>
             </BodyContainer>
@@ -149,7 +163,7 @@ const mapDispatchToProps = dispatch => ({
     goToFeedPage: () => dispatch(push(routes.home)),
     getProfile: () => dispatch(getProfile()),
     goToUpdatePasswordPage: () => dispatch(push(routes.updatePassword)),
-    goToVideoDetailsPage: () => dispatch(push(routes.videoDetail)),
+    goToVideoDetailPage: (videoId) => dispatch(push(`/video/${videoId}`)),
     getVideos: () => dispatch(getVideos()),
     setVideoId: (videoId) => dispatch(setVideoId(videoId)),
     deleteVideo: (videoId) => dispatch(deleteVideo(videoId))

@@ -115,3 +115,4 @@ export const FeedTitle = styled.h1 `
     font-weight: 900px;
     font-size: 25px;
 `
+

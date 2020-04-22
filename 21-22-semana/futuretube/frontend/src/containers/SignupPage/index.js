@@ -4,6 +4,7 @@ import { push } from "connected-react-router";
 import { routes } from '../Router/index';
 import { StyledTextField, StyledButtonForms, StyledWrapper } from "../../style/globalStyles";
 import { signup } from '../../actions/index'
+import SelectUserType from "../../components/selectUserType";
 
 const signupForm = [
     {
@@ -35,16 +36,9 @@ const signupForm = [
         pattern: "(?=^.{6,}$)((?=.*)|(?=.*+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
     },
     {
-        name: 'type',
-        type: 'text',
-        label: 'Type: ',
-        required: true,
-        pattern: "[A-Za-z]"
-    },
-    {
         name: 'photo',
-        type: 'link',
-        label: 'Photo: ',
+        type: 'text',
+        label: 'Foto: ',
         required: true,
     }
 ]
@@ -53,7 +47,8 @@ class SignupPage extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            form: {}
+            form: {},
+            type: ""
         }
     }
 
@@ -66,9 +61,16 @@ class SignupPage extends React.Component{
 
     handleOnSubmit = (event) =>{
         event.preventDefault();
-        const { name, birthdate, email, password, type, photo } = this.state.form
+        const { type } = this.state
+        const { name, birthdate, email, password, photo } = this.state.form
         this.props.signup(name, birthdate, email, password, type, photo)
         this.setState({form: {}})
+    }
+
+    handleSelectTypeOnChange = event => {
+        const { value } = event.target;
+
+        this.setState ({ type: value});
     }
 
     render(){
@@ -91,6 +93,11 @@ class SignupPage extends React.Component{
                             pattern={input.pattern}
                         />
                     ))}
+                    <SelectUserType
+                        name="type"
+                        value={this.state.type}
+                        onChange={this.handleSelectTypeOnChange}
+                    />
                     <StyledButtonForms type="submit"> Sign Up </StyledButtonForms>
                     <StyledButtonForms onClick={goToLoginPage}> Login </StyledButtonForms>
                     <StyledButtonForms onClick={goToFeedPage}> Voltar </StyledButtonForms>

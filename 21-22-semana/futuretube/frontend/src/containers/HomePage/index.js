@@ -1,8 +1,7 @@
-import React from "react";
+import React, {Fragment} from "react";
 import { push } from "connected-react-router";
 import { routes } from '../Router/index';
 import { connect } from "react-redux";
-import Header from "../../components/header";
 import Footer from "../../components/footer";
 import { getVideos, setVideoId, deleteVideo } from "../../actions";
 import Loader from "../../components/loader";
@@ -10,6 +9,8 @@ import { StyledMain, MenuContainer, StyledP, FeedContainer, FeedTitle, FeedConta
 import VideoContainer from "../../components/videoContainer"
 import { BodyContainer } from "../../style/globalStyles";
 import SelectOrder from "../../components/selectOrder";
+import Header from "../../components/header";
+import ScrollToTop from "../../components/ScrollToTop";
 
 class HomePage extends React.Component {
   constructor(props){
@@ -17,20 +18,19 @@ class HomePage extends React.Component {
 
     this.state = {
       search: "",
-      order: "",
-      isLogged: false
+      order: ""
     }
   }
 
   componentDidMount() {
-    this.props.getVideos()
+      this.props.getVideos()
   };
 
-  handleLogOut = () => {
+  handleLogout = () => {
     localStorage.removeItem("accessToken")
     window.alert("Usuário deslogado com sucesso!")
     this.props.goToFeedPage()
-  };  
+  }
 
   handleFieldChange = event => {
     this.setState({
@@ -42,7 +42,11 @@ class HomePage extends React.Component {
 
   handleSetVideoId = (videoId) => {
     this.props.setVideoId(videoId)
-    this.props.goToVideoDetailPage()
+    this.props.goToVideoDetailPage(videoId)
+    window.scroll({
+      top: 0,
+      behavior: 'auto'
+    });
   };
 
   handleDeleteVideo = (videoId) => {
@@ -55,11 +59,41 @@ class HomePage extends React.Component {
     this.setState ({ order: value});
   }
 
+  handleScrollToTop = () => {
+    window.scroll({
+        top: 0,
+        behavior: 'smooth'
+    });
+  };
+
   render() {
+
+    const isLogged = window.localStorage.getItem("accessToken")
 
     const { search, feed, order } = this.state;
 
     const { goToSignupPage, goToLoginPage, goToCreateVideoPage, goToFeedPage, goToProfilePage } = this.props
+
+    let  menuItems
+
+    let buttonRenderization
+
+    if(isLogged){
+      menuItems = <Fragment>
+        <StyledP onClick={goToProfilePage}>Profile</StyledP>
+        <StyledP onClick={goToCreateVideoPage}>Create Video</StyledP>
+      </Fragment>
+    }
+
+    if(isLogged){
+      buttonRenderization = (
+          <Header onClick={goToFeedPage} button1={"Logout"} onClick1={this.handleLogout} value={feed} onChange={this.handleFieldChange}/>
+      )
+    } else {
+      buttonRenderization = (
+          <Header onClick={goToFeedPage} button1={"Login"} onClick1={goToLoginPage} button2={"Signup"} onClick2={goToSignupPage} value={feed} onChange={this.handleFieldChange}/>
+      )
+    }
 
     let filterVideos = this.props.feed.filter((video) => {
       return video.title.toLowerCase().indexOf(search.toLowerCase()) !== -1 || 
@@ -83,7 +117,7 @@ class HomePage extends React.Component {
     if (this.props.feed.length === 0){
       mapVideos = (<Loader/>)
     } else if (orderedVideo.length > 0) {
-      { mapVideos = orderedVideo.map((video) => 
+      mapVideos = orderedVideo.map((video) => 
         <VideoContainer
           key={video.id}
           img={video.photo}
@@ -91,27 +125,17 @@ class HomePage extends React.Component {
           username={video.name}
           onDelete={() => this.handleDeleteVideo(video.id)}
           onClick={() => this.handleSetVideoId(video.id)}
+          defaultValue="https://i.pinimg.com/originals/4a/19/4e/4a194eec519841ce2815141db087b7ac.jpg"
         />
-      )}
+      )
     }
 
     return (
       <BodyContainer>
-        <Header 
-          onClick={goToFeedPage}
-          button1={"Login"}  
-          onClick1={goToLoginPage}
-          button2={"Signup"} 
-          onClick2={goToSignupPage}
-          button3={"Logout"} 
-          onClick3={this.handleLogOut}
-          value={feed}
-          onChange={this.handleFieldChange.bind(this)}
-        />
+        {buttonRenderization}
         <StyledMain>
             <MenuContainer>
-                <StyledP onClick={goToProfilePage}>Profile</StyledP>
-                <StyledP onClick={goToCreateVideoPage}>Create Video</StyledP>
+                {menuItems}
             </MenuContainer>
             <FeedContainer>
                 <FeedContainerHeader>
@@ -124,6 +148,7 @@ class HomePage extends React.Component {
                 </FeedContainerHeader>
                 {mapVideos}
             </FeedContainer>
+            <ScrollToTop/>
         </StyledMain>
         <Footer/>
       </BodyContainer>
@@ -132,7 +157,7 @@ class HomePage extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  feed: state.videos.allVideos
+  feed: state.videos.allVideos,
 })
 
 const mapDispatchToProps = dispatch =>({
@@ -144,7 +169,7 @@ const mapDispatchToProps = dispatch =>({
   setVideoId: (videoId) => dispatch(setVideoId(videoId)),
   deleteVideo: (videoId) => dispatch(deleteVideo(videoId)),
   goToProfilePage: () => dispatch(push(routes.profile)),
-  goToVideoDetailPage: () => dispatch(push(routes.videoDetail))
+  goToVideoDetailPage: (videoId) => dispatch(push(`/video/${videoId}`))
 })
 
 export default connect(

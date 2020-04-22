@@ -16,9 +16,9 @@ export const routes = {
   login: "/login",
   createVideo: "/createVideo",
   profile: "/profile",
-  videoDetail: "/video",
+  videoDetail: "/video/:videoId",
   updatePassword: "/profile/updatePassword",
-  updateVideo: "/video/updateVideo"
+  updateVideo: "/video/:videoId/updateVideo"
   // Outras rotas aqui
 };
 

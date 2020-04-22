@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { routes } from '../Router/index';
 import { StyledTextField, StyledButtonForms, StyledWrapper } from "../../style/globalStyles";
-import { updateVideo, getVideoDetails } from '../../actions/index';
+import { updateVideo, getVideoDetails, setVideoId } from '../../actions/index';
 
 const updateVideoForm = [
 
@@ -41,7 +41,6 @@ class UpdateVideoPage extends React.Component{
         }
     };
 
-
     handleFieldChange = event => {
         const { name, value } = event.target
         this.setState({
@@ -55,12 +54,15 @@ class UpdateVideoPage extends React.Component{
         const videoId = this.props.selectedVideo.id
         this.props.updateVideo(videoId, title, description )
         this.setState({form: {}})
-        console.log(videoId)
     }
 
-    render(){
+    handleSetVideoId = (videoId) => {
+        videoId = this.props.selectedVideo.id
+        this.props.setVideoId(videoId)
+        this.props.goToVideoDetailPage(videoId)
+    };
 
-        const { goToVideoDetailPage } = this.props
+    render(){
 
         return(
             <Fragment>
@@ -79,7 +81,7 @@ class UpdateVideoPage extends React.Component{
                         />
                     ))}
                     <StyledButtonForms type="submit"> Update </StyledButtonForms>
-                    <StyledButtonForms onClick={goToVideoDetailPage}> Voltar </StyledButtonForms>
+                    <StyledButtonForms onClick={this.handleSetVideoId}> Voltar </StyledButtonForms>
                 </StyledWrapper> 
             </Fragment>
         )
@@ -93,10 +95,11 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = (dispatch) =>({
-    goToVideoDetailPage: () => dispatch(push(routes.videoDetail)),
+    goToVideoDetailPage: (videoId) => dispatch(push(`/video/${videoId}`)),
     goToFeedPage: () => dispatch(push(routes.home)),
     getVideoDetails: (videoId) => dispatch(getVideoDetails(videoId)),
-    updateVideo: (videoId, title, description) => dispatch(updateVideo(videoId, title, description))
+    updateVideo: (videoId, title, description) => dispatch(updateVideo(videoId, title, description)),
+    setVideoId: (videoId) => dispatch(setVideoId(videoId))
 })
 
 export default connect(

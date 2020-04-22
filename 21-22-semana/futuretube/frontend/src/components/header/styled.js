@@ -5,42 +5,46 @@ import styled from 'styled-components';
 export const StyledHeader = styled.header`
     width: 100%;
     min-width: 300px;
-    height: 80px;
+    height: 100px;
     padding: 5px;
     display: flex;
     justify-content: space-between;
     background-color: #660008;
     color: white;
     font-family: 'Manrope', sans-serif;
-    @media (max-width: 600px) {
-        height: 260px;
+    @media (max-width: 800px) {
+        height: 350px;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
     }
 `
 export const StyledLogo = styled.img `
-    width: 80px;
+    width: 160px;
     height: 100%;
     margin: 0;
     :hover {
         cursor: pointer;
         opacity: 80%;
     }
-    @media (max-width: 600px) {
-        width: 100px;
+    @media (max-width: 700px) {
+        width: 250px;
     }
 `
 
 export const LogoContainer = styled.div `
-    width: 130px;
+    width: 200px;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0;
+    @media (max-width: 700px) {
+        height: 130px;
+        width: 100%;
+    }
     @media (max-width: 300px) {
-        height: 100px;
+        height: 80px;
     }
 `
 
@@ -52,7 +56,11 @@ export const SearchContainer = styled.div `
     align-items: center;
     margin: 0;
     padding-left: 100px;
-    @media (max-width: 600px){
+    @media (max-width: 1150px){
+        width: 50%;
+        padding-left: 30px;
+    }
+    @media (max-width: 700px){
         width: 100%;
         height: 80px;
         padding: 0;
@@ -67,12 +75,16 @@ export const ButtonMenu = styled.menu `
     align-items: center;
     margin: 0;
     padding: 10px;
-    @media (max-width: 600px){
-        width: 100%;
-        height: 120px;
+    @media (max-width: 1150px){
+        width: 50%;
     }
-    @media(max-width: 300px){
-        height: 120px;
+    @media (max-width: 700px){
+        width: 100%;
+        height: 140px;
+        flex-direction: column;
+    }
+    @media (max-width: 400px){
+        height: 160px;
         flex-direction: column;
     }
 `
@@ -94,8 +106,9 @@ export const StyledButton = styled.button `
         border: 1px solid #3c0000;
         color: #3c0000;
     }
-    @media(max-width: 300px){
+    @media(max-width: 700px){
         width: 60%;
+        max-width: 200px;
     }
 `
 
@@ -111,7 +124,10 @@ export const StyledInput = styled.input `
     color: white;
     outline: none;
     font-family: 'Manrope', sans-serif;
-    @media (max-width: 600px){
+    @media (max-width: 1150px){
+        width: 90%;
+    }
+    @media (max-width: 700px){
         width: 90%;
     }
 `

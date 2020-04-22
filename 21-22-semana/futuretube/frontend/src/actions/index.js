@@ -56,7 +56,7 @@ export const createVideo = (title, link, description, photo) => async (dispatch)
         dispatch(push(routes.home))
     } catch (err) {
         window.alert("Falha ao criar o Video")
-        console.log(err)
+        
     }
 }
 
@@ -78,6 +78,7 @@ export const updateVideo = (videoId, title, description) => async (dispatch) => 
         })
         window.alert("Video atualizado com sucesso!")
         dispatch(push(routes.videoDetail))
+        dispatch(getVideoDetails(videoId))
     } catch(err){
         window.alert("Não foi possível atualizar o vídeo!")
     }
