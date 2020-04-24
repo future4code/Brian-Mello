@@ -1,0 +1,9 @@
+1 = Complexidade O(n)
+
+2 = Complexidade O(n)
+
+3 = Complexidde O(1)
+
+4 = Complexidade O(n²)
+
+5 = Ordem de eficiência: 3,1,2,4
