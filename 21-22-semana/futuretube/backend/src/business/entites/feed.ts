@@ -8,10 +8,11 @@ export class Feed extends Video{
         description: string,
         creationDate: Date,
         user_id: string,
+        photo: string,
         private name: string,
-        private photo: string
+        private userPhoto: string
     ){
-        super(id, title, link, description, creationDate, user_id)
+        super(id, title, link, description, creationDate, user_id, photo)
     }
 
     public getName(): string{
@@ -22,11 +23,11 @@ export class Feed extends Video{
         this.name = name;
     };
 
-    public getPhoto(): string{
-        return this.photo;
+    public getUserPhoto(): string{
+        return this.userPhoto;
     }
 
-    public setPhoto(photo: string): void{
-        this.photo = photo;
+    public setUserPhoto(userPhoto: string): void{
+        this.userPhoto = userPhoto;
     }
 }

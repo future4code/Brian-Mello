@@ -5,33 +5,33 @@ export class FeedOfVideosUC {
         private videoGateway: VideoGateway
     ){}
 
-    private POST_PER_PAGE = 10;
+    // private POST_PER_PAGE = 10;
 
-    public async execute(input: FeedOfVideosUCInput): Promise<FeedOfVideosUCOutput>{
+    public async execute(): Promise<FeedOfVideosUCOutput>{
 
-        let orderBy = "v.creationDate";
+        // let orderBy = "v.creationDate";
 
-        if(input.orderBy === "v.creationDate" || input.orderBy === "u.name") {
-            orderBy = input.orderBy;
-        } else if (input.orderBy !== undefined) {
-            throw new Error("Invalid Order by!")
-        }
+        // if(input.orderBy === "v.creationDate" || input.orderBy === "u.name") {
+        //     orderBy = input.orderBy;
+        // } else if (input.orderBy !== undefined) {
+        //     throw new Error("Invalid Order by!")
+        // }
 
-        let orderType = FeedOrderType.ASC;
+        // let orderType = FeedOrderType.ASC;
 
-        if(input.orderType === "DESC"){
-            orderType = FeedOrderType.DESC;
-        } else if (input.orderType === "ASC"){
-            orderType === FeedOrderType.ASC;
-        } else if (input.orderType !== undefined) {
-            throw new Error("Invalid Order type!")
-        }
+        // if(input.orderType === "DESC"){
+        //     orderType = FeedOrderType.DESC;
+        // } else if (input.orderType === "ASC"){
+        //     orderType === FeedOrderType.ASC;
+        // } else if (input.orderType !== undefined) {
+        //     throw new Error("Invalid Order type!")
+        // }
 
-        let page = input.page >= 1 ? input.page : 1;
+        // let page = input.page >= 1 ? input.page : 1;
 
-        const offset = this.POST_PER_PAGE * (page -1)
+        // const offset = this.POST_PER_PAGE * (page -1)
 
-        const videos = await this.videoGateway.getVideos(orderBy, orderType, this.POST_PER_PAGE, offset)
+        const videos = await this.videoGateway.getVideos()
 
         if(!videos){
             throw new Error("Feed of videos are Empty")
@@ -45,20 +45,21 @@ export class FeedOfVideosUC {
                     link: video.getLink(),
                     description: video.getDescription(),
                     creationDate: video.getCreationDate(),
+                    photo: video.getPhoto(),
                     user_id: video.getUser_id(),
                     name: video.getName(),
-                    photo: video.getPhoto()
+                    userPhoto: video.getUserPhoto()
                 }
             })
         }
     }
 }
 
-export interface FeedOfVideosUCInput{
-    orderBy: string;
-    orderType: string;
-    page: number;
-}
+// export interface FeedOfVideosUCInput{
+//     orderBy: string;
+//     orderType: string;
+//     page: number;
+// }
 
 export interface FeedOfVideosUCOutput {
     feed: FeedOfVideosUCOutputVideo[]
@@ -70,9 +71,10 @@ export interface FeedOfVideosUCOutputVideo{
     link: string;
     description: string;
     creationDate: Date;
-    user_id: string;
-    name: string;
     photo: string;
+    name: string;
+    user_id: string;
+    userPhoto: string;
 }
 
 export enum FeedOrderType {

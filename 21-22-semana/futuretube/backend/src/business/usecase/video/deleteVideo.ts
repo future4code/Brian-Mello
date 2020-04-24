@@ -20,7 +20,11 @@ export class DeleteVideoUC{
             throw new Error("Video not found")
         }
 
-        await this.videoGateway.deleteVideo(input.id)
+        if(userInfo.id !== video.getUser_id()){
+            throw new Error("You cannot delete this Video")
+        }
+
+        await this.videoGateway.deleteVideo(input.id, userInfo.id)
 
         return {
             message: `Video ${input.id} Deleted Successfully!`

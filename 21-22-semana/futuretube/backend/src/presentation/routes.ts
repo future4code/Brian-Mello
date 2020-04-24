@@ -7,39 +7,28 @@ import { GetAllUsersEndpoint } from "./endpoints/user/getAllUsers";
 import { DeleteVideoEndpoint } from "./endpoints/video/deleteVideo";
 import { UpdateVideoEndpoint } from "./endpoints/video/updateVideo";
 import { GetVideoDetailEndpoint } from "./endpoints/video/getVideoDetail";
-import { GetVideoByUserEndpoint } from "./endpoints/video/getVideoByUser";
+import { GetAllUserVideosEndpoint } from "./endpoints/video/getAllUserVideos";
+import { UpdatePasswordEndpoint } from "./endpoints/user/updatePassword";
+import { GetUserDataEndpoint } from "./endpoints/user/getUserData";
+import cors from 'cors';
 
 const app = express();
+app.use(cors());
 app.use(express.json()); // Linha mágica (middleware)
 
 // user
 app.post("/signup", SignUpEndpoint);
-app.get("/login", LoginEndpoint);
+app.post("/login", LoginEndpoint);
 app.get("/users", GetAllUsersEndpoint);
+app.post("/user/updatePassword", UpdatePasswordEndpoint);
+app.get("/user", GetUserDataEndpoint);
 
 // video
 app.post("/createVideo", CreateVideoEndpoint);
 app.get("/feed", FeedOfVideosEndpoint)
-app.delete("/deleteVideo", DeleteVideoEndpoint);
-app.post("/updateVideo", UpdateVideoEndpoint);
-app.get("/getVideoDetail", GetVideoDetailEndpoint);
-app.get("/getVideoByUser", GetVideoByUserEndpoint);
-
-app.get('/', (req: Request, res: Response) => {
-    const resposta = {
-      endpoints: {
-        '/': 'Retorna lista com todos os endpoints',
-        '/signup': 'Criação dos usuários',
-        '/login': 'Login do usuário',
-        '/users': 'Retorna todos usuários. Apenas administradores podem usar esse endpoint',
-        '/createVideo': 'Cria um video',
-        '/feed': 'Mostra todos videos',
-        '/deleteVideo': 'Deleta um vídeo ao passar um id no body',
-        '/updateVideo': 'Atualiza um video ao passar o id e os dados no body',
-        '/getVideoByUser/:id': 'pega todos videos de um usuário específico'
-      }
-    };
-    res.send(resposta)
-});
+app.delete("/deleteVideo/:id", DeleteVideoEndpoint);
+app.post("/updateVideo/:id", UpdateVideoEndpoint);
+app.get("/getVideoDetail/:id", GetVideoDetailEndpoint);
+app.get("/getAllUserVideos", GetAllUserVideosEndpoint);
 
 export default app;

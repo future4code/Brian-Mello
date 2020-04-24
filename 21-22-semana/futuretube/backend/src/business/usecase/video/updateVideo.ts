@@ -13,14 +13,28 @@ export class UpdateVideoUC {
         if(!userInfo){
             throw new Error("You must be connected!")
         }
-
+        
         const video = await this.videoGateway.getVideoById(input.id);
 
         if(!video){
             throw new Error("Video not found");
         }
 
-        await this.videoGateway.updateVideo(input.id, input.title, input.description)
+        if(!input.description && !input.title){
+            throw new Error("You must send some input!")
+        }
+
+        if(!input.title){
+            await this.videoGateway.updateVideoDescription(input.id, userInfo.id, input.description)
+        } else if(!input.description){
+            await this.videoGateway.updateVideoTitle(input.id, userInfo.id, input.title)
+        } else {
+            if(userInfo.id !== video.getUser_id()){
+                throw new Error("You cannot update this video!")
+            }
+
+            await this.videoGateway.updateVideo(input.id, userInfo.id, input.title, input.description)
+        }
 
         return {
             message: `Video ${input.title} updated Successfully!`
