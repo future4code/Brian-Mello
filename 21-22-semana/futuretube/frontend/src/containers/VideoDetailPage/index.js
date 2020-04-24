@@ -131,7 +131,7 @@ export class VideoDetailPage extends React.Component {
                 {buttonRenderization}
                 <StyledMain>
                     <VideoSettingsContainer>
-                        <StyledIFrame title="Video" allowFullScreen={true} type="video/webm" width="900" height="500" src={`https://www.youtube.com/embed/${selectedVideo.link}`} controls/>
+                        <StyledIFrame title="Video" allowFullScreen={true} type="video/webm" src={`https://www.youtube.com/embed/${selectedVideo.link}`} controls/>
                         <TitleAndUpdateContainer>
                             <StyledH2>{selectedVideo.title}</StyledH2>
                             {showUpdateButton}

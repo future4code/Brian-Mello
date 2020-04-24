@@ -106,6 +106,7 @@ export const deleteVideo = (videoId) => async (dispatch) => {
     }
 }
 
+// guarda o id do video
 export const setVideoDetail = (videoDetail) => ({
     type: "SET_VIDEO_DETAIL",
     payload: {
